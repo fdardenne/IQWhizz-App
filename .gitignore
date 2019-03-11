@@ -25,6 +25,9 @@ local.properties
 .idea/modules.xml
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
+.idea/codeStyles
+.idea/
+build.gradle
 *.iml
 
 # OS-specific files
@@ -35,3 +38,6 @@ local.properties
 .Trashes
 ehthumbs.db
 Thumbs.db
+build.gradle
+*.gradle
+.idea/codeStyles/Project.xml
