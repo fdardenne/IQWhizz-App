@@ -1,4 +1,4 @@
-package com.example.fdardenne.iquizz;
+package com.example.iqwhizz;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.fdardenne.iquizz", appContext.getPackageName());
+        assertEquals("com.example.iqwhizz", appContext.getPackageName());
     }
 }

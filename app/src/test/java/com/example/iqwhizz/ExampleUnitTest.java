@@ -1,4 +1,4 @@
-package com.example.fdardenne.iquizz;
+package com.example.iqwhizz;
 
 import org.junit.Test;
 
