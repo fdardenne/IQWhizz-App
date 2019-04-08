@@ -5,10 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Login"
-
-
-    >
+    tools:context=".Register">
 
     <LinearLayout
         android:layout_width="395dp"
@@ -30,17 +27,17 @@
             android:layout_height="wrap_content"
             android:fontFamily="casual"
             android:gravity="center_horizontal"
-            android:text="IQWHIZZ"
+            android:text="Register"
             android:textColor="#FFFFFF"
             android:textSize="36sp"
-            android:layout_marginBottom="60dp"/>
+            android:layout_marginBottom="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_border"
             android:orientation="vertical"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="50dp"
             android:padding="30dp">
 
             <TextView
@@ -69,29 +66,52 @@
                 android:ems="10"
                 android:inputType="textPassword"
                 android:hint="Password"
-                android:layout_marginBottom="20dp"
-
+                android:layout_marginBottom="10dp"
                 />
 
+            <EditText
+                android:id="@+id/password_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Confirm password"
+                android:layout_marginBottom="10dp"
+                />
+
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="10dp"
+                android:hint="Email"
+                />
+
+            <EditText
+                android:id="@+id/birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date"
+                android:layout_marginBottom="20dp"
+                android:hint="Date de naissance"/>
+
+
             <Button
-                android:id="@+id/login"
+                android:id="@+id/register"
                 android:background="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Se connecter"
+                android:text="S'enregistrer"
                 android:layout_marginBottom="5dp"
                 android:textColor="#FFFFFF"/>
-
-            <TextView
-                android:id="@+id/register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pas de compte ? Enregistre toi en cliquant ici !"
-                android:clickable="true"
-                />
 
 
         </LinearLayout>
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
