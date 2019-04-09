@@ -51,7 +51,6 @@ public class Menu extends AppCompatActivity {
 
     private void statsIntent(){
         Intent intentStats = new Intent(this, Stats.class);
-        //TODO: Déconnecter l'User, vider le Singleton pour la préparation d'une possible nouvelle connection
         startActivity(intentStats);
     }
 
