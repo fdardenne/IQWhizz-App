@@ -58,8 +58,9 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
 
         //TODO: Créer la classe User
-        //TODO: Si le login est bon: Stocker le username dans le singleton User et connecter l'user
-        if(username.getText().toString().equals("fdardenne") && password.getText().toString().equals("motdepasse")){
+        //TODO: Verifier dans la DB si le login est bon
+        //TODO: Si le login est bon: Stocker le username dans le singleton User
+        if(username.getText().toString().equals("") && password.getText().toString().equals("")){
             Intent intentMenu = new Intent(this, Menu.class);
             Log.i("TEST", username.getText() + " connected");
             errormessage.setText("");

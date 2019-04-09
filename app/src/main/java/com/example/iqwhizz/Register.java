@@ -63,7 +63,7 @@ public class Register extends AppCompatActivity {
         String username_str = username.getText().toString().toLowerCase();
 
 
-        //TODO vérifier si l'utilisateur existe déjà dans la db
+        //TODO vérifier si l'utilisateur existe déjà dans la db, si oui faire comme en dessous
         if(username.getText().toString().equals("fdardenne")){
             errormessage.setText("L'utilisateur existe déjà");
         }
@@ -83,6 +83,7 @@ public class Register extends AppCompatActivity {
         }
         else{
             //TODO: Ici tout a été vérifié, introduire l'user dans la DB
+            //TODO: On connecte maintenant l'user, le mettre dans le singleton User
             Intent intentMenu = new Intent(this, Menu.class);
             Log.i("TEST", username_str + " connected");
             errormessage.setText("");
