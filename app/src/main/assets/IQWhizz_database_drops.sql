@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS SelectedAnswers;
+
+
+DROP TABLE IF EXISTS Friendship;
+
+DROP TABLE IF EXISTS TestExecutions;
+
+DROP TABLE IF EXISTS TestQuestions;
+
+DROP TABLE IF EXISTS PossibleAnswers;
+
+DROP TABLE IF EXISTS Challenges
+
+
+DROP TABLE IF EXISTS Questions;
+
+DROP TABLE IF EXISTS Tests;
+
+DROP TABLE IF EXISTS Users;

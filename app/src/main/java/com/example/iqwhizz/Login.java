@@ -5,12 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.unused.AppDatabase;
 
 public class Login extends AppCompatActivity {
 
@@ -22,10 +20,30 @@ public class Login extends AppCompatActivity {
 
     private TextView username;
     private TextView password;
+    private static AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*
+        NE PAS SUPPRIMER -> TEST DE LA DB
+
+        //db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "IQWhizz").allowMainThreadQueries().build();
+        User user = new User("name", "pwd", "lang");
+        //db.userDao().insertUser(user);
+        db.userDao().getUser("name").observe(this, new android.arch.lifecycle.Observer<User>() {
+            @Override
+            public void onChanged(@Nullable User user) {
+
+            }
+        });
+        User user2 = db.userDao().getUser("name").getValue();
+        Log.d("USER", user2.username);
+        User user1 = UsersDAO.createUser("test", "testPwd","mail@mail.be", "en",1000000000,1000000000,1000000000,"profile picture", getApplicationContext());
+        User user2 = UsersDAO.getUser("name", "pwd", getApplicationContext());
+        */
+
         setContentView(R.layout.login);
 
         errormessage = findViewById(R.id.error_message);
