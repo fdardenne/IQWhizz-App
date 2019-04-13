@@ -28,7 +28,7 @@ public class User {
         // mettre les bons arguments quand ce sera ok
         //UserDAO.createUser(u,p,l,m,bd,last_co,pic,AppContextProvider.getContext());
     }
-    public User() {
+    public User(String username, String password) {
         if(UserDAO.getUser(username,password,AppContextProvider.getContext()) != null ) {
             this.username = username;
             this.password = password;
