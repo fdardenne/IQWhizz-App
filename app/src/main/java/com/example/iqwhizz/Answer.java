@@ -8,7 +8,7 @@ public class Answer {
 
     public String text;
 
-    public int score;
+    public int score ;
 
     /*
         Constructeur

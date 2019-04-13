@@ -6,7 +6,7 @@ public class Challenge {
 
     public String challenged; //username
 
-    public boolean done;
+    public boolean done ;
 
     public int testID;
 

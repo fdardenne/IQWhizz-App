@@ -10,7 +10,7 @@ public class Question {
 
     public String text;
 
-    public int difficulty;
+    public int difficulty ;
 
     public Answer[] answers;
 

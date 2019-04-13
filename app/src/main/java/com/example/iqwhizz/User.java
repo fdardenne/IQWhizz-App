@@ -40,7 +40,7 @@ public class User {
     */
     public User(String u, String p, String l, String m, int bd, String pic) {
 >>>>>>> master
-        username = u;
+        username = u ;
         password = p;
         language = l;
         mail = m;

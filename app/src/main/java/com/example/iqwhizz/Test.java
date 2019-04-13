@@ -19,7 +19,7 @@ public class Test {
     Test(int testID, String category, String type, Question[] questions)
     {
         this.testID = testID;
-        this.category = category;
+        this.category = category ;
         this.type = type;
         this.questions = questions; //il faudra surement créer cette liste
         this.currentQuestion = -1;
