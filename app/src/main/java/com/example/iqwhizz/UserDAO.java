@@ -11,7 +11,7 @@ public class UserDAO {
     public static User getUser(String username, String password, Context context) {
         IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(context);
         SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM Users WHERE username = '" + username + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM Users WHERE username = \"" + username + "\"", null);
 
         if (cursor.moveToFirst()) {
             String usern = cursor.getString(0);
@@ -20,7 +20,8 @@ public class UserDAO {
             int birth_date = cursor.getInt(3);
             String mail = cursor.getString(4);
             int registration_date = cursor.getInt(5);
-            String profile_picture = cursor.getString(6);
+            int last_connection = cursor.getInt(6);
+            String profile_picture = cursor.getString(7);
             if (password.equals(pwd)) {
                 return new User(usern, pwd, lang);
             }

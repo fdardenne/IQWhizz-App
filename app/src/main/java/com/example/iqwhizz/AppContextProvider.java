@@ -13,8 +13,7 @@ public class AppContextProvider extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        sContext = getApplicationContext();
+        AppContextProvider.sContext = getApplicationContext();
 
     }
 
@@ -24,7 +23,7 @@ public class AppContextProvider extends Application {
      * @return application context
      */
     public static Context getContext() {
-        return sContext;
+        return AppContextProvider.sContext;
     }
 
 }
