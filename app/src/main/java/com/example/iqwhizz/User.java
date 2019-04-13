@@ -29,7 +29,7 @@ public class User {
         //UserDAO.createUser(u,p,l,m,bd,last_co,pic,AppContextProvider.getContext());
     }
     public User(String username, String password) {
-        if(UserDAO.getUser(username,password,AppContextProvider.getContext()) != null ) {
+        if(UserDAO.getUser(username,password) != null ) {
             this.username = username;
             this.password = password;
             this.language = language;
