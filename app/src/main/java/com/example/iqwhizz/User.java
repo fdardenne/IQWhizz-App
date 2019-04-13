@@ -2,23 +2,23 @@ package com.example.iqwhizz;
 
 public class User {
 
-    public String username;
-    public String password;
-    public String language;
-    public String mail;
-    public String picture;
-    public int last_connexion;
-    public int registration_date;
-    public int birthdate;
+    private String username;
+    private String password;
+    private String language;
+    private String mail;
+    private String picture;
+    private int last_connexion;
+    private int registration_date;
+    private int birthdate;
 
     /*
-      Crée un Usser sur base de toutes ses données si celui ci n'existe pas encore
+      Crée un User sur base de toutes ses données si celui ci n'existe pas encore
       et rajoute une ligne dans la base de données
     */
     public User(String u, String p, String l, String m, int bd, String pic, int last_co, int reg_date)
     {
-        // ou User.exists() ??
-        if( UserDAO.userExists(username) == false )
+        // ou UserDAO.UserExists(username) ??
+        if( ! exist(username)  )
         {
             username = u ;
             password = p;
@@ -37,20 +37,22 @@ public class User {
         }
     }
 
-
+    /*
+        crée un objet user lors du login d'un utilisateur
+     */
     public User(String username, String password)
     {
         User user = UserDAO.getUser(username,password);
         if(user != null )
         {
-            this.registration_date = user.registration_date;
-            this.last_connexion = user.last_connexion;
-            this.language = user.language;
-            this.password = user.password;
-            this.birthdate = user.birthdate;
-            this.mail = user.mail;
-            this.picture = user.picture;
-            this.username = user.username;
+            this.registration_date = user.getRegistration_date();
+            this.last_connexion = user.getLast_connexion();
+            this.language = user.getLanguage();
+            this.password = user.getPassword();
+            this.birthdate = user.getBirthdate();
+            this.mail = user.getMail();
+            this.picture = user.getPicture();
+            this.username = user.getUsername();
         }
         else {
             throw new IllegalArgumentException("Username or password incorrect");
@@ -122,8 +124,7 @@ public class User {
      */
     boolean exist(String username)
     {
-
-        return false;
+        return UserDAO.userExists(username);
     }
 
     /*
@@ -136,5 +137,46 @@ public class User {
     {
 
         return false;
+    }
+
+    // getters
+    public String getUsername()
+    {
+        return this.username;
+    }
+
+    public String getPicture()
+    {
+        return this.picture;
+    }
+
+    public String getLanguage()
+    {
+        return this.language;
+    }
+
+    public String getMail()
+    {
+        return this.mail;
+    }
+
+    public int getLast_connexion()
+    {
+        return this.last_connexion;
+    }
+
+    public int getBirthdate()
+    {
+        return this.birthdate;
+    }
+
+    public int getRegistration_date()
+    {
+        return this.registration_date;
+    }
+
+    public String getPassword()
+    {
+        return this.password;
     }
 }

@@ -25,7 +25,7 @@ public class Question {
         this.image=image;
         this.text=text;
         this.difficulty=difficulty;
-        this.answers=NULL; //création de la liste avec elements données par DAO
+        this.answers=null; //création de la liste avec elements données par DAO
     }
 
     /*
@@ -34,7 +34,7 @@ public class Question {
      */
     public Answer getRightAnswer()
     {
-        return NULL;
+        return null;
     }
 
     /*
@@ -42,7 +42,7 @@ public class Question {
      */
     public Answer[] getAnswer()
     {
-        return NULL;
+        return null;
     }
 
 }

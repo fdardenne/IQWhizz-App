@@ -48,4 +48,11 @@ public class UserDAO {
         db.insert("Users", null, values);
         return UserDAO.getUser(usern,pwd);
     }
+
+    /*
+        vérifie s'il eiste deja un utilisateur ayant comme username celui passé en argument
+     */
+    public static Boolean userExists(String username) {
+        return false;
+    }
 }
