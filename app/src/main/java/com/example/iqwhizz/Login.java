@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.unused.AppDatabase;
 
 public class Login extends AppCompatActivity {
 
@@ -20,7 +19,6 @@ public class Login extends AppCompatActivity {
 
     private TextView username;
     private TextView password;
-    private static AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
