@@ -1,61 +1,43 @@
 package com.example.iqwhizz;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
-
-
 import java.util.Date;
 
-
-<<<<<<< HEAD
-
-import java.util.Date;
-
-@Entity(tableName = "Users")
-=======
->>>>>>> master
 public class User {
 
     public String username;
-
     public String password;
-
     public String language;
-
     public String mail;
-
-<<<<<<< HEAD
-    public int birthday;
-
     public String picture;
-
     public int last_connexion;
-
-
-    public User(String u, String p, String l, String m, int b, String pic) {
-=======
     public int birthdate;
-
-    public String picture;
 
     /*
     /  Crée un Usser sur base de toutes ses données,
     /  et rajoute une ligne dans la base de données
     */
-    public User(String u, String p, String l, String m, int bd, String pic) {
->>>>>>> master
+    public User(String u, String p, String l, String m, int bd, String pic, int last_co) {
         username = u ;
         password = p;
         language = l;
         mail = m;
-<<<<<<< HEAD
-        birthday = b;
+        birthdate = bd;
         picture = pic;
+        last_connexion = last_co;
         //last_connexion = (int) (Date().getTime()/1000);
+        // mettre les bons arguments quand ce sera ok
+        //UserDAO.createUser(u,p,l,m,bd,last_co,pic,AppContextProvider.getContext());
     }
-    public User() {}
+    public User() {
+        if(UserDAO.getUser(username,password,AppContextProvider.getContext()) != null ) {
+            this.username = username;
+            this.password = password;
+            this.language = language;
+        }
+        else{
+            throw new IllegalArgumentException("Username or password incorrect");
+        }
+    }
 
     /*
         retourne la liste des amis de this.
@@ -137,24 +119,4 @@ public class User {
 
         return false;
     }
-=======
-        birthdate = bd;
-        picture = pic;
-        // donne l'heure d'inscription (a vérifier)
-        int insc_d = (int) new Date().getTime();
-        // a changer si implémenté
-        int last_co = 0;
-        UserDAO.createUser(u,p,l,m,bd,insc_d,last_co,pic,AppContextProvider.getContext());
-    }
-    public User(String username, String password, String language) {
-        if(UserDAO.getUser(username,password,AppContextProvider.getContext()) != null ) {
-            this.username = username;
-            this.password = password;
-            this.language = language;
-        }
-        else{
-            throw new IllegalArgumentException("Username or password incorrect");
-        }
-    }
->>>>>>> master
 }
