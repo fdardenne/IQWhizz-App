@@ -2,17 +2,17 @@ package com.example.iqwhizz;
 
 public class Question {
 
-    public int questionID;
+    private int questionID;
 
-    public String category;
+    private String category;
 
-    public String image;  //path de l'image
+    private String image;  //path de l'image
 
-    public String text;
+    private String text;
 
-    public int difficulty ;
+    private int difficulty ;
 
-    public Answer[] answers;
+    private Answer[] answers;
 
     /*
         Constructeur

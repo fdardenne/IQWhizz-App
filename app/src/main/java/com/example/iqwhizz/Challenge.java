@@ -2,13 +2,13 @@ package com.example.iqwhizz;
 
 public class Challenge {
 
-    public String challenger; //username
+    private String challenger; //username
 
-    public String challenged; //username
+    private String challenged; //username
 
-    public boolean done ;
+    private boolean done ;
 
-    public int testID;
+    private int testID;
 
     /*
         Constructeur

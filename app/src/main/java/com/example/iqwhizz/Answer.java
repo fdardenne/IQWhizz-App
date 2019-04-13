@@ -2,13 +2,13 @@ package com.example.iqwhizz;
 
 public class Answer {
 
-    public int answerID;
+    private int answerID;
 
-    public String image; //path
+    private String image; //path
 
-    public String text;
+    private String text;
 
-    public int score ;
+    private int score ;
 
     /*
         Constructeur

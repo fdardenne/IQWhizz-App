@@ -2,15 +2,15 @@ package com.example.iqwhizz;
 
 public class Test {
 
-    public int currentQuestion;
+    private int currentQuestion;
 
-    public int testID;
+    private int testID;
 
-    public String category;
+    private String category;
 
-    public String type; //long ou court
+    private String type; //long ou court
 
-    public Question[] questions;
+    private Question[] questions;
 
     /*
         Constructeur
