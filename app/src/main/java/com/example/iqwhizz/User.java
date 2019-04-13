@@ -9,25 +9,18 @@ import android.support.annotation.NonNull;
 import java.util.Date;
 
 
-@Entity(tableName = "Users")
 public class User {
-    @PrimaryKey
-    @NonNull
+
     public String username;
 
-    @ColumnInfo(name = "password")
     public String password;
 
-    @ColumnInfo(name = "language")
     public String language;
 
-    @ColumnInfo(name = "mail")
     public String mail;
 
-    @ColumnInfo(name = "birthdate")
     public int birthdate;
 
-    @ColumnInfo(name = "picture")
     public String picture;
 
     /*
@@ -45,10 +38,10 @@ public class User {
         int insc_d = (int) new Date().getTime();
         // a changer si implémenté
         int last_co = 0;
-        UsersDAO.createUser(u,p,l,m,bd,insc_d,last_co,pic,AppContextProvider.getContext());
+        UserDAO.createUser(u,p,l,m,bd,insc_d,last_co,pic,AppContextProvider.getContext());
     }
     public User(String username, String password, String language) {
-        if(UsersDAO.getUser(username,password,AppContextProvider.getContext()) != null ) {
+        if(UserDAO.getUser(username,password,AppContextProvider.getContext()) != null ) {
             this.username = username;
             this.password = password;
             this.language = language;

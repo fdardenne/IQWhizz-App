@@ -5,8 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class UsersDAO {
-    private UsersDAO() {}
+public class UserDAO {
+    private UserDAO() {}
 
     public static User getUser(String username, String password, Context context) {
         IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(context);
@@ -45,6 +45,6 @@ public class UsersDAO {
         IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(context);
         SQLiteDatabase db = helper.getWritableDatabase();
         db.insert("Users", null, values);
-        return UsersDAO.getUser(usern,pwd, context);
+        return UserDAO.getUser(usern,pwd, context);
     }
 }
