@@ -16,18 +16,27 @@ public class User {
     /  Crée un Usser sur base de toutes ses données,
     /  et rajoute une ligne dans la base de données
     */
-    public User(String u, String p, String l, String m, int bd, String pic, int last_co) {
-        username = u ;
-        password = p;
-        language = l;
-        mail = m;
-        birthdate = bd;
-        picture = pic;
-        last_connexion = last_co;
-        //last_connexion = (int) (Date().getTime()/1000);
-        // mettre les bons arguments quand ce sera ok
-        //UserDAO.createUser(u,p,l,m,bd,last_co,pic,AppContextProvider.getContext());
+    public User(String u, String p, String l, String m, int bd, String pic, int last_co)
+    {
+        if( UserDAO.getUser(username,password) == null )
+        {
+            username = u ;
+            password = p;
+            language = l;
+            mail = m;
+            birthdate = bd;
+            picture = pic;
+            last_connexion = last_co;
+            //last_connexion = (int) (Date().getTime()/1000);
+            // mettre les bons arguments quand ce sera ok
+            //UserDAO.createUser(u,p,l,m,bd,last_co,pic,AppContextProvider.getContext());
+        }
+        else
+            {
+                throw new IllegalArgumentException("User or password already exists");
+            }
     }
+
     public User(String username, String password) {
         if(UserDAO.getUser(username,password) != null ) {
             this.username = username;
