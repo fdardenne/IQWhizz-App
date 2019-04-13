@@ -55,4 +55,21 @@ public class UserDAO {
     public static Boolean userExists(String username) {
         return false;
     }
+
+    /*
+        ajoute un ami a l'utilisateur courant (écrit 1 ligne dans la db)
+     */
+    public void addFriend(String username, String currentUser){}
+
+    /*
+        récupère la liste des demandes d'ami attendant d'etre acceptées par les amis
+     */
+    public void getPendingRequests(String currentUser){}
+
+    /*
+        récupère la liste des demandes d'ami attendant d'etre acceptées par currentUser
+     */
+    public void getMyPendingRequests(String currentUser){}
+
+
 }
