@@ -1,7 +1,5 @@
 package com.example.iqwhizz;
 
-import java.util.Date;
-
 public class User {
 
     public String username;
@@ -10,15 +8,17 @@ public class User {
     public String mail;
     public String picture;
     public int last_connexion;
+    public int registration_date;
     public int birthdate;
 
     /*
-    /  Crée un Usser sur base de toutes ses données,
-    /  et rajoute une ligne dans la base de données
+      Crée un Usser sur base de toutes ses données si celui ci n'existe pas encore
+      et rajoute une ligne dans la base de données
     */
-    public User(String u, String p, String l, String m, int bd, String pic, int last_co)
+    public User(String u, String p, String l, String m, int bd, String pic, int last_co, int reg_date)
     {
-        if( UserDAO.getUser(username,password) == null )
+        // ou User.exists() ??
+        if( UserDAO.userExists(username) == false )
         {
             username = u ;
             password = p;
@@ -27,23 +27,32 @@ public class User {
             birthdate = bd;
             picture = pic;
             last_connexion = last_co;
+            registration_date = reg_date;
             //last_connexion = (int) (Date().getTime()/1000);
             // mettre les bons arguments quand ce sera ok
-            //UserDAO.createUser(u,p,l,m,bd,last_co,pic,AppContextProvider.getContext());
+            UserDAO.createUser(u,p,l,m,bd,reg_date,last_co,pic);
         }
-        else
-            {
-                throw new IllegalArgumentException("User or password already exists");
-            }
+        else {
+                throw new IllegalArgumentException("User with username "+u+" already exists");
+        }
     }
 
-    public User(String username, String password) {
-        if(UserDAO.getUser(username,password) != null ) {
-            this.username = username;
-            this.password = password;
-            this.language = language;
+
+    public User(String username, String password)
+    {
+        User user = UserDAO.getUser(username,password);
+        if(user != null )
+        {
+            this.registration_date = user.registration_date;
+            this.last_connexion = user.last_connexion;
+            this.language = user.language;
+            this.password = user.password;
+            this.birthdate = user.birthdate;
+            this.mail = user.mail;
+            this.picture = user.picture;
+            this.username = user.username;
         }
-        else{
+        else {
             throw new IllegalArgumentException("Username or password incorrect");
         }
     }
