@@ -6,7 +6,7 @@ create table Users
   language         char(2)   not null default 'en',
   birth_date       int       not null,
   mail             char(255) not null unique,
-  inscription_date int       not null,
+  registration_date int       not null,
   last_connection int not null default current_timestamp,
   profile_picture  char(255) -- normalement c'est un blob
 );

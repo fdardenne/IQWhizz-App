@@ -138,10 +138,10 @@ public class User {
         int insc_d = (int) new Date().getTime();
         // a changer si implémenté
         int last_co = 0;
-        UserDAO.createUser(u,p,l,m,bd,insc_d,last_co,pic,AppContextProvider.getContext());
+        UserDAO.createUser(u,p,l,m,bd,insc_d,last_co,pic);
     }
     public User(String username, String password, String language) {
-        if(UserDAO.getUser(username,password,AppContextProvider.getContext()) != null ) {
+        if(UserDAO.getUser(username,password) != null ) {
             this.username = username;
             this.password = password;
             this.language = language;
