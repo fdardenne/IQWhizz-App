@@ -6,7 +6,7 @@ public class Question {
 
     private String category;
 
-    private String image;  //path de l'image
+    private byte[] image;  //path de l'image
 
     private String text;
 
@@ -18,7 +18,7 @@ public class Question {
         Constructeur
         DAO : donner la liste des answers possible avec le score pour creer la liste answers
      */
-    Question(int questionID, String category, String image, String text, int difficulty)
+    Question(int questionID, String category, byte[] image, String text, int difficulty)
     {
         this.questionID=questionID;
         this.category=category;
@@ -43,6 +43,10 @@ public class Question {
     public Answer[] getAnswer()
     {
         return null;
+    }
+
+    public int getID () {
+        return questionID;
     }
 
 }

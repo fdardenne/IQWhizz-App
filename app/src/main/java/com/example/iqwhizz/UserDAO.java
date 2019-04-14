@@ -14,16 +14,16 @@ public class UserDAO {
         Cursor cursor = db.rawQuery("SELECT * FROM Users WHERE username = \"" + username + "\"", null);
 
         if (cursor.moveToFirst()) {
-            String usern = cursor.getString(0);
+            String name = cursor.getString(0);
             String pwd = cursor.getString(1);
             String lang = cursor.getString(2);
-            int birth_date = cursor.getInt(3);
+            int birth_d = cursor.getInt(3);
             String mail = cursor.getString(4);
-            int registration_date = cursor.getInt(5);
+            int reg_d = cursor.getInt(5);
             int last_connection = cursor.getInt(6);
-            String profile_picture = cursor.getString(7);
+            byte[] profile_pic = cursor.getBlob(7);
             if (password.equals(pwd)) {
-                return new User(usern, pwd, lang);
+                return new User(name, pwd, lang, mail, birth_d, profile_pic, last_connection, reg_d);
             }
             else {
                 return null;
@@ -33,26 +33,49 @@ public class UserDAO {
             return null;
         }
     }
-    public static User createUser(String usern, String pwd, String mail, String lang, int birth_d, int insc_d, int last_co, String pp) {
+
+    /*
+    return the newly created User or null if a problem occured
+     */
+    public static User createUser(String name, String pwd, String mail, String lang, int birth_d, int reg_d, int last_co, byte[] profile_pic) {
         ContentValues values = new ContentValues();
-        values.put("username", usern);
+        values.put("username", name);
         values.put("password", pwd);
         values.put("language", lang);
         values.put("birth_date", birth_d);
         values.put("mail", mail);
-        values.put("registration_date", insc_d);
-        //values.put("last_connection", last_co);
-        values.put("profile_picture", pp);
+        values.put("registration_date", reg_d);
+        values.put("last_connection", last_co);
+        values.put("profile_picture", profile_pic);
         IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(AppContextProvider.getContext());
         SQLiteDatabase db = helper.getWritableDatabase();
-        db.insert("Users", null, values);
-        return UserDAO.getUser(usern,pwd);
+        long result = db.insert("Users", null, values);
+        if (result != -1) {
+            return new User(name, pwd, lang, mail, birth_d, profile_pic, last_co, reg_d);
+        }
+        else {
+            return null;
+        }
     }
 
     /*
-        vérifie s'il eiste deja un utilisateur ayant comme username celui passé en argument
+    return true if the request is valid and added to the database
+    return false if the request is invalid and not added to the database
      */
-    public static Boolean userExists(String username) {
-        return false;
+    public static boolean sendFriendRequest(String sender, String receiver) {
+        ContentValues values = new ContentValues();
+        values.put("sender", sender);
+        values.put("receiver", receiver);
+        values.put("request_date", System.currentTimeMillis()/1000);
+        IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(AppContextProvider.getContext());
+        SQLiteDatabase db = helper.getWritableDatabase();
+        long result = db.insert("Users", null, values);
+        if (result != -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
+
 }

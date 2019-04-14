@@ -1,6 +1,8 @@
 package com.example.iqwhizz;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +43,18 @@ public class Login extends AppCompatActivity {
         User user1 = UsersDAO.createUser("test", "testPwd","mail@mail.be", "en",1000000000,1000000000,1000000000,"profile picture", getApplicationContext());
         User user2 = UsersDAO.getUser("name", "pwd", getApplicationContext());
         */
+        com.example.iqwhizz.Test test1 = TestDAO.generateTest("Logique", "court");
+        com.example.iqwhizz.Test test2 = TestDAO.generateTest("Reflexion", "court");
+
+        IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(this.getApplicationContext());
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM Tests WHERE testID = " + test1.getTestID() + " OR testID = " + test2.getTestID(), null);
+        cursor.moveToFirst();
+        Log.d("UnitTests", "ID test1 via DB : "+cursor.getString(0));
+        Log.d("UnitTests", "ID test1 via Obj : "+test1.getTestID());
+        cursor.moveToNext();
+        Log.d("UnitTests", "ID test2 via DB : "+cursor.getString(0));
+        Log.d("UnitTests", "ID test2 via Obj : "+test2.getTestID());
 
         setContentView(R.layout.login);
 

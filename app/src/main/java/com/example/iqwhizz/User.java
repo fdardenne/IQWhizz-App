@@ -6,7 +6,7 @@ public class User {
     private String password;
     private String language;
     private String mail;
-    private String picture;
+    private byte[] picture;
     private int last_connexion;
     private int registration_date;
     private int birthdate;
@@ -15,7 +15,7 @@ public class User {
       Crée un User sur base de toutes ses données si celui ci n'existe pas encore
       et rajoute une ligne dans la base de données
     */
-    public User(String u, String p, String l, String m, int bd, String pic, int last_co, int reg_date)
+    public User(String u, String p, String l, String m, int bd, byte[] pic, int last_co, int reg_date)
     {
         // ou UserDAO.UserExists(username) ??
         if( ! exist(username)  )
@@ -124,7 +124,7 @@ public class User {
      */
     boolean exist(String username)
     {
-        return UserDAO.userExists(username);
+        return true;
     }
 
     /*
@@ -145,7 +145,7 @@ public class User {
         return this.username;
     }
 
-    public String getPicture()
+    public byte[] getPicture()
     {
         return this.picture;
     }

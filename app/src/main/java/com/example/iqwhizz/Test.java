@@ -58,5 +58,7 @@ public class Test {
         puisque on fait deja tout ce qu'elles font dans answerToQuestions
      */
 
-
+    public int getTestID() {
+        return testID;
+    }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,9 +16,9 @@ public class IQWhizzDbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static IQWhizzDbHelper dbHelper = null;
     private static final String[] SQLfiles = {
-            "IQWhizz_database_creation.sql",
-            "IQWhizz_database_insertion.sql",
-            "IQWhizz_database_drops.sql"
+            "IQWhizzDB_creation.sql",
+            "IQWhizzDB_insertion.sql",
+            "IQWhizzDB_drops.sql"
     };
 
     private IQWhizzDbHelper(Context context) {
@@ -34,12 +35,12 @@ public class IQWhizzDbHelper extends SQLiteOpenHelper {
         try {
             AssetManager am = AppContextProvider.getContext().getAssets();
             Scanner scan = new Scanner(am.open(SQLfiles[file]));
-            scan.useDelimiter(Pattern.compile(";"));
+            scan.useDelimiter(Pattern.compile(";\n"));
             while (scan.hasNext()) {
                 String SQL = scan.next();
+                SQL = SQL.replace("\n", "");
                 db.execSQL(SQL);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,8 +48,9 @@ public class IQWhizzDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        execSQLfile(0, db);
+        execSQLfile(0,db);
         execSQLfile(1,db);
+        Log.d("MyTest", "DB creation is OK");
     }
 
     @Override
