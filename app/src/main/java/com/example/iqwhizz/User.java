@@ -17,24 +17,14 @@ public class User {
     */
     public User(String u, String p, String l, String m, int bd, byte[] pic, int last_co, int reg_date)
     {
-        // ou UserDAO.UserExists(username) ??
-        if( ! exist(username)  )
-        {
-            username = u ;
-            password = p;
-            language = l;
-            mail = m;
-            birthdate = bd;
-            picture = pic;
-            last_connexion = last_co;
-            registration_date = reg_date;
-            //last_connexion = (int) (Date().getTime()/1000);
-            // mettre les bons arguments quand ce sera ok
-            UserDAO.createUser(u,p,l,m,bd,reg_date,last_co,pic);
-        }
-        else {
-                throw new IllegalArgumentException("User with username "+u+" already exists");
-        }
+        username = u ;
+        password = p;
+        language = l;
+        mail = m;
+        birthdate = bd;
+        picture = pic;
+        last_connexion = last_co;
+        registration_date = reg_date;
     }
 
     /*
@@ -43,20 +33,14 @@ public class User {
     public User(String username, String password)
     {
         User user = UserDAO.getUser(username,password);
-        if(user != null )
-        {
-            this.registration_date = user.getRegistration_date();
-            this.last_connexion = user.getLast_connexion();
-            this.language = user.getLanguage();
-            this.password = user.getPassword();
-            this.birthdate = user.getBirthdate();
-            this.mail = user.getMail();
-            this.picture = user.getPicture();
-            this.username = user.getUsername();
-        }
-        else {
-            throw new IllegalArgumentException("Username or password incorrect");
-        }
+        this.registration_date = user.getRegistration_date();
+        this.last_connexion = user.getLast_connexion();
+        this.language = user.getLanguage();
+        this.password = user.getPassword();
+        this.birthdate = user.getBirthdate();
+        this.mail = user.getMail();
+        this.picture = user.getPicture();
+        this.username = user.getUsername();
     }
 
     /*
@@ -85,6 +69,7 @@ public class User {
      */
     public void addFriend(String username)
     {
+
         return;
     }
 
