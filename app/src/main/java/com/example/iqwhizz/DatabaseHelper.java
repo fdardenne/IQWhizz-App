@@ -7,29 +7,42 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class IQWhizzDbHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "IQWhizz.db";
     private static final int DATABASE_VERSION = 1;
-    private static IQWhizzDbHelper dbHelper = null;
+    private static DatabaseHelper dbHelper = null;
     private static final String[] SQLfiles = {
             "IQWhizzDB_creation.sql",
             "IQWhizzDB_insertion.sql",
             "IQWhizzDB_drops.sql"
     };
 
-    private IQWhizzDbHelper(Context context) {
+    private DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-    public static IQWhizzDbHelper getDbHelper(Context context) {
+
+
+    private static DatabaseHelper getDbHelper() {
         if (dbHelper == null) {
-            dbHelper = new IQWhizzDbHelper(context);
+            dbHelper = new DatabaseHelper(AppContextProvider.getContext());
         }
         return dbHelper;
     }
+
+    public static SQLiteDatabase getWritableDb() {
+        DatabaseHelper helper = getDbHelper();
+        return helper.getWritableDatabase();
+    }
+
+    public static SQLiteDatabase getReadableDb() {
+        DatabaseHelper helper = getDbHelper();
+        return helper.getReadableDatabase();
+    }
+
+
 
     private void execSQLfile(int file, SQLiteDatabase db) {
         try {
@@ -45,12 +58,27 @@ public class IQWhizzDbHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
     }
+    public static void recreateDB() {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        DatabaseHelper helper = getDbHelper();
+        helper.dropAllTables(db);
+        helper.onCreate(db);
+    }
+
+    private void dropAllTables(SQLiteDatabase db) {
+        execSQLfile(2,db);
+    }
+
+    private static void deletedDB() {
+        AppContextProvider.getContext().deleteDatabase(DATABASE_NAME);
+        Log.d("Hadrien's Tests", "The DB has been successfully deleted.");
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         execSQLfile(0,db);
         execSQLfile(1,db);
-        Log.d("MyTest", "DB creation is OK");
+        Log.d("Hadrien's Tests", "DB creation -> OK");
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.example.iqwhizz;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -23,32 +21,27 @@ public class QuestionDAO {
     }
 
     public static Question getQuestion(int id) {
-        IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(AppContextProvider.getContext());
-        SQLiteDatabase db = helper.getReadableDatabase();
+        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
+        //SQLiteDatabase db = helper.getReadableDatabase();
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT * FROM Questions WHERE questionID = " + id, null);
         cursor.moveToFirst();
         Question q = cursorToQuestion(cursor);
-        db.close();
         return q;
     }
 
     public static Question getRandomQuestion (String category) {
-        Log.d("MyTest", "getRandomQuestion begins ...");
-        IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(AppContextProvider.getContext());
-        SQLiteDatabase db = helper.getReadableDatabase();
+        Log.d("Hadrien's Tests", "getRandomQuestion begins ...");
+        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
+        //SQLiteDatabase db = helper.getReadableDatabase();
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Random rand = new Random();
-        Cursor cursor = db.rawQuery("SELECT count(questionID) FROM Questions WHERE category = \"" + category + "\"", null);
-        cursor.moveToFirst();
-        int nQuestions = cursor.getInt(0);
+        Cursor cursor = db.rawQuery("SELECT * FROM Questions WHERE category = \"" + category + "\"", null);
+        int nQuestions = cursor.getCount();
         int n = rand.nextInt(nQuestions);
-        cursor = db.rawQuery("SELECT * FROM Questions WHERE category = \"" + category + "\"", null);
-        cursor.moveToFirst();
-        for (int i=0; i<n; i++) {
-            cursor.moveToNext();
-        }
+        cursor.moveToPosition(n);
         Question q = cursorToQuestion(cursor);
-        db.close();
-        Log.d("MyTest", "getRandomQuestion is OK");
+        Log.d("Hadrien's Tests", "getRandomQuestion is OK");
         return q;
     }
 }

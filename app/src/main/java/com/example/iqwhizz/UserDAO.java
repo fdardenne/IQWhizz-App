@@ -1,7 +1,6 @@
 package com.example.iqwhizz;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -9,8 +8,9 @@ public class UserDAO {
     private UserDAO() {}
 
     public static User getUser(String username, String password) {
-        IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(AppContextProvider.getContext());
-        SQLiteDatabase db = helper.getReadableDatabase();
+        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
+        //SQLiteDatabase db = helper.getReadableDatabase();
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT * FROM Users WHERE username = \"" + username + "\"", null);
 
         if (cursor.moveToFirst()) {
@@ -47,8 +47,9 @@ public class UserDAO {
         values.put("registration_date", reg_d);
         values.put("last_connection", last_co);
         values.put("profile_picture", profile_pic);
-        IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(AppContextProvider.getContext());
-        SQLiteDatabase db = helper.getWritableDatabase();
+        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
+        //SQLiteDatabase db = helper.getWritableDatabase();
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
         long result = db.insert("Users", null, values);
         if (result != -1) {
             return new User(name, pwd, lang, mail, birth_d, profile_pic, last_co, reg_d);
@@ -67,8 +68,9 @@ public class UserDAO {
         values.put("sender", sender);
         values.put("receiver", receiver);
         values.put("request_date", System.currentTimeMillis()/1000);
-        IQWhizzDbHelper helper = IQWhizzDbHelper.getDbHelper(AppContextProvider.getContext());
-        SQLiteDatabase db = helper.getWritableDatabase();
+        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
+        //SQLiteDatabase db = helper.getWritableDatabase();
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
         long result = db.insert("Users", null, values);
         if (result != -1) {
             return true;
