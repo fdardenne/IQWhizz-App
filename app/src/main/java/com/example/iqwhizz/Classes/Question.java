@@ -1,4 +1,6 @@
-package com.example.iqwhizz;
+package com.example.iqwhizz.Classes;
+
+import com.example.iqwhizz.Classes.Answer;
 
 public class Question {
 
@@ -18,7 +20,7 @@ public class Question {
         Constructeur
         DAO : donner la liste des answers possible avec le score pour creer la liste answers
      */
-    Question(int questionID, String category, byte[] image, String text, int difficulty)
+    public Question(int questionID, String category, byte[] image, String text, int difficulty)
     {
         this.questionID=questionID;
         this.category=category;

@@ -1,9 +1,12 @@
-package com.example.iqwhizz;
+package com.example.iqwhizz.DAO;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.example.iqwhizz.Classes.Question;
+import com.example.iqwhizz.Classes.Test;
 
 import java.util.Random;
 

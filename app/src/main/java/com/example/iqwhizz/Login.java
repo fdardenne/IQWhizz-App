@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.iqwhizz.Classes.Test;
+import com.example.iqwhizz.DAO.DatabaseHelper;
+import com.example.iqwhizz.DAO.TestDAO;
+
 
 public class Login extends AppCompatActivity {
 
@@ -47,10 +51,10 @@ public class Login extends AppCompatActivity {
         //SQLiteDatabase db = helper.getReadableDatabase();
 
         DatabaseHelper.recreateDB();
-        com.example.iqwhizz.Test test1 = TestDAO.generateTest("logique", "court");
-        com.example.iqwhizz.Test test2 = TestDAO.generateTest("reflexion", "court");
-        com.example.iqwhizz.Test test3 = TestDAO.getTest(7);
-        com.example.iqwhizz.Test test4 = TestDAO.getTest(8);
+        Test test1 = TestDAO.generateTest("logique", "court");
+        Test test2 = TestDAO.generateTest("reflexion", "court");
+        Test test3 = TestDAO.getTest(7);
+        Test test4 = TestDAO.getTest(8);
 
 
         SQLiteDatabase db = DatabaseHelper.getReadableDb();

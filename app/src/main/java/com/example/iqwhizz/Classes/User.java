@@ -1,4 +1,6 @@
-package com.example.iqwhizz;
+package com.example.iqwhizz.Classes;
+
+import com.example.iqwhizz.DAO.UserDAO;
 
 public class User {
 

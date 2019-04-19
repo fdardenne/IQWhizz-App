@@ -1,8 +1,10 @@
-package com.example.iqwhizz;
+package com.example.iqwhizz.DAO;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.iqwhizz.Classes.User;
 
 public class UserDAO {
     private UserDAO() {}
@@ -58,42 +60,5 @@ public class UserDAO {
             return null;
         }
     }
-
-    /*
-    return true if the request is valid and added to the database
-    return false if the request is invalid and not added to the database
-     */
-    public static boolean sendFriendRequest(String sender, String receiver) {
-        ContentValues values = new ContentValues();
-        values.put("sender", sender);
-        values.put("receiver", receiver);
-        values.put("request_date", System.currentTimeMillis()/1000);
-        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
-        //SQLiteDatabase db = helper.getWritableDatabase();
-        SQLiteDatabase db = DatabaseHelper.getWritableDb();
-        long result = db.insert("Users", null, values);
-        if (result != -1) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    /*
-        ajoute un ami a l'utilisateur courant (écrit 1 ligne dans la db)
-     */
-    public void addFriend(String username, String currentUser){}
-
-    /*
-        récupère la liste des demandes d'ami attendant d'etre acceptées par les amis
-     */
-    public void getPendingRequests(String currentUser){}
-
-    /*
-        récupère la liste des demandes d'ami attendant d'etre acceptées par currentUser
-     */
-    public void getMyPendingRequests(String currentUser){}
-
 
 }

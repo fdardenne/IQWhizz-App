@@ -1,4 +1,4 @@
-package com.example.iqwhizz;
+package com.example.iqwhizz.DAO;
 
 public class StatsDAO {
     private StatsDAO() {}

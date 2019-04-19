@@ -1,4 +1,4 @@
-package com.example.iqwhizz;
+package com.example.iqwhizz.Classes;
 
 public class Test {
 
@@ -16,7 +16,7 @@ public class Test {
         Constructeur
         DAO : donner la liste des questions du test
      */
-    Test(int testID, String category, String type, Question[] questions)
+    public Test(int testID, String category, String type, Question[] questions)
     {
         this.testID = testID;
         this.category = category ;

@@ -1,4 +1,4 @@
-package com.example.iqwhizz;
+package com.example.iqwhizz.Classes;
 
 public class Answer {
 

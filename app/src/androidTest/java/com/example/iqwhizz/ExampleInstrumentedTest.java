@@ -8,10 +8,11 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
+import com.example.iqwhizz.DAO.DatabaseHelper;
+import com.example.iqwhizz.DAO.TestDAO;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
@@ -37,10 +38,10 @@ public class ExampleInstrumentedTest {
     public void generateTest() {
         try {
             DatabaseHelper.recreateDB();
-            com.example.iqwhizz.Test test1 = TestDAO.generateTest("logique", "court");
-            com.example.iqwhizz.Test test2 = TestDAO.generateTest("reflexion", "court");
-            com.example.iqwhizz.Test test3 = TestDAO.getTest(7);
-            com.example.iqwhizz.Test test4 = TestDAO.getTest(8);
+            com.example.iqwhizz.Classes.Test test1 = TestDAO.generateTest("logique", "court");
+            com.example.iqwhizz.Classes.Test test2 = TestDAO.generateTest("reflexion", "court");
+            com.example.iqwhizz.Classes.Test test3 = TestDAO.getTest(7);
+            com.example.iqwhizz.Classes.Test test4 = TestDAO.getTest(8);
 
 
             SQLiteDatabase db = DatabaseHelper.getReadableDb();

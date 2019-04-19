@@ -1,10 +1,12 @@
-package com.example.iqwhizz;
+package com.example.iqwhizz.DAO;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.example.iqwhizz.AppContextProvider;
 
 import java.io.IOException;
 import java.util.Scanner;
