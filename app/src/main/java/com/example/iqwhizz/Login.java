@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.iqwhizz.Classes.Test;
+import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.DAO.DatabaseHelper;
 import com.example.iqwhizz.DAO.TestDAO;
 

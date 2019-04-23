@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.iqwhizz.Classes.User;
+import com.example.iqwhizz.Objects.User;
 
 public class UserDAO {
     private UserDAO() {}

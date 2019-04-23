@@ -1,4 +1,4 @@
-package com.example.iqwhizz.Classes;
+package com.example.iqwhizz.Objects;
 
 import com.example.iqwhizz.DAO.UserDAO;
 

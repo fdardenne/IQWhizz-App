@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.iqwhizz.Classes.Friendship;
+import com.example.iqwhizz.Objects.Friendship;
 
 import java.util.ArrayList;
 
