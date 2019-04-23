@@ -5,8 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.iqwhizz.Objects.Friendship;
+import com.example.iqwhizz.Objects.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FriendshipDAO {
 
@@ -22,6 +24,8 @@ public class FriendshipDAO {
         values.put("sender", sender);
         values.put("receiver", receiver);
         values.put("request_date", System.currentTimeMillis()/1000);
+        values.put("acceptance_date", 0);
+        values.put("isAccepted", 0);
         SQLiteDatabase db = DatabaseHelper.getWritableDb();
         long result = db.insert("Users", null, values);
         if (result != -1) {
@@ -45,7 +49,13 @@ public class FriendshipDAO {
         cursor.moveToFirst();
         Friendship[] requests = new Friendship[cursor.getCount()];
         for(int i =0; cursor.moveToNext(); i++) {
-            requests[i] = new Friendship(cursor.getString(0), cursor.getString(1), cursor.getInt(2));
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
         }
         return requests;
     }
@@ -56,7 +66,42 @@ public class FriendshipDAO {
         cursor.moveToFirst();
         Friendship[] requests = new Friendship[cursor.getCount()];
         for(int i =0; cursor.moveToNext(); i++) {
-            requests[i] = new Friendship(cursor.getString(0), cursor.getString(1), cursor.getInt(2));
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
+        }
+        return requests;
+    }
+
+    public static Friendship[] getFriendList(String user) {
+        /*Friendship[] sent = getSentRequest(username);
+        Friendship[] received = getReceivedRequest(username);
+        ArrayList<String> friendlist = new ArrayList<>();
+        for (Friendship friendInSent : sent) {
+            for (Friendship friendInReceived : received) {
+                if (friendInSent.getSender()==friendInReceived.getReceiver() && friendInSent.getReceiver()==friendInReceived.getSender()) {
+                    friendlist.add(friendInSent.getReceiver());
+                }
+            }
+        }
+        return (String[]) friendlist.toArray();*/
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT * FROM Friendships WHERE (sender=\""+user+"\" OR receiver=\""+user+"\") AND isAccepted=1", null);
+        cursor.moveToFirst();
+        Friendship[] requests = new Friendship[cursor.getCount()];
+        for(int i = 0; i<cursor.getCount(); i++) {
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
+            cursor.moveToNext();
         }
         return requests;
     }
@@ -64,8 +109,8 @@ public class FriendshipDAO {
     /*
         récupère la liste des demandes d'ami attendant d'etre acceptées par les amis
      */
-    public static Friendship[] getPendingRequests(String currentUser){
-        Friendship[] sent = getSentRequest(currentUser);
+    public static Friendship[] getPendingRequests(String user){
+        /*Friendship[] sent = getSentRequest(currentUser);
         Friendship[] received = getReceivedRequest(currentUser);
         ArrayList<Friendship> pending = new ArrayList<>();
         for (int i=0; i<sent.length; i++) {
@@ -79,14 +124,29 @@ public class FriendshipDAO {
                 pending.add(sent[i]);
             }
         }
-        return (Friendship[]) pending.toArray();
+        return (Friendship[]) pending.toArray();*/
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT * FROM Friendships WHERE receiver=\""+user+"\" AND isAccepted=0", null);
+        cursor.moveToFirst();
+        Friendship[] requests = new Friendship[cursor.getCount()];
+        for(int i =0; i<cursor.getCount(); i++) {
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
+            cursor.moveToNext();
+        }
+        return requests;
     }
 
     /*
         récupère la liste des demandes d'ami attendant d'etre acceptées par currentUser
      */
-    public static Friendship[] getMyPendingRequests(String currentUser){
-        Friendship[] sent = getSentRequest(currentUser);
+    public static Friendship[] getMyPendingRequests(String user){
+        /*Friendship[] sent = getSentRequest(currentUser);
         Friendship[] received = getReceivedRequest(currentUser);
         ArrayList<Friendship> pending = new ArrayList<>();
         for (int i=0; i<received.length; i++) {
@@ -100,6 +160,21 @@ public class FriendshipDAO {
                 pending.add(received[i]);
             }
         }
-        return (Friendship[]) pending.toArray();
+        return (Friendship[]) pending.toArray();*/
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT * FROM Friendships WHERE sender=\""+user+"\" AND isAccepted=0", null);
+        cursor.moveToFirst();
+        Friendship[] requests = new Friendship[cursor.getCount()];
+        for(int i =0; i<cursor.getCount(); i++) {
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
+            cursor.moveToNext();
+        }
+        return requests;
     }
 }

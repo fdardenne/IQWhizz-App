@@ -77,12 +77,12 @@ insert into Challenges values ('Hadrien', 'Simon', 6, 1);
 insert into Challenges values ('Arnaud', 'Maxime', 5, 0);
 insert into Challenges values ('Maxime', 'Simon', 1, 1);
 
-insert into Friendship values ('Hadrien', 'Arthur', strftime('%s','now'));
-insert into Friendship values ('Florent', 'Arthur', strftime('%s','now'));
-insert into Friendship values ('Hadrien', 'Florent', strftime('%s','now'));
-insert into Friendship values ('Simon', 'Arthur', strftime('%s','now'));
-insert into Friendship values ('Hadrien', 'Arnaud', strftime('%s','now'));
-insert into Friendship values ('Arnaud', 'Florent', strftime('%s','now'));
+insert into Friendships values ('Hadrien', 'Arthur', strftime('%s','now'), strftime('%s','now'), 1);
+insert into Friendships values ('Florent', 'Arthur', strftime('%s','now'), strftime('%s','now'), 1);
+insert into Friendships(sender, receiver, request_date) values ('Hadrien', 'Florent', strftime('%s','now'));
+insert into Friendships(sender, receiver, request_date) values ('Simon', 'Arthur', strftime('%s','now'));
+insert into Friendships values ('Hadrien', 'Arnaud', strftime('%s','now'), strftime('%s','now'), 1);
+insert into Friendships(sender, receiver, request_date) values ('Florent', 'Arnaud', strftime('%s','now'));
 
 insert into SelectedAnswers values (1, 1, 1, 3, 120);
 insert into SelectedAnswers values (1, 1, 2, 5, 60);

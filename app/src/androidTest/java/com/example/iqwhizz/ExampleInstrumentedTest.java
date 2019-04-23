@@ -9,7 +9,9 @@ import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
 import com.example.iqwhizz.DAO.DatabaseHelper;
+import com.example.iqwhizz.DAO.FriendshipDAO;
 import com.example.iqwhizz.DAO.TestDAO;
+import com.example.iqwhizz.Objects.Friendship;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,6 +61,51 @@ public class ExampleInstrumentedTest {
             Log.d("Hadrien's Tests", "ID test2 via getTest : "+test4.getTestID());
             assertEquals(test2.getTestID(), cursor.getInt(0));
             assertEquals(test2.getTestID(), test4.getTestID());
+        }
+        catch(SQLiteException e) {
+            assert(false);
+        }
+    }
+
+    @Test
+    public void getFriendList() {
+        try {
+            DatabaseHelper.recreateDB();
+            Friendship friendlistFromDB[] = FriendshipDAO.getFriendList("Hadrien");
+            Friendship pendingsFromDB[] = FriendshipDAO.getPendingRequests("Florent");
+            Friendship myPendingsFromDB[] = FriendshipDAO.getMyPendingRequests("Florent");
+            Log.d("Database Tests - FriendshipDAO", "getFriendList()");
+            for(Friendship friendship : friendlistFromDB) {
+                Log.d("Database Tests - FriendshipDAO",
+                        "Sender : " + friendship.getSender() +
+                                " Receiver : " + friendship.getReceiver() +
+                                " Request date : " + friendship.getRequest_date() +
+                                " is Accepeted ? " + ((friendship.isAccepted()) ? "True" : "False") +
+                                ((friendship.isAccepted()) ? (" Accepance date : " + friendship.getAcceptance_date()) : "")
+                );
+            }
+            Log.d("Database Tests - FriendshipDAO", "getPendingRequests()");
+            for(Friendship friendship : myPendingsFromDB) {
+                Log.d("Database Tests - FriendshipDAO",
+                        "Sender : " + friendship.getSender() +
+                                " Receiver : " + friendship.getReceiver() +
+                                " Request date : " + friendship.getRequest_date() +
+                                " is Accepeted ? " + ((friendship.isAccepted()) ? "True" : "False") +
+                                ((friendship.isAccepted()) ? (" Accepance date : " + friendship.getAcceptance_date()) : "")
+                );
+            }
+            Log.d("Database Tests - FriendshipDAO", "getMyPendingRequests()");
+            for(Friendship friendship : pendingsFromDB) {
+                Log.d("Database Tests - FriendshipDAO",
+                        "Sender : " + friendship.getSender() +
+                                " Receiver : " + friendship.getReceiver() +
+                                " Request date : " + friendship.getRequest_date() +
+                                " is Accepeted ? " + ((friendship.isAccepted()) ? "True" : "False") +
+                                ((friendship.isAccepted()) ? (" Accepance date : " + friendship.getAcceptance_date()) : "")
+                );
+            }
+            Log.d("Database Tests - FriendshipDAO", "Finished !");
+
         }
         catch(SQLiteException e) {
             assert(false);

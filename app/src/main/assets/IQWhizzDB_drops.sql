@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS SelectedAnswers;
 
 
 
-DROP TABLE IF EXISTS Friendship;
+DROP TABLE IF EXISTS Friendships;
 
 DROP TABLE IF EXISTS TestExecutions;
 
