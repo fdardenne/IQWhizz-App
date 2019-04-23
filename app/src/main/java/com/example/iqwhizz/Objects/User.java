@@ -12,6 +12,7 @@ public class User {
     private int last_connexion;
     private int registration_date;
     private int birthdate;
+    private static User currentUser;
 
     /*
       Crée un User sur base de toutes ses données si celui ci n'existe pas encore
@@ -30,9 +31,9 @@ public class User {
     }
 
     /*
-        crée un objet user lors du login d'un utilisateur
+        crée un objet user lors du login d'un utilisateur ==> très étrange comme constructeur
      */
-    public User(String username, String password)
+    private User(String username, String password)
     {
         User user = UserDAO.getUser(username,password);
         this.registration_date = user.getRegistration_date();
@@ -43,6 +44,24 @@ public class User {
         this.mail = user.getMail();
         this.picture = user.getPicture();
         this.username = user.getUsername();
+    }
+
+    public static boolean connectUser(String username, String password) {
+        if (currentUser!=null) {
+            if (currentUser.getUsername().equals(username)) {
+                return true;
+            }
+            else {
+                currentUser=null;
+                return connectUser(username, password);
+            }
+        }
+        else {
+            User user = UserDAO.getUser(username, password);
+            if (user==null) return false;
+            currentUser=user;
+            return true;
+        }
     }
 
     /*

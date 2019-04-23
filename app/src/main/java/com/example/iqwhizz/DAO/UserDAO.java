@@ -36,10 +36,21 @@ public class UserDAO {
         }
     }
 
+    public static boolean userExists(String username) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT * FROM Users WHERE username = \"" + username + "\"", null);
+        if (cursor.moveToFirst()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     /*
     return the newly created User or null if a problem occured
      */
-    public static User createUser(String name, String pwd, String mail, String lang, int birth_d, int reg_d, int last_co, byte[] profile_pic) {
+    public static boolean createUser(String name, String pwd, String mail, String lang, int birth_d, int reg_d, int last_co, byte[] profile_pic) {
         ContentValues values = new ContentValues();
         values.put("username", name);
         values.put("password", pwd);
@@ -54,10 +65,10 @@ public class UserDAO {
         SQLiteDatabase db = DatabaseHelper.getWritableDb();
         long result = db.insert("Users", null, values);
         if (result != -1) {
-            return new User(name, pwd, lang, mail, birth_d, profile_pic, last_co, reg_d);
+            return true;
         }
         else {
-            return null;
+            return false;
         }
     }
 

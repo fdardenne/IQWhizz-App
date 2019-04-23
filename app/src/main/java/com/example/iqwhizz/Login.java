@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.DAO.DatabaseHelper;
 import com.example.iqwhizz.DAO.TestDAO;
+import com.example.iqwhizz.Objects.User;
 
 
 public class Login extends AppCompatActivity {
@@ -29,44 +30,6 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /*
-        NE PAS SUPPRIMER -> TEST DE LA DB
-
-        //db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "IQWhizz").allowMainThreadQueries().build();
-        User user = new User("name", "pwd", "lang");
-        //db.userDao().insertUser(user);
-        db.userDao().getUser("name").observe(this, new android.arch.lifecycle.Observer<User>() {
-            @Override
-            public void onChanged(@Nullable User user) {
-
-            }
-        });
-        User user2 = db.userDao().getUser("name").getValue();
-        Log.d("USER", user2.username);
-        User user1 = UsersDAO.createUser("test", "testPwd","mail@mail.be", "en",1000000000,1000000000,1000000000,"profile picture", getApplicationContext());
-        User user2 = UsersDAO.getUser("name", "pwd", getApplicationContext());
-        */
-        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
-        //SQLiteDatabase db = helper.getReadableDatabase();
-
-        DatabaseHelper.recreateDB();
-        Test test1 = TestDAO.generateTest("logique", "court");
-        Test test2 = TestDAO.generateTest("reflexion", "court");
-        Test test3 = TestDAO.getTest(7);
-        Test test4 = TestDAO.getTest(8);
-
-
-        SQLiteDatabase db = DatabaseHelper.getReadableDb();
-        Cursor cursor = db.rawQuery("SELECT * FROM Tests WHERE testID = " + test1.getTestID() + " OR testID = " + test2.getTestID(), null);
-        cursor.moveToFirst();
-        Log.d("Database Tests - Login Activity", "ID test1 via DB : "+cursor.getString(0));
-        Log.d("Hadrien's Tests", "ID test1 via Obj : "+test1.getTestID());
-        Log.d("Hadrien's Tests", "ID test1 via getTest : "+test3.getTestID());
-        cursor.moveToNext();
-        Log.d("Hadrien's Tests", "ID test2 via DB : "+cursor.getString(0));
-        Log.d("Hadrien's Tests", "ID test2 via Obj : "+test2.getTestID());
-        Log.d("Hadrien's Tests", "ID test2 via getTest : "+test4.getTestID());
 
         setContentView(R.layout.login);
 
@@ -99,10 +62,12 @@ public class Login extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
 
-        //TODO: Créer la classe User
-        //TODO: Verifier dans la DB si le login est bon
-        //TODO: Si le login est bon: Stocker le username dans le singleton User
-        if(username.getText().toString().equals("") && password.getText().toString().equals("")){
+        //TODO: Créer la classe User => FAIT
+        //TODO: Verifier dans la DB si le login est bon => FAIT
+        //TODO: Si le login est bon: Stocker le username dans le singleton User => FAIT
+        String userStr = username.getText().toString();
+        String pwdStr = password.getText().toString();
+        if(User.connectUser(userStr, pwdStr)){
             Intent intentMenu = new Intent(this, Menu.class);
             Log.i("TEST", username.getText() + " connected");
             errormessage.setText("");

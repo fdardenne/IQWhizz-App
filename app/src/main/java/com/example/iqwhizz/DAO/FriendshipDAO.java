@@ -5,10 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.iqwhizz.Objects.Friendship;
-import com.example.iqwhizz.Objects.User;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FriendshipDAO {
 
