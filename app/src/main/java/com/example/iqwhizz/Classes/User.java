@@ -1,5 +1,6 @@
 package com.example.iqwhizz.Classes;
 
+import com.example.iqwhizz.DAO.FriendshipDAO;
 import com.example.iqwhizz.DAO.UserDAO;
 
 public class User {
@@ -51,8 +52,7 @@ public class User {
     */
     public String[] getFriendList()
     {
-
-        return new String[0];
+        return null;
     }
 
     /*
@@ -71,8 +71,7 @@ public class User {
      */
     public void addFriend(String username)
     {
-
-        return;
+        FriendshipDAO.addFriend(this.getUsername(), username);
     }
 
     /*
@@ -81,8 +80,14 @@ public class User {
      */
     public String[] getPendingFriendRequest()
     {
-
-        return new String[0];
+        Friendship[] friendships = FriendshipDAO.getPendingRequests(this.getUsername());
+        int nbAmitiés = friendships.length;
+        String[] friendsNames = new String[nbAmitiés];
+        for(int i = 0; i< nbAmitiés ; i++)
+        {
+            friendsNames[i] = friendships[i].getReceiver();
+        }
+        return friendsNames;
     }
 
     /*
