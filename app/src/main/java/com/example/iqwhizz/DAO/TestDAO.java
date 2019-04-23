@@ -5,8 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.iqwhizz.Classes.Question;
-import com.example.iqwhizz.Classes.Test;
+import com.example.iqwhizz.Objects.Question;
+import com.example.iqwhizz.Objects.Test;
 
 import java.util.Random;
 

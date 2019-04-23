@@ -1,6 +1,4 @@
-package com.example.iqwhizz.Classes;
-
-import com.example.iqwhizz.Classes.Answer;
+package com.example.iqwhizz.Objects;
 
 public class Question {
 

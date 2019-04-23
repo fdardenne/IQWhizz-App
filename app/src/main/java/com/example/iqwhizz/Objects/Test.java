@@ -1,4 +1,4 @@
-package com.example.iqwhizz.Classes;
+package com.example.iqwhizz.Objects;
 
 public class Test {
 

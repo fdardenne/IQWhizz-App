@@ -4,7 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.iqwhizz.Classes.Question;
+import com.example.iqwhizz.Objects.Question;
 
 import java.util.Random;
 

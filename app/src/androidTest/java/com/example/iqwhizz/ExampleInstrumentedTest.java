@@ -38,10 +38,10 @@ public class ExampleInstrumentedTest {
     public void generateTest() {
         try {
             DatabaseHelper.recreateDB();
-            com.example.iqwhizz.Classes.Test test1 = TestDAO.generateTest("logique", "court");
-            com.example.iqwhizz.Classes.Test test2 = TestDAO.generateTest("reflexion", "court");
-            com.example.iqwhizz.Classes.Test test3 = TestDAO.getTest(7);
-            com.example.iqwhizz.Classes.Test test4 = TestDAO.getTest(8);
+            com.example.iqwhizz.Objects.Test test1 = TestDAO.generateTest("logique", "court");
+            com.example.iqwhizz.Objects.Test test2 = TestDAO.generateTest("reflexion", "court");
+            com.example.iqwhizz.Objects.Test test3 = TestDAO.getTest(7);
+            com.example.iqwhizz.Objects.Test test4 = TestDAO.getTest(8);
 
 
             SQLiteDatabase db = DatabaseHelper.getReadableDb();
