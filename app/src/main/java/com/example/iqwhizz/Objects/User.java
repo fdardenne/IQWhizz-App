@@ -78,16 +78,10 @@ public class User {
         liste des demandes d'amis qui n'ont pas encore été acceptées par this
         DAO : donner table Friendship
      */
-    public String[] getPendingFriendRequest()
+    public Friendship[] getPendingFriendRequest()
     {
         Friendship[] friendships = FriendshipDAO.getPendingRequests(this.getUsername());
-        int nbAmitiés = friendships.length;
-        String[] friendsNames = new String[nbAmitiés];
-        for(int i = 0; i< nbAmitiés ; i++)
-        {
-            friendsNames[i] = friendships[i].getReceiver();
-        }
-        return friendsNames;
+        return friendships;
     }
 
     /*
@@ -95,10 +89,10 @@ public class User {
         par les autres User
         DAO : donner table Friendship
      */
-    public String[] getFriendRequest()
+    public Friendship[] getFriendRequest()
     {
 
-        return new String[0];
+        return FriendshipDAO.getMyPendingRequests(this.getUsername());
     }
 
     /*
@@ -107,7 +101,7 @@ public class User {
      */
     public void acceptFriendRequest(String username)
     {
-        return;
+        FriendshipDAO.addFriend(this.getUsername(),username);
     }
 
     /*
