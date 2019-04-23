@@ -72,8 +72,8 @@ public class ExampleInstrumentedTest {
         try {
             DatabaseHelper.recreateDB();
             Friendship friendlistFromDB[] = FriendshipDAO.getFriendList("Hadrien");
-            Friendship pendingsFromDB[] = FriendshipDAO.getPendingRequests("Florent");
-            Friendship myPendingsFromDB[] = FriendshipDAO.getMyPendingRequests("Florent");
+            Friendship pendingsFromDB[] = FriendshipDAO.getSentRequests("Florent");
+            Friendship myPendingsFromDB[] = FriendshipDAO.getReceivedRequests("Florent");
             Log.d("Database Tests - FriendshipDAO", "getFriendList()");
             for(Friendship friendship : friendlistFromDB) {
                 Log.d("Database Tests - FriendshipDAO",
