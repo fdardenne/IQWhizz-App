@@ -23,6 +23,8 @@ public class TestDAO {
         return already;
     }
 
+
+
     public static Test getTest (int testID) {
         Log.d("TestDAO - getTest", "Getting the test ...");
         SQLiteDatabase db = DatabaseHelper.getReadableDb();

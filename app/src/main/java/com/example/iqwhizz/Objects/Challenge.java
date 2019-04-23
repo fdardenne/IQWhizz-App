@@ -1,5 +1,7 @@
 package com.example.iqwhizz.Objects;
 
+import com.example.iqwhizz.DAO.TestDAO;
+
 public class Challenge {
 
     private String challenger; //username
@@ -27,8 +29,7 @@ public class Challenge {
      */
     public Test loadTest()
     {
-
-        return null;
+        return TestDAO.getTest(this.testID);
     }
 
 

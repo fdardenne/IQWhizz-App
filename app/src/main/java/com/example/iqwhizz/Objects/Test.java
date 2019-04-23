@@ -31,7 +31,7 @@ public class Test {
      */
     public boolean hasNext()
     {
-        return false;
+        return  this.questions[currentQuestion+1] != null ;
     }
 
     /*

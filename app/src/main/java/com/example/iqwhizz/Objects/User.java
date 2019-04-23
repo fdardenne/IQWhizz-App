@@ -61,7 +61,6 @@ public class User {
     */
     public boolean isFriend(String username)
     {
-
         return false;
     }
 
@@ -80,8 +79,7 @@ public class User {
      */
     public Friendship[] getPendingFriendRequest()
     {
-        Friendship[] friendships = FriendshipDAO.getPendingRequests(this.getUsername());
-        return friendships;
+        return FriendshipDAO.getPendingRequests(this.getUsername());
     }
 
     /*
