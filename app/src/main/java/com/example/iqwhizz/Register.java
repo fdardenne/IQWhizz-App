@@ -12,6 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.iqwhizz.DAO.UserDAO;
+import com.example.iqwhizz.Objects.User;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
@@ -60,11 +63,18 @@ public class Register extends AppCompatActivity {
         String[] birthdate_array = birthdate.getText().toString().split("/");
 
         //A utilier pour les verifications et l'insertion
-        String username_str = username.getText().toString().toLowerCase();
+        String username_str = username.getText().toString();
+        String password_str = password.getText().toString();
+        String email_str = email.getText().toString();
+        String lang_str = "en"; //TODO
+        int birth_d = 0; //TODO
+        int reg_d = 0; //TODO
+        int last_co = 0; //TODO
+        byte[] profile_pic = null; //TODO
 
 
-        //TODO vérifier si l'utilisateur existe déjà dans la db, si oui faire comme en dessous
-        if(username.getText().toString().equals("fdardenne")){
+        //TODO vérifier si l'utilisateur existe déjà dans la db, si oui faire comme en dessous => FAIT
+        if(UserDAO.userExists(username.getText().toString())){
             errormessage.setText("L'utilisateur existe déjà");
         }
 
@@ -84,6 +94,8 @@ public class Register extends AppCompatActivity {
         else{
             //TODO: Ici tout a été vérifié, introduire l'user dans la DB
             //TODO: On connecte maintenant l'user, le mettre dans le singleton User
+            UserDAO.createUser(username_str,password_str, email_str, lang_str, birth_d, reg_d, last_co, profile_pic);
+            User.connectUser(username_str, password_str);
             Intent intentMenu = new Intent(this, Menu.class);
             Log.i("TEST", username_str + " connected");
             errormessage.setText("");

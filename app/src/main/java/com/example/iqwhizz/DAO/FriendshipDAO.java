@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.iqwhizz.Objects.Friendship;
 
-import java.util.ArrayList;
-
 public class FriendshipDAO {
 
     private FriendshipDAO() {}
@@ -22,6 +20,8 @@ public class FriendshipDAO {
         values.put("sender", sender);
         values.put("receiver", receiver);
         values.put("request_date", System.currentTimeMillis()/1000);
+        values.put("acceptance_date", 0);
+        values.put("isAccepted", 0);
         SQLiteDatabase db = DatabaseHelper.getWritableDb();
         long result = db.insert("Users", null, values);
         if (result != -1) {
@@ -33,30 +33,81 @@ public class FriendshipDAO {
     }
 
     /*
+     * Accept the request made by the sender and received by the receiver
+     * return false if nothing matched or if the request has already been accepted and true otherwise
+     */
+    public static boolean acceptFriendRequest(String sender, String receiver) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT * FROM Friendships WHERE sender=\""+sender+"\" AND receiver=\""+receiver+"\"", null);
+        cursor.moveToFirst();
+        if (cursor.getCount()==0 || cursor.getInt(4)==1) {
+            return false;
+        }
+        else {
+            ContentValues updatedValues = new ContentValues();
+            updatedValues.put("acceptance_date", System.currentTimeMillis()/1000);
+            updatedValues.put("isAccepted", 1);
+            db = DatabaseHelper.getWritableDb();
+            db.update("Friendships", updatedValues, "sender=? AND receiver=?", new String[] {sender, receiver});
+            return true;
+        }
+    }
+
+    /*
         ajoute un ami a l'utilisateur courant (écrit 1 ligne dans la db)
      */
     public static void addFriend(String username, String currentUser){
         sendFriendRequest(currentUser, username);
     }
 
-    private static Friendship[] getSentRequest(String user){
+    public static Friendship[] getAllSentRequests(String user){
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT * FROM Friendships WHERE sender=\""+user+"\"", null);
         cursor.moveToFirst();
         Friendship[] requests = new Friendship[cursor.getCount()];
         for(int i =0; cursor.moveToNext(); i++) {
-            requests[i] = new Friendship(cursor.getString(0), cursor.getString(1), cursor.getInt(2));
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
         }
         return requests;
     }
 
-    private static Friendship[] getReceivedRequest(String user){
+    public static Friendship[] getAllReceivedRequests(String user){
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT * FROM Friendships WHERE receiver=\""+user+"\"", null);
         cursor.moveToFirst();
         Friendship[] requests = new Friendship[cursor.getCount()];
         for(int i =0; cursor.moveToNext(); i++) {
-            requests[i] = new Friendship(cursor.getString(0), cursor.getString(1), cursor.getInt(2));
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
+        }
+        return requests;
+    }
+
+    public static Friendship[] getFriendList(String user) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT * FROM Friendships WHERE (sender=\""+user+"\" OR receiver=\""+user+"\") AND isAccepted=1", null);
+        cursor.moveToFirst();
+        Friendship[] requests = new Friendship[cursor.getCount()];
+        for(int i = 0; i<cursor.getCount(); i++) {
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
+            cursor.moveToNext();
         }
         return requests;
     }
@@ -64,42 +115,42 @@ public class FriendshipDAO {
     /*
         récupère la liste des demandes d'ami attendant d'etre acceptées par les amis
      */
-    public static Friendship[] getPendingRequests(String currentUser){
-        Friendship[] sent = getSentRequest(currentUser);
-        Friendship[] received = getReceivedRequest(currentUser);
-        ArrayList<Friendship> pending = new ArrayList<>();
-        for (int i=0; i<sent.length; i++) {
-            boolean found = false;
-            for(int j=0; j<received.length; j++) {
-                if (received[j].getSender().equals(sent[i].getReceiver())) {
-                    found=true;
-                }
-            }
-            if (!found) {
-                pending.add(sent[i]);
-            }
+    public static Friendship[] getReceivedRequests(String user){
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT * FROM Friendships WHERE receiver=\""+user+"\" AND isAccepted=0", null);
+        cursor.moveToFirst();
+        Friendship[] requests = new Friendship[cursor.getCount()];
+        for(int i =0; i<cursor.getCount(); i++) {
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
+            cursor.moveToNext();
         }
-        return (Friendship[]) pending.toArray();
+        return requests;
     }
 
     /*
         récupère la liste des demandes d'ami attendant d'etre acceptées par currentUser
      */
-    public static Friendship[] getMyPendingRequests(String currentUser){
-        Friendship[] sent = getSentRequest(currentUser);
-        Friendship[] received = getReceivedRequest(currentUser);
-        ArrayList<Friendship> pending = new ArrayList<>();
-        for (int i=0; i<received.length; i++) {
-            boolean found = false;
-            for(int j=0; j<sent.length; j++) {
-                if (received[i].getSender().equals(sent[j].getReceiver())) {
-                    found=true;
-                }
-            }
-            if (!found) {
-                pending.add(received[i]);
-            }
+    public static Friendship[] getSentRequests(String user){
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT * FROM Friendships WHERE sender=\""+user+"\" AND isAccepted=0", null);
+        cursor.moveToFirst();
+        Friendship[] requests = new Friendship[cursor.getCount()];
+        for(int i =0; i<cursor.getCount(); i++) {
+            requests[i] = new Friendship(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3),
+                    (cursor.getInt(4)==1) ? true : false
+            );
+            cursor.moveToNext();
         }
-        return (Friendship[]) pending.toArray();
+        return requests;
     }
 }

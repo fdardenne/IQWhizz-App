@@ -10,11 +10,13 @@ create table Users
   last_connection       integer     not null default current_timestamp,
   profile_picture       blob
 );
-create table Friendship
+create table Friendships
 (
   sender            text       not null references Users(username),
   receiver          text       not null references Users(username),
   request_date      integer    not null default current_timestamp,
+  acceptance_date   integer    not null default 0,
+  isAccepted        integer    not null default 0,
   unique (sender, receiver)
 );
 create table Tests
