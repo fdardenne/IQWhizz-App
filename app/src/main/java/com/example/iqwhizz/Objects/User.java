@@ -12,7 +12,8 @@ public class User {
     private int last_connexion;
     private int registration_date;
     private int birthdate;
-    private static User currentUser;
+    //Doit être publique pour que chaque vues puissent accéder a l'utilisateur actuel
+    public static User currentUser;
 
     /*
       Crée un User sur base de toutes ses données si celui ci n'existe pas encore
