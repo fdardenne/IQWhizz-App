@@ -42,9 +42,10 @@ public class Test {
         ajoute la réponse dans testExecution (SelectedAnswer??)
         DAO : ajouter une ligne dans testExecution (SelectedAnswer??)
      */
-    public void answerToQuestion(int answerID, int time)
+    public boolean answerToQuestion(int answerID, int time)
     {
         currentQuestion++;
+        return false;
     }
 
     /*
