@@ -44,7 +44,7 @@ public class Test {
      */
     public void answerToQuestion(int answerID, int time)
     {
-        currentQuestion++;
+
     }
 
     /*
@@ -53,7 +53,7 @@ public class Test {
      */
     public Question nextQuestion()
     {
-        return null;
+        currentQuestion++;
     }
 
 
