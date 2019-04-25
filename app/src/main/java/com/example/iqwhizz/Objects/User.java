@@ -77,7 +77,7 @@ public class User {
     }
 
     /*
-       True si this est ami avec l'user dont l'username est donné
+       True si this est ami avec l'user dont l'username est donné.
        DAO : donner la table Friendship
     */
     public boolean isFriend(String username)
@@ -87,7 +87,7 @@ public class User {
     }
 
     /*
-        ajoute une ligne dans la db
+        ajoute une ligne dans la db.
         DAO : ajouter une ligne dans Friendship
      */
     public void addFriend(String username)
