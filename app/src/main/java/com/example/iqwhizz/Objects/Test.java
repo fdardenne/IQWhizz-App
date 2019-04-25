@@ -35,8 +35,8 @@ public class Test {
     }
 
     /*
-        ajoute la réponse dans testExecution
-        DAO : ajouter une ligne dans testExecution
+        ajoute la réponse dans testExecution (SelectedAnswer??)
+        DAO : ajouter une ligne dans testExecution (SelectedAnswer??)
      */
     public void answerToQuestion(int answerID, int time)
     {
@@ -49,7 +49,8 @@ public class Test {
      */
     public Question nextQuestion()
     {
-        return null;
+        this.currentQuestion++;
+        return this.questions[currentQuestion];
     }
 
 
@@ -57,8 +58,8 @@ public class Test {
         loadQuestion() et saveSelectedAnswer() je vois pas trop à quoi ca sert
         puisque on fait deja tout ce qu'elles font dans answerToQuestions
      */
-
-    public int getTestID() {
+    public int getTestID()
+    {
         return testID;
     }
 }
