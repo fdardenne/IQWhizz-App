@@ -1,5 +1,9 @@
 package com.example.iqwhizz.Objects;
 
+import com.example.iqwhizz.DAO.AnswerDAO;
+import com.example.iqwhizz.DAO.QuestionDAO;
+import com.example.iqwhizz.DAO.TestDAO;
+
 public class Test {
 
     private int currentQuestion;
@@ -40,7 +44,7 @@ public class Test {
      */
     public void answerToQuestion(int answerID, int time)
     {
-
+        currentQuestion++;
     }
 
     /*
