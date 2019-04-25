@@ -122,4 +122,10 @@ public class TestDAO {
         Log.d("TestDAO - generateTest", "saveTest is finished");
         return testID;
     }
+
+
+    // TODO : à complèter !
+    public static boolean answerToQuestion(int answerID, int time) {
+        return true;
+    }
 }
