@@ -71,9 +71,9 @@ public class User {
         retourne la liste des amis de this.
         DAO : donner la table Friendship
     */
-    public String[] getFriendList()
+    public Friendship[] getFriendList()
     {
-        return null;
+        return FriendshipDAO.getFriendList(this.username);
     }
 
     /*
@@ -82,6 +82,17 @@ public class User {
     */
     public boolean isFriend(String username)
     {
+        Friendship[] lesZamis = FriendshipDAO.getFriendList(this.username);
+        for(int i = 0; i < lesZamis.length ; i++ )
+        {
+            Friendship amitié = lesZamis[i];
+            String sender = amitié.getSender();
+            String receiver = amitié.getReceiver();
+            if (sender.equals(username) || receiver.equals(username))
+            {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -129,7 +140,7 @@ public class User {
      */
     boolean exist(String username)
     {
-        return true;
+        return UserDAO.userExists(this.username);
     }
 
     /*
@@ -138,10 +149,14 @@ public class User {
         DAO : Donner la liste des user avec leur mot de passe (ou toute la table mais ca
         risque d'être chargé non ? :/ )
      */
-    boolean checkPassword(String username, String password)
+    boolean checkPassword(String username,String password)
     {
-
-        return false;
+        User user = UserDAO.getUser(username,password);
+        if(user == null)
+        {
+            return false;
+        }
+        return true;
     }
 
     // getters
