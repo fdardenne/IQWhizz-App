@@ -47,7 +47,8 @@ public class Test {
      */
     public boolean answerToQuestion(int answerID, int time)
     {
-        return TestDAO.answerToQuestion(this, answerID, time);
+        int rowID = TestDAO.answerToQuestion(this, answerID, time);
+        return (rowID>0) ? true : false ;
     }
 
     public int getCurrentQuestionID() {

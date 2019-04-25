@@ -32,13 +32,16 @@ public class TestDAO {
         Cursor cursor = db.rawQuery("SELECT type FROM Tests WHERE testID = " + testID, null);
         cursor.moveToFirst();
         String type = cursor.getString(0);
-        
+
         Log.d("TestDAO - getTest", "insertion in TestExecutions table");
         ContentValues executionValues = new ContentValues();
         executionValues.put("testID", testID);
         executionValues.put("username", User.currentUser.getUsername());
         executionValues.put("execution_date", System.currentTimeMillis()/1000);
         int executionID = (int) db.insert("TestExecutions", null, executionValues);
+        if (executionID<0) {
+            return null;
+        }
 
         Test test = new Test(testID, executionID, getCategory(testID), type, loadQuestions(testID, (type.equals("court")) ? 5 : 40));
         Log.d("TestDAO - getTest", "Test successfully obtained");
@@ -79,6 +82,8 @@ public class TestDAO {
         return new Test(IDs[0], IDs[1], category, type, questions);
     }
 
+
+    // TODO : implémenter les catégories multiples.
     private static Question[] loadQuestions(String category, int nQuestions) {
         if (category.equals("random")) {
             String[] categories = {"reflexion", "logique", "calcul mental"};
@@ -108,6 +113,10 @@ public class TestDAO {
         Log.d("TestDAO - saveTest", "insertion in Tests table");
         testValues.put("type", type);
         int testID = (int)(db.insert("Tests", null, testValues));
+        if (testID<0) {
+            Log.d("TestDAO - saveTest","fail when inserting in Tests");
+            return new int[] {-1, -1};
+        }
 
         Log.d("TestDAO - saveTest", "insertion in TestQuestions table");
         for (int i=0; i<questions.length; i++) {
@@ -116,7 +125,8 @@ public class TestDAO {
             testsTableValues.put("questionID", questions[i].getID());
             long rowID = db.insert("TestQuestions", null, testsTableValues);
             if (rowID<0) {
-                Log.d("TestDAO - saveTest","fail");
+                Log.d("TestDAO - saveTest","fail when inserting in TestQuestions");
+                return new int[] {-1, -1};
             }
         }
 
@@ -126,6 +136,10 @@ public class TestDAO {
         executionValues.put("username", User.currentUser.getUsername());
         executionValues.put("execution_date", System.currentTimeMillis()/1000);
         int executionID = (int) db.insert("TestExecutions", null, executionValues);
+        if (executionID<0) {
+            Log.d("TestDAO - saveTest","fail when inserting in TestExecutions");
+            return new int[] {-1, -1};
+        }
 
         Log.d("TestDAO - generateTest", "saveTest is finished");
         return new int[] {testID, executionID};
@@ -133,7 +147,7 @@ public class TestDAO {
 
 
     // TODO : à complèter !
-    public static boolean answerToQuestion(Test test, int answerID, int time) {
+    public static int answerToQuestion(Test test, int answerID, int time) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         ContentValues value = new ContentValues();
         value.put("executionID", test.getExecutionID());
@@ -141,12 +155,7 @@ public class TestDAO {
         value.put("questionID", test.getCurrentQuestionID());
         value.put("answerID", answerID);
         value.put("time", time);
-        long row = db.insert("SelectedAnswers", null, value);
-        if (row>0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        long rowID = db.insert("SelectedAnswers", null, value);
+        return (int) rowID;
     }
 }

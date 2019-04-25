@@ -36,6 +36,14 @@ public class UserDAO {
         }
     }
 
+    public static boolean disconnectUser(String username) {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        ContentValues values = new ContentValues();
+        values.put("last_connection", System.currentTimeMillis()/1000);
+        int rows = db.update("Users", values, "username=?", new String[]{username});
+        return rows==1;
+    }
+
     public static boolean userExists(String username) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT * FROM Users WHERE username = \"" + username + "\"", null);
@@ -48,7 +56,7 @@ public class UserDAO {
     }
 
     /*
-    return the newly created User or null if a problem occured
+        return true if the creation succeeds and false otherwise
      */
     public static boolean createUser(String name, String pwd, String mail, String lang, int birth_d, int reg_d, int last_co, byte[] profile_pic) {
         ContentValues values = new ContentValues();
@@ -60,8 +68,6 @@ public class UserDAO {
         values.put("registration_date", reg_d);
         values.put("last_connection", last_co);
         values.put("profile_picture", profile_pic);
-        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
-        //SQLiteDatabase db = helper.getWritableDatabase();
         SQLiteDatabase db = DatabaseHelper.getWritableDb();
         long result = db.insert("Users", null, values);
         if (result != -1) {

@@ -27,7 +27,7 @@ public class Question {
         this.image=image;
         this.text=text;
         this.difficulty=difficulty;
-        this.answers= AnswerDAO.getAnswers(questionID); //création de la liste avec elements données par DAO
+        this.answers=AnswerDAO.getAnswers(questionID); //création de la liste avec elements données par DAO
     }
 
     /*
@@ -50,7 +50,7 @@ public class Question {
     /*
         Pourquoi mettre un getAnswers si on met la variable en public :/
      */
-    public Answer[] getAnswer()
+    public Answer[] getAnswers()
     {
         return answers;
     }

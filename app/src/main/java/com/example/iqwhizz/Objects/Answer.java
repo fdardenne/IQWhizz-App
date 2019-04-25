@@ -21,6 +21,14 @@ public class Answer {
         this.score=score;
     }
 
+    public int getAnswerID() {
+        return answerID;
+    }
+
+    public void setAnswerID(int answerID) {
+        this.answerID = answerID;
+    }
+
     /*
         true si reponse correct false sinon
      */

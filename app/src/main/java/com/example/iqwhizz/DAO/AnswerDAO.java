@@ -11,11 +11,12 @@ public class AnswerDAO {
     // TODO : getAnswers() à tester !
     public static Answer[] getAnswers(int questionID) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
-        Cursor cursor = db.rawQuery("SELECT answerID, score, image, text FROM PossibleAnswers WHERE questionID="+questionID, null);
+        Cursor cursor = db.rawQuery("SELECT answerID, image, text, score FROM PossibleAnswers WHERE questionID="+questionID, null);
+        cursor.moveToFirst();
         int size = cursor.getCount();
         Answer answers[] = new Answer[size];
         for (int i=0; i<size; i++) {
-            answers[i] = new Answer(cursor.getInt(0), cursor.getBlob(3), cursor.getString(4), cursor.getInt(2));
+            answers[i] = new Answer(cursor.getInt(0), cursor.getBlob(1), cursor.getString(2), cursor.getInt(3));
         }
         return answers;
     }

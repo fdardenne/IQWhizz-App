@@ -63,7 +63,7 @@ insert into TestQuestions values (2, 3);
 insert into TestQuestions values (4, 5);
 insert into TestQuestions values (2, 5);
 
-insert into TestExecutions values (1, 1, 'Hadrien', strftime('%s', '2019-02-28'));
+insert into TestExecutions values (1, 1, 'Arnaud', strftime('%s', '2019-02-28'));
 insert into TestExecutions values (2, 1,'Florent', strftime('%s', '2019-02-28'));
 insert into TestExecutions values (3, 2, 'Arthur', strftime('%s', '2019-02-18'));
 insert into TestExecutions values (4, 3, 'Arthur', strftime('%s', '2019-02-18'));

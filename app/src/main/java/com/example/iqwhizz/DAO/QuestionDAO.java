@@ -22,8 +22,6 @@ public class QuestionDAO {
     }
 
     public static Question getQuestion(int id) {
-        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
-        //SQLiteDatabase db = helper.getReadableDatabase();
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT * FROM Questions WHERE questionID = " + id, null);
         cursor.moveToFirst();
