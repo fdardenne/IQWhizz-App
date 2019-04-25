@@ -13,6 +13,7 @@ public class User {
     private int last_connexion;
     private int registration_date;
     private int birthdate;
+
     //Doit être publique pour que chaque vues puissent accéder a l'utilisateur actuel
     public static User currentUser;
 
@@ -76,7 +77,7 @@ public class User {
     }
 
     /*
-       True si this est ami avec l'user dont l'username est donné
+       True si this est ami avec l'user dont l'username est donné.
        DAO : donner la table Friendship
     */
     public boolean isFriend(String username)
@@ -85,7 +86,7 @@ public class User {
     }
 
     /*
-        ajoute une ligne dans la db
+        ajoute une ligne dans la db.
         DAO : ajouter une ligne dans Friendship
      */
     public void addFriend(String username)

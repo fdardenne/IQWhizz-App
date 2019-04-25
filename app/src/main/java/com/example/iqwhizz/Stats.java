@@ -47,8 +47,14 @@ public class Stats extends AppCompatActivity {
         TextView averageIQ = findViewById(R.id.averageIQ);
         NumberFormat formatter = new DecimalFormat("#0.00");
 
-        //TODO si inférieur a 100, changer les bornes de l'intégration
-        averageIQ.setText("Votre QI est supérieur de " + formatter.format(Gauss.integrate(100,userQI,100,15))+"% à la moyenne");
+        if(userQI > 100){
+            averageIQ.setText("Votre QI est supérieur de " + formatter.format(Gauss.integrate(100,userQI,100,15))+"% à la moyenne");
+        }else if(userQI < 100){
+            averageIQ.setText("Votre QI est inférieur de " + formatter.format(Gauss.integrate(userQI,100,100,15))+"% à la moyenne");
+        }else{
+            averageIQ.setText("Votre QI est égale à celle de la moyenne");
+        }
+
 
 
 
