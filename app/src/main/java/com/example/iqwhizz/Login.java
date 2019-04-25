@@ -62,9 +62,6 @@ public class Login extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
 
-        //TODO: Créer la classe User => FAIT
-        //TODO: Verifier dans la DB si le login est bon => FAIT
-        //TODO: Si le login est bon: Stocker le username dans le singleton User => FAIT
         String userStr = username.getText().toString();
         String pwdStr = password.getText().toString();
         if(User.connectUser(userStr, pwdStr)){

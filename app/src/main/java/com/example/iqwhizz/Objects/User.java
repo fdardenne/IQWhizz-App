@@ -12,6 +12,7 @@ public class User {
     private int last_connexion;
     private int registration_date;
     private int birthdate;
+
     //Doit être publique pour que chaque vues puissent accéder a l'utilisateur actuel
     public static User currentUser;
 

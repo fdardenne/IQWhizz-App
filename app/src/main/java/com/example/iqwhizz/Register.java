@@ -73,7 +73,6 @@ public class Register extends AppCompatActivity {
         byte[] profile_pic = null; //TODO
 
 
-        //TODO vérifier si l'utilisateur existe déjà dans la db, si oui faire comme en dessous => FAIT
         if(UserDAO.userExists(username.getText().toString())){
             errormessage.setText("L'utilisateur existe déjà");
         }
@@ -92,8 +91,6 @@ public class Register extends AppCompatActivity {
 
         }
         else{
-            //TODO: Ici tout a été vérifié, introduire l'user dans la DB
-            //TODO: On connecte maintenant l'user, le mettre dans le singleton User
             UserDAO.createUser(username_str,password_str, email_str, lang_str, birth_d, reg_d, last_co, profile_pic);
             User.connectUser(username_str, password_str);
             Intent intentMenu = new Intent(this, Menu.class);

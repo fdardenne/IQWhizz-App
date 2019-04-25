@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
-
+import com.example.iqwhizz.Objects.User;
 public class Menu extends AppCompatActivity {
 
     CardView play;
@@ -56,7 +56,7 @@ public class Menu extends AppCompatActivity {
 
     private void logoutIntent(){
         Intent intentLogin = new Intent(this, Login.class);
-        //TODO: Déconnecter l'User, vider le Singleton pour la préparation d'une possible nouvelle connection
+        User.currentUser = null;
         startActivity(intentLogin);
         this.finish();
     }
