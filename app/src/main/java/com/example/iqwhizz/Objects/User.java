@@ -100,7 +100,7 @@ public class User {
      */
     public Friendship[] getPendingFriendRequest()
     {
-        return FriendshipDAO.getPendingRequests(this.getUsername());
+        return FriendshipDAO.getSentRequests(this.username);
     }
 
     /*
@@ -111,7 +111,7 @@ public class User {
     public Friendship[] getFriendRequest()
     {
 
-        return FriendshipDAO.getMyPendingRequests(this.getUsername());
+        return FriendshipDAO.getReceivedRequests(this.username);
     }
 
     /*
