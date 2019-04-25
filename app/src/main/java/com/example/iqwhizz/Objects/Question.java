@@ -1,5 +1,7 @@
 package com.example.iqwhizz.Objects;
 
+import com.example.iqwhizz.DAO.AnswerDAO;
+
 public class Question {
 
     private int questionID;
@@ -25,7 +27,7 @@ public class Question {
         this.image=image;
         this.text=text;
         this.difficulty=difficulty;
-        this.answers=null; //création de la liste avec elements données par DAO
+        this.answers= AnswerDAO.getAnswers(questionID); //création de la liste avec elements données par DAO
     }
 
     /*
@@ -34,7 +36,15 @@ public class Question {
      */
     public Answer getRightAnswer()
     {
-        return null;
+        for(int i=0; i < answers.length ; i++)
+        {
+            Answer reponse = answers[i];
+            if(reponse.isRight())
+            {
+                return reponse;
+            }
+        }
+        return null; // attention : ceci ne devrait jamais arriver !!
     }
 
     /*
@@ -42,7 +52,7 @@ public class Question {
      */
     public Answer[] getAnswer()
     {
-        return null;
+        return answers;
     }
 
     public int getID () {
