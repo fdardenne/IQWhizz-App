@@ -4,7 +4,7 @@ public class Answer {
 
     private int answerID;
 
-    private String image; //path
+    private byte[] image; //path
 
     private String text;
 
@@ -13,7 +13,7 @@ public class Answer {
     /*
         Constructeur
      */
-    public Answer(int answerID, String image, String text, int score)
+    public Answer(int answerID, byte[] image, String text, int score)
     {
         this.answerID=answerID;
         this.image=image;
