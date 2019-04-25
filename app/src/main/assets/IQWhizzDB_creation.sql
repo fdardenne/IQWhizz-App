@@ -26,10 +26,10 @@ create table Tests
 );
 create table TestExecutions
 (
-  testExecutionID   integer     primary key,
+  executionID       integer     primary key,
   testID            integer     not null references Tests,
   username          text        not null references Users,
-  executionDate     integer     not null,
+  execution_date    integer     not null,
   unique (testID, username)
 );
 create table TestQuestions
@@ -40,13 +40,13 @@ create table TestQuestions
 );
 create table SelectedAnswers
 (
-  testExecutionID integer       not null,
+  executionID     integer       not null,
   testID          integer       not null,
   questionID      integer       not null,
   answerID        integer       not null,
   time            integer       not null,
-  unique (testExecutionID, testID, questionID),
-  foreign key (testExecutionID) references TestExecutions,
+  unique (executionID, testID, questionID),
+  foreign key (executionID) references TestExecutions,
   foreign key (testID, questionID) references TestQuestions,
   foreign key (answerID) references PossibleAnswers
 );

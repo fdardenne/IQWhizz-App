@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.iqwhizz.Objects.Question;
 import com.example.iqwhizz.Objects.Test;
+import com.example.iqwhizz.Objects.User;
 
 import java.util.Random;
 
@@ -31,7 +32,15 @@ public class TestDAO {
         Cursor cursor = db.rawQuery("SELECT type FROM Tests WHERE testID = " + testID, null);
         cursor.moveToFirst();
         String type = cursor.getString(0);
-        Test test = new Test(testID, getCategory(testID), type, loadQuestions(testID, (type.equals("court")) ? 5 : 40));
+        
+        Log.d("TestDAO - getTest", "insertion in TestExecutions table");
+        ContentValues executionValues = new ContentValues();
+        executionValues.put("testID", testID);
+        executionValues.put("username", User.currentUser.getUsername());
+        executionValues.put("execution_date", System.currentTimeMillis()/1000);
+        int executionID = (int) db.insert("TestExecutions", null, executionValues);
+
+        Test test = new Test(testID, executionID, getCategory(testID), type, loadQuestions(testID, (type.equals("court")) ? 5 : 40));
         Log.d("TestDAO - getTest", "Test successfully obtained");
         return test;
     }
@@ -62,20 +71,12 @@ public class TestDAO {
     }
 
     public static Test generateTest(String category, String type) {
-        if (type.equals("long")) {
-            Log.d("TestDAO - generateTest", "Long test creation begins ...");
-            Question[] questions = loadQuestions(category, 40);
-            int testID = saveTest(category, type, questions);
-            Log.d("TestDAO - generateTest", "Long test -> OK");
-            return new Test(testID, category, type, questions);
-        }
-        else {
-            Log.d("TestDAO - generateTest", "Short test creation begins ...");
-            Question[] questions = loadQuestions(category, 5);
-            int testID = saveTest(category, type, questions);
-            Log.d("TestDAO - generateTest", "Short test -> OK");
-            return new Test(testID, category, type, questions);
-        }
+        int nQuestions = (type.equals("long")) ? 40 : 5 ;
+        Log.d("TestDAO - generateTest", type + " test creation begins ...");
+        Question[] questions = loadQuestions(category, nQuestions);
+        int IDs[] = saveTest(category, type, questions);
+        Log.d("TestDAO - generateTest", type + " test -> OK");
+        return new Test(IDs[0], IDs[1], category, type, questions);
     }
 
     private static Question[] loadQuestions(String category, int nQuestions) {
@@ -99,17 +100,16 @@ public class TestDAO {
         }
     }
 
-    private static int saveTest(String category, String type, Question[] questions) {
-        Log.d("TestDAO - generateTest", "saveTest begins ...");
+    private static int[] saveTest(String category, String type, Question[] questions) {
+        Log.d("TestDAO - saveTest", "saveTest begins ...");
         SQLiteDatabase db = DatabaseHelper.getWritableDb();
         ContentValues testValues = new ContentValues();
+
+        Log.d("TestDAO - saveTest", "insertion in Tests table");
         testValues.put("type", type);
         int testID = (int)(db.insert("Tests", null, testValues));
-        //ContentValues testQuestionsValues = new ContentValues();
-        //db = DatabaseHelper.getReadableDb();
-        //Cursor cursor = db.rawQuery("SELECT testID FROM Tests WHERE rowid=" + rowID, null);
-        //cursor.moveToFirst();
-        //int testID = cursor.getInt(0);
+
+        Log.d("TestDAO - saveTest", "insertion in TestQuestions table");
         for (int i=0; i<questions.length; i++) {
             ContentValues testsTableValues = new ContentValues();
             testsTableValues.put("testID", testID);
@@ -119,13 +119,34 @@ public class TestDAO {
                 Log.d("TestDAO - saveTest","fail");
             }
         }
+
+        Log.d("TestDAO - saveTest", "insertion in TestExecutions table");
+        ContentValues executionValues = new ContentValues();
+        executionValues.put("testID", testID);
+        executionValues.put("username", User.currentUser.getUsername());
+        executionValues.put("execution_date", System.currentTimeMillis()/1000);
+        int executionID = (int) db.insert("TestExecutions", null, executionValues);
+
         Log.d("TestDAO - generateTest", "saveTest is finished");
-        return testID;
+        return new int[] {testID, executionID};
     }
 
 
     // TODO : à complèter !
-    public static boolean answerToQuestion(int answerID, int time) {
-        return true;
+    public static boolean answerToQuestion(Test test, int answerID, int time) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        ContentValues value = new ContentValues();
+        value.put("executionID", test.getExecutionID());
+        value.put("testID", test.getTestID());
+        value.put("questionID", test.getCurrentQuestionID());
+        value.put("answerID", answerID);
+        value.put("time", time);
+        long row = db.insert("SelectedAnswers", null, value);
+        if (row>0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

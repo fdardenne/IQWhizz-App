@@ -10,6 +10,8 @@ public class Test {
 
     private int testID;
 
+    private int executionID;
+
     private String category;
 
     private String type; //long ou court
@@ -20,13 +22,14 @@ public class Test {
         Constructeur
         DAO : donner la liste des questions du test
      */
-    public Test(int testID, String category, String type, Question[] questions)
+    public Test(int testID, int executionID ,String category, String type, Question[] questions)
     {
         this.testID = testID;
+        this.executionID = executionID;
         this.category = category ;
         this.type = type;
         this.questions = questions; //il faudra surement créer cette liste
-        this.currentQuestion = -1;
+        this.currentQuestion = 0;
     }
 
     /*
@@ -44,8 +47,11 @@ public class Test {
      */
     public boolean answerToQuestion(int answerID, int time)
     {
-        currentQuestion++;
-        return false;
+        return TestDAO.answerToQuestion(this, answerID, time);
+    }
+
+    public int getCurrentQuestionID() {
+        return questions[currentQuestion].getID();
     }
 
     /*
@@ -66,5 +72,13 @@ public class Test {
     public int getTestID()
     {
         return testID;
+    }
+
+    public int getExecutionID() {
+        return executionID;
+    }
+
+    public void setExecutionID(int executionID) {
+        this.executionID = executionID;
     }
 }

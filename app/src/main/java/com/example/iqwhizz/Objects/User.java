@@ -67,6 +67,11 @@ public class User {
         }
     }
 
+    // TODO : à complèter !
+    public static boolean disconnectUser() {
+        return true;
+    }
+
     /*
         retourne la liste des amis de this.
         DAO : donner la table Friendship
