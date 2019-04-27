@@ -45,7 +45,12 @@ public class Menu extends AppCompatActivity {
                 logoutIntent();
             }
         });
-
+        friends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                friendsIntent();
+            }
+        });
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +70,11 @@ public class Menu extends AppCompatActivity {
     private void accountIntent(){
         Intent intentAccount = new Intent(this, Account.class);
         startActivity(intentAccount);
+    }
+
+    private void friendsIntent(){
+        Intent intentFriends = new Intent(this, Friends.class);
+        startActivity(intentFriends);
     }
 
     private void logoutIntent(){
