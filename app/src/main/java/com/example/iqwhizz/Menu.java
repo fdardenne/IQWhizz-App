@@ -46,12 +46,25 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                accountIntent();
+            }
+        });
+
+
 
     }
 
     private void statsIntent(){
         Intent intentStats = new Intent(this, Stats.class);
         startActivity(intentStats);
+    }
+
+    private void accountIntent(){
+        Intent intentAccount = new Intent(this, Account.class);
+        startActivity(intentAccount);
     }
 
     private void logoutIntent(){

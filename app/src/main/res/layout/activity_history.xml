@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+
     tools:context=".History">
 
     <LinearLayout
@@ -21,6 +22,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         >
+
+        <TextView
+            android:id="@+id/textView_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:gravity="center_horizontal"
+            android:text="History"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
