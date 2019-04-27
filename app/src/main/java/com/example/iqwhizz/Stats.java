@@ -22,6 +22,7 @@ public class Stats extends AppCompatActivity {
 
     TextView actualQI;
     TextView myBestQI;
+    Button history_btn;
     int userQI;
     int bestQI;
 
@@ -55,10 +56,23 @@ public class Stats extends AppCompatActivity {
             averageIQ.setText("Votre QI est égale à celle de la moyenne");
         }
 
+        history_btn = findViewById(R.id.history);
+
+        history_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                historyIntent();
+            }
+        });
 
 
 
 
+    }
+
+    private void historyIntent(){
+        Intent intentHistory = new Intent(this, History.class);
+        startActivity(intentHistory);
     }
 
     protected void createGraph(){
