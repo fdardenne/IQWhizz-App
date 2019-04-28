@@ -19,7 +19,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String[] SQLfiles = {
             "IQWhizzDB_creation.sql",
             "IQWhizzDB_insertion.sql",
-            "IQWhizzDB_drops.sql"
+            "IQWhizzDB_drops.sql",
+            "IQWhizzDB_full_insertion.sql"
     };
 
     private DatabaseHelper(Context context) {
@@ -64,6 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = DatabaseHelper.getWritableDb();
         DatabaseHelper helper = getDbHelper();
         helper.dropAllTables(db);
+        AppContextProvider.getContext().deleteDatabase("IQWhizz.db");
         helper.onCreate(db);
     }
 

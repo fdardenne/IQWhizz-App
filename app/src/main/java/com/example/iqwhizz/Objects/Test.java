@@ -22,10 +22,10 @@ public class Test {
         Constructeur
         DAO : donner la liste des questions du test
      */
-    public Test(int testID, int executionID ,String category, String type, Question[] questions)
+    public Test(int testID, String category, String type, Question[] questions)
     {
         this.testID = testID;
-        this.executionID = executionID;
+        //this.executionID = executionID;
         this.category = category ;
         this.type = type;
         this.questions = questions; //il faudra surement créer cette liste
@@ -75,6 +75,7 @@ public class Test {
         return testID;
     }
 
+
     public int getExecutionID() {
         return executionID;
     }
@@ -82,4 +83,5 @@ public class Test {
     public void setExecutionID(int executionID) {
         this.executionID = executionID;
     }
+
 }

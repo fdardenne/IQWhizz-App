@@ -35,9 +35,38 @@ public class ExampleInstrumentedTest {
     private SQLiteDatabase db;
 
     @Before
-    public void beforeMethode() {
+    public void beforeMethod() {
         DatabaseHelper.recreateDB();
         User.connectUser("Hadrien", "lutinPlop");
+        generatingTest();
+    }
+
+    public void generatingTest() {
+        try {
+            boolean boolTest1 = TestDAO.generateTest("logique", "court");
+            boolean boolTest2 = TestDAO.generateTest("reflexion", "court");
+            com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
+            com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(2);
+            boolean[] bools = {boolTest1, boolTest2};
+            for (boolean bool : bools) {
+                assertTrue(bool);
+            }
+
+            db = DatabaseHelper.getReadableDb();
+            Cursor cursor = db.rawQuery("SELECT * FROM Tests WHERE testID = " + test1.getTestID() + " OR testID = " + test2.getTestID(), null);
+            assertEquals(2,cursor.getCount());
+            cursor.moveToFirst();
+            Log.d("Testing generateTest", "ID test1 via DB : "+cursor.getInt(0));
+            Log.d("Testing generateTest", "ID test1 via Obj : "+test1.getTestID());
+            assertEquals(test1.getTestID(), cursor.getInt(0));
+            cursor.moveToNext();
+            Log.d("Testing generateTest", "ID test2 via DB : "+cursor.getString(0));
+            Log.d("Testing generateTest", "ID test2 via Obj : "+test2.getTestID());
+            assertEquals(test2.getTestID(), cursor.getInt(0));
+        }
+        catch(SQLiteException e) {
+            assert(false);
+        }
     }
 
     @After
@@ -57,19 +86,31 @@ public class ExampleInstrumentedTest {
     @Test
     public void getTest() {
         try {
+
             com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
-            //com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(2);
-            //com.example.iqwhizz.Objects.Test test3 = TestDAO.getTest(3);
-            //com.example.iqwhizz.Objects.Test test4 = TestDAO.getTest(4);
+            com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(2);
+            boolean exeTest1 = TestDAO.executeTest(test1);
+            boolean exeTest2 = TestDAO.executeTest(test2);
+            boolean[] bools = {exeTest1, exeTest2};
+            for (boolean bool : bools) {
+                assertTrue(bool);
+            }
+
             db = DatabaseHelper.getReadableDb();
 
             Log.d("TestDAO testing", "Testing test1 ...");
             assertEquals(1,test1.getTestID());
-            assertEquals(7,test1.getExecutionID());
-            assertEquals(1, test1.getCurrentQuestionID());
+            assertEquals(1,test1.getExecutionID());
+            //assertEquals(2, test1.getCurrentQuestionID());
             Answer answer = QuestionDAO.getQuestion(test1.getCurrentQuestionID()).getAnswers()[0];
+            Answer rightAns = QuestionDAO.getQuestion(test1.getCurrentQuestionID()).getRightAnswer();
             boolean succeed = test1.answerToQuestion(answer.getAnswerID(), 30);
-            assertTrue(succeed);
+            if (succeed) {
+                assertEquals(answer.getAnswerID(), rightAns.getAnswerID());
+            }
+            else {
+                assertNotEquals(answer.getAnswerID(), rightAns.getAnswerID());
+            }
             Cursor cursor = db.rawQuery("SELECT * FROM SelectedAnswers WHERE executionID="+test1.getExecutionID(),null);
             cursor.moveToFirst();
             assertEquals(1, cursor.getCount());
@@ -78,7 +119,7 @@ public class ExampleInstrumentedTest {
             cursor = db.rawQuery("SELECT * FROM TestExecutions", null);
             cursor.moveToFirst();
             try {
-                Thread.sleep(20000);
+                Thread.sleep(5000);
             }
             catch (Exception e) {
                 Log.d("Sleep", "failed");
@@ -106,35 +147,6 @@ public class ExampleInstrumentedTest {
         Log.d("User creation testing", "The creation was successful.");
     }
 
-    @Test
-    public void generateTest() {
-        try {
-            com.example.iqwhizz.Objects.Test test1 = TestDAO.generateTest("logique", "court");
-            com.example.iqwhizz.Objects.Test test2 = TestDAO.generateTest("reflexion", "court");
-            com.example.iqwhizz.Objects.Test test3 = TestDAO.getTest(7);
-            com.example.iqwhizz.Objects.Test test4 = TestDAO.getTest(8);
-
-
-            db = DatabaseHelper.getReadableDb();
-            Cursor cursor = db.rawQuery("SELECT * FROM Tests WHERE testID = " + test1.getTestID() + " OR testID = " + test2.getTestID(), null);
-            assertEquals(2,cursor.getCount());
-            cursor.moveToFirst();
-            Log.d("Database Tests - Login Activity", "ID test1 via DB : "+cursor.getInt(0));
-            Log.d("Hadrien's Tests", "ID test1 via Obj : "+test1.getTestID());
-            Log.d("Hadrien's Tests", "ID test1 via getTest : "+test3.getTestID());
-            assertEquals(test1.getTestID(), cursor.getInt(0));
-            assertEquals(test1.getTestID(), test3.getTestID());
-            cursor.moveToNext();
-            Log.d("Hadrien's Tests", "ID test2 via DB : "+cursor.getString(0));
-            Log.d("Hadrien's Tests", "ID test2 via Obj : "+test2.getTestID());
-            Log.d("Hadrien's Tests", "ID test2 via getTest : "+test4.getTestID());
-            assertEquals(test2.getTestID(), cursor.getInt(0));
-            assertEquals(test2.getTestID(), test4.getTestID());
-        }
-        catch(SQLiteException e) {
-            assert(false);
-        }
-    }
 
     @Test
     public void getFriendList() {

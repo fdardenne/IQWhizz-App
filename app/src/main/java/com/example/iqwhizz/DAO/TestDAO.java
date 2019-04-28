@@ -25,27 +25,35 @@ public class TestDAO {
     }
 
 
-
     public static Test getTest (int testID) {
         Log.d("TestDAO - getTest", "Getting the test ...");
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT type FROM Tests WHERE testID = " + testID, null);
         cursor.moveToFirst();
         String type = cursor.getString(0);
+        Test test = new Test(testID, getCategory(testID), type, loadQuestions(testID));
+        Log.d("TestDAO - getTest", "Test successfully obtained");
+        return test;
+    }
 
-        Log.d("TestDAO - getTest", "insertion in TestExecutions table");
+    public static boolean executeTest(Test test) {
+        Log.d("TestDAO - getTest", "executeTest ...");
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT type FROM Tests WHERE testID = " + test.getTestID(), null);
+        cursor.moveToFirst();
         ContentValues executionValues = new ContentValues();
-        executionValues.put("testID", testID);
+        executionValues.put("testID", test.getTestID());
         executionValues.put("username", User.currentUser.getUsername());
         executionValues.put("execution_date", System.currentTimeMillis()/1000);
         int executionID = (int) db.insert("TestExecutions", null, executionValues);
-        if (executionID<0) {
-            return null;
+        Log.d("TestDAO - getTest", "executeTest has finished with id : "+executionID);
+        if (executionID>0) {
+            test.setExecutionID(executionID);
+            return true;
         }
-
-        Test test = new Test(testID, executionID, getCategory(testID), type, loadQuestions(testID, (type.equals("court")) ? 5 : 40));
-        Log.d("TestDAO - getTest", "Test successfully obtained");
-        return test;
+        else {
+            return false;
+        }
     }
 
     private static String getCategory(int testID) {
@@ -58,11 +66,12 @@ public class TestDAO {
         return cat;
     }
 
-    private static Question[] loadQuestions(int testID, int nQuestions) {
-        Log.d("TestDAO - getTest", "Loading the questions...");
+    private static Question[] loadQuestions(int testID) {
+        Log.d("TestDAO - getTest", "Loading the questions from the test "+testID+" ...");
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT questionID FROM TestQuestions WHERE testID = " + testID, null);
         cursor.moveToFirst();
+        int nQuestions = cursor.getCount();
         Question[] questions = new Question[nQuestions];
         for (int i=0; i<nQuestions; i++) {
             int questionID = cursor.getInt(0);
@@ -72,16 +81,6 @@ public class TestDAO {
         Log.d("TestDAO - getTest", "Questions successfully obtained...");
         return questions;
     }
-
-    public static Test generateTest(String category, String type) {
-        int nQuestions = (type.equals("long")) ? 40 : 5 ;
-        Log.d("TestDAO - generateTest", type + " test creation begins ...");
-        Question[] questions = loadQuestions(category, nQuestions);
-        int IDs[] = saveTest(category, type, questions);
-        Log.d("TestDAO - generateTest", type + " test -> OK");
-        return new Test(IDs[0], IDs[1], category, type, questions);
-    }
-
 
     // TODO : implémenter les catégories multiples.
     private static Question[] loadQuestions(String category, int nQuestions) {
@@ -105,7 +104,16 @@ public class TestDAO {
         }
     }
 
-    private static int[] saveTest(String category, String type, Question[] questions) {
+    public static boolean generateTest(String category, String type) {
+        int nQuestions = (type.equals("long")) ? 40 : 5 ;
+        Log.d("TestDAO - generateTest", type + " test creation begins ...");
+        Question[] questions = loadQuestions(category, nQuestions);
+        int testID = saveTest(category, type, questions);
+        Log.d("TestDAO - generateTest", type + " test -> OK");
+        return (testID > 0) ? true : false;
+    }
+
+    private static int saveTest(String category, String type, Question[] questions) {
         Log.d("TestDAO - saveTest", "saveTest begins ...");
         SQLiteDatabase db = DatabaseHelper.getWritableDb();
         ContentValues testValues = new ContentValues();
@@ -115,7 +123,8 @@ public class TestDAO {
         int testID = (int)(db.insert("Tests", null, testValues));
         if (testID<0) {
             Log.d("TestDAO - saveTest","fail when inserting in Tests");
-            return new int[] {-1, -1};
+            //return new int[] {-1, -1};
+            return -1;
         }
 
         Log.d("TestDAO - saveTest", "insertion in TestQuestions table");
@@ -126,10 +135,12 @@ public class TestDAO {
             long rowID = db.insert("TestQuestions", null, testsTableValues);
             if (rowID<0) {
                 Log.d("TestDAO - saveTest","fail when inserting in TestQuestions");
-                return new int[] {-1, -1};
+                //return new int[] {-1, -1};
+                return -1;
             }
         }
 
+        /*
         Log.d("TestDAO - saveTest", "insertion in TestExecutions table");
         ContentValues executionValues = new ContentValues();
         executionValues.put("testID", testID);
@@ -140,9 +151,11 @@ public class TestDAO {
             Log.d("TestDAO - saveTest","fail when inserting in TestExecutions");
             return new int[] {-1, -1};
         }
+        */
 
         Log.d("TestDAO - generateTest", "saveTest is finished");
-        return new int[] {testID, executionID};
+        //return new int[] {testID, executionID};
+        return testID;
     }
 
 

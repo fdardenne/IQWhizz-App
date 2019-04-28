@@ -17,12 +17,6 @@ insert into Users values ('Florent', 'Coucou', 'fr', strftime('%s','1999-01-01')
 'florent@telenet.be',strftime('%s','2019-02-25'), strftime('%s','now'),'florent.png');
 
 
-insert into Tests values (1, 'court');
-insert into Tests values (2, 'court');
-insert into Tests values (3, 'standard');
-insert into Tests values (4, 'court');
-insert into Tests values (5, 'standard');
-insert into Tests values (6, 'court');
 
 insert into Questions values (1, 1, 'logique', 'img1.png', 'testez ...');
 insert into Questions values (2, 1, 'logique', 'img2.png', 'trouvez ...');
@@ -39,57 +33,31 @@ insert into Questions(difficulty, category, image, text) values (1,'reflexion','
 insert into Questions(difficulty, category, image, text) values (3,'reflexion','img13.png', 'bla bla bla');
 
 
+
 insert into PossibleAnswers values (1, 1, 100, 'img1.png', 'Rép a');
 insert into PossibleAnswers values (2, 1, 0, 'img2.png', 'Rép b');
 insert into PossibleAnswers values (3, 1, 0, 'img3.png', 'Rép c');
 insert into PossibleAnswers values (4, 2, 0, 'img4.png', 'A');
 insert into PossibleAnswers values (5, 2, 100, 'img5.png', 'B');
-insert into PossibleAnswers values (6, 3, 0, NULL, '12');
-insert into PossibleAnswers values (7, 5, 0, NULL, '12');
-
-insert into PossibleAnswers values (8, 3, 0, NULL, '12');
-insert into PossibleAnswers values (9, 4, 0, NULL, '12');
-
-
-insert into TestQuestions values (1, 1);
-insert into TestQuestions values (1, 2);
-insert into TestQuestions values (1, 3);
-insert into TestQuestions values (1, 4);
-insert into TestQuestions values (1, 5);
-
-insert into TestQuestions values (2, 1);
-insert into TestQuestions values (3, 3);
-insert into TestQuestions values (2, 3);
-insert into TestQuestions values (4, 5);
-insert into TestQuestions values (2, 5);
-
-insert into TestExecutions values (1, 1, 'Arnaud', strftime('%s', '2019-02-28'));
-insert into TestExecutions values (2, 1,'Florent', strftime('%s', '2019-02-28'));
-insert into TestExecutions values (3, 2, 'Arthur', strftime('%s', '2019-02-18'));
-insert into TestExecutions values (4, 3, 'Arthur', strftime('%s', '2019-02-18'));
-insert into TestExecutions values (5, 4, 'Simon', strftime('%s', '2019-02-08'));
-insert into TestExecutions values (6, 5, 'Hadrien', strftime('%s', '2019-03-01'));
-
-insert into Challenges values ('Hadrien', 'Arthur', 1, 0);
-insert into Challenges values ('Florent', 'Arthur', 3, 0);
-insert into Challenges values ('Simon', 'Hadrien', 2, 0);
-insert into Challenges values ('Hadrien', 'Simon', 6, 1);
-insert into Challenges values ('Arnaud', 'Maxime', 5, 0);
-insert into Challenges values ('Maxime', 'Simon', 1, 1);
-
-insert into Friendships values ('Hadrien', 'Arthur', strftime('%s','now'), strftime('%s','now'), 1);
-insert into Friendships values ('Florent', 'Arthur', strftime('%s','now'), strftime('%s','now'), 1);
-insert into Friendships(sender, receiver, request_date) values ('Hadrien', 'Florent', strftime('%s','now'));
-insert into Friendships(sender, receiver, request_date) values ('Simon', 'Arthur', strftime('%s','now'));
-insert into Friendships values ('Hadrien', 'Arnaud', strftime('%s','now'), strftime('%s','now'), 1);
-insert into Friendships(sender, receiver, request_date) values ('Florent', 'Arnaud', strftime('%s','now'));
-
-insert into SelectedAnswers values (1, 1, 1, 3, 120);
-insert into SelectedAnswers values (1, 1, 2, 5, 60);
-insert into SelectedAnswers values (1, 1, 3, 8, 120);
-insert into SelectedAnswers values (1, 1, 4, 9, 60);
-
-insert into SelectedAnswers values (2, 1, 2, 5, 30);
-insert into SelectedAnswers values (4, 3, 3, 6, 20);
-insert into SelectedAnswers values (5, 4, 5, 7, 20);
-insert into SelectedAnswers values (3, 2, 1, 2, 5);
+insert into PossibleAnswers values (6, 3, 0, NULL, 'faux');
+insert into PossibleAnswers values (7, 3, 100, NULL, 'vrai');
+insert into PossibleAnswers values (8, 4, 100, NULL, 'vrai');
+insert into PossibleAnswers values (9, 4, 0, NULL, 'faux');
+insert into PossibleAnswers values (10, 5, 100, NULL, 'vrai');
+insert into PossibleAnswers values (11, 5, 0, NULL, 'faux');
+insert into PossibleAnswers values (12, 6, 100, NULL, 'vrai');
+insert into PossibleAnswers values (13, 6, 0, NULL, 'faux');
+insert into PossibleAnswers values (14, 7, 100, NULL, 'vrai');
+insert into PossibleAnswers values (15, 7, 0, NULL, 'faux');
+insert into PossibleAnswers values (16, 8, 100, NULL, 'vrai');
+insert into PossibleAnswers values (17, 8, 0, NULL, 'faux');
+insert into PossibleAnswers values (18, 9, 100, NULL, 'vrai');
+insert into PossibleAnswers values (19, 9, 0, NULL, 'faux');
+insert into PossibleAnswers values (20, 10, 100, NULL, 'vrai');
+insert into PossibleAnswers values (21, 10, 0, NULL, 'faux');
+insert into PossibleAnswers values (22, 11, 100, NULL, 'vrai');
+insert into PossibleAnswers values (23, 11, 0, NULL, 'faux');
+insert into PossibleAnswers values (24, 12, 100, NULL, 'vrai');
+insert into PossibleAnswers values (25, 12, 0, NULL, 'faux');
+insert into PossibleAnswers values (26, 13, 100, NULL, 'vrai');
+insert into PossibleAnswers values (27, 13, 0, NULL, 'faux');
