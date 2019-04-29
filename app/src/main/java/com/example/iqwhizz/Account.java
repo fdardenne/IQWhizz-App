@@ -104,10 +104,17 @@ public class Account extends AppCompatActivity {
             toast.show();
 
             if(!password_str.equals("")){
-                //TODO: Modifier l'utilisateur User.currentUser en fonction de username_str, ..., ne pas modifier le mdp ici
+                UserDAO.updateBirthDate(username_str,birth_d);
+                UserDAO.updateEmail(username_str,email_str);
+                UserDAO.updateLanguage(username_str,lang_str);
+                UserDAO.updateProfilePicture(username_str,profile_pic);
 
             }else{
-                //TODO: Meme chose mais avec password
+                UserDAO.updateBirthDate(username_str,birth_d);
+                UserDAO.updateEmail(username_str,email_str);
+                UserDAO.updateLanguage(username_str,lang_str);
+                UserDAO.updateProfilePicture(username_str,profile_pic);
+                UserDAO.updatePassword(username_str,password_str);
             }
     
 
