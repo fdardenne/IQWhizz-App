@@ -153,4 +153,15 @@ public class FriendshipDAO {
         }
         return requests;
     }
+
+    public static boolean deleteFriendship(String sender, String receiver) {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        int rows = db.delete("Friendships", "sender=? AND receiver=?", new String[]{sender, receiver});
+        if (rows>0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

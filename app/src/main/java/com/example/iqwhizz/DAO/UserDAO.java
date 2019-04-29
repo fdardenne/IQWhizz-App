@@ -82,4 +82,17 @@ public class UserDAO {
     return a list conatining all the users in the db
     */
 
+    public static boolean updatePassword(String username, String newPwd) {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        ContentValues value = new ContentValues();
+        value.put("password", newPwd);
+        int rows = db.update("Users", value, "username=?", new String[]{username});
+        if (rows!=1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 }
