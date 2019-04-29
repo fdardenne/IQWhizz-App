@@ -33,7 +33,7 @@ public class Stats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        //Le graph et la moyenne se calcule grace a cette variable
+        //Le graphe et la moyenne se calculent grace a cette variable
         userQI = StatsDAO.getAverageIQ(User.currentUser.getUsername());
 
         bestQI = StatsDAO.getBestIQ(User.currentUser.getUsername());
