@@ -1,5 +1,6 @@
 package com.example.iqwhizz.DAO;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -35,9 +36,29 @@ public class ChallengeDAO {
         return null;
     }
 
-    public static void Challenge(String username, String challenged)
+    /**
+     *  lance un nouveau challenge a l'utilisateur challenged
+     *  sur le test testID
+     * @param username
+     * @param challenged
+     * @param testID
+     * @return true si l'insertion a réussi, faux sinon
+     */
+    public static boolean newChallenge(String username, String challenged, int testID)
     {
-
+        ContentValues values = new ContentValues();
+        values.put("sender", username);
+        values.put("receiver",challenged);
+        values.put("testID", testID);
+        values.put("done", 0);
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        long result = db.insert("Challenges", null, values);
+        if (result != -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 
