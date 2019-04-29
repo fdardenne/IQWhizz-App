@@ -30,6 +30,7 @@ public class ChallengeDAO {
                 String sender = cursor.getString(0);
                 int testID = cursor.getInt(1);
                 defis[i] = new Challenge(sender,username,testID);
+                cursor.moveToNext();
             }
             return defis;
         }
@@ -58,6 +59,40 @@ public class ChallengeDAO {
         }
         else {
             return false;
+        }
+    }
+
+    /**
+     * met le done du challenge a 0
+     * et retourne le testID de ce défi
+     * @param username
+     * @param challenger
+     * @return
+     */
+    public static int doChallenge(String username, String challenger)
+    {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT testID FROM Challenges " +
+                "WHERE done=0 AND receiver = \""+username+"\" AND sender = \""+challenger+"\"",null);
+        int testID = 0;
+        if(cursor.moveToFirst())
+        {
+            testID = cursor.getInt(0);
+        }
+        db = DatabaseHelper.getWritableDb();
+        ContentValues values = new ContentValues();
+        values.put("done", 1);
+
+        int rows = db.update("Challenges", values, "receiver=? AND sender=? AND testID="+testID+"",
+                new String[]{username,challenger});
+
+        if(rows == 1)
+        {
+            return testID;
+        }
+        else
+        {
+            return -1;
         }
     }
 
