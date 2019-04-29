@@ -47,7 +47,7 @@ public class Account extends AppCompatActivity {
         username.setText(user.getUsername());
 
         birthdate = findViewById(R.id.birthday_account);
-        birthdate.setText(user.getBirthdate());
+        birthdate.setText(user.getBirthdate()); 
 
 
         modify = findViewById(R.id.modify);
