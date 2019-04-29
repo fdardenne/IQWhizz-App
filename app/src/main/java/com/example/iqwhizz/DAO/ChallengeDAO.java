@@ -109,5 +109,4 @@ public class ChallengeDAO {
                 new String[]{username,challenger});
         return (row == 1);
     }
-
 }
