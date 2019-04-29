@@ -50,7 +50,7 @@ public class Question {
     /*
         Pourquoi mettre un getAnswers si on met la variable en public :/
      */
-    public Answer[] getAnswer()
+    public Answer[] getAnswers()
     {
         return answers;
     }

@@ -138,6 +138,14 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
+    public void testingIQ() {
+        com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
+        boolean bool = TestDAO.executeTest(test1);
+        assertTrue(bool);
+
+    }
+
+    @Test
     public void createUser() {
         Log.d("User creation testing", "Creating the user ...");
         boolean succeeded = UserDAO.createUser("test_usr", "test_pwd", "test_mail", "test_lang", 0, 0, 0, new byte[]{0, 0});
