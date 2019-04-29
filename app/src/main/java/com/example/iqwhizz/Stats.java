@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.iqwhizz.DAO.StatsDAO;
+import com.example.iqwhizz.Objects.User;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -33,10 +35,10 @@ public class Stats extends AppCompatActivity {
 
         //TODO: faire ici la requete pour récupérer le QI de l'user et le placer dans userQI
         //Le graph et la moyenne se calcule grace a cette variable
-        userQI = 90;
+        userQI = StatsDAO.getAverageIQ(User.currentUser.getUsername());
 
         //TODO: faire ici la requete pour récupérer le meilleur QI de l'user
-        bestQI = 150;
+        bestQI = StatsDAO.getBestIQ(User.currentUser.getUsername());
 
         actualQI = findViewById(R.id.myIQ);
         myBestQI = findViewById(R.id.myBestIQ);

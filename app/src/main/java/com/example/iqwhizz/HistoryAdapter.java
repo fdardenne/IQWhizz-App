@@ -22,8 +22,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     public HistoryAdapter(ArrayList<HashMap<String, String>> to_display){
         super();
         this.to_display = to_display;
-
-
     }
 
     @Override
