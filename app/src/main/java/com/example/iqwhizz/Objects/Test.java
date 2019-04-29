@@ -48,7 +48,7 @@ public class Test {
     public boolean answerToQuestion(int answerID, int time)
     {
         int rowID = TestDAO.answerToQuestion(this, answerID, time);
-        return (rowID>0) ? true : false ;
+        return rowID>0;
     }
 
     public int getCurrentQuestionID() {
@@ -82,6 +82,14 @@ public class Test {
 
     public void setExecutionID(int executionID) {
         this.executionID = executionID;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

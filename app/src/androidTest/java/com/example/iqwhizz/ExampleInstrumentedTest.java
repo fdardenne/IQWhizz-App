@@ -11,6 +11,7 @@ import android.util.Log;
 import com.example.iqwhizz.DAO.DatabaseHelper;
 import com.example.iqwhizz.DAO.FriendshipDAO;
 import com.example.iqwhizz.DAO.QuestionDAO;
+import com.example.iqwhizz.DAO.StatsDAO;
 import com.example.iqwhizz.DAO.TestDAO;
 import com.example.iqwhizz.DAO.UserDAO;
 import com.example.iqwhizz.Objects.Answer;
@@ -22,6 +23,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -142,7 +145,21 @@ public class ExampleInstrumentedTest {
         com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
         boolean bool = TestDAO.executeTest(test1);
         assertTrue(bool);
-
+        int nQuestions = (test1.getType().equals("court")) ? 5 : 40;
+        for (int i=0; i<nQuestions; i++) {
+            Question q = test1.nextQuestion();
+            Answer[] answers = q.getAnswers();
+            Answer ans = q.getRightAnswer();
+            Random rand = new Random();
+            if (i%2==0) {
+                test1.answerToQuestion(ans.getAnswerID(), 10 + rand.nextInt(30));
+            }
+            else {
+                test1.answerToQuestion(answers[rand.nextInt(answers.length)].getAnswerID(), 5 + rand.nextInt(35));
+            }
+        }
+        int score = StatsDAO.getIQ("Hadrien", test1.getTestID());
+        Log.d("testingIQ", "Obtained score : "+score);
     }
 
     @Test

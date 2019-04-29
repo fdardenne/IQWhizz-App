@@ -34,30 +34,30 @@ insert into Questions(difficulty, category, image, text) values (3,'reflexion','
 
 
 
-insert into PossibleAnswers values (1, 1, 100, 'img1.png', 'Rép a');
+insert into PossibleAnswers values (1, 1, 200, 'img1.png', 'Rép a');
 insert into PossibleAnswers values (2, 1, 0, 'img2.png', 'Rép b');
 insert into PossibleAnswers values (3, 1, 0, 'img3.png', 'Rép c');
 insert into PossibleAnswers values (4, 2, 0, 'img4.png', 'A');
-insert into PossibleAnswers values (5, 2, 100, 'img5.png', 'B');
+insert into PossibleAnswers values (5, 2, 200, 'img5.png', 'B');
 insert into PossibleAnswers values (6, 3, 0, NULL, 'faux');
-insert into PossibleAnswers values (7, 3, 100, NULL, 'vrai');
-insert into PossibleAnswers values (8, 4, 100, NULL, 'vrai');
+insert into PossibleAnswers values (7, 3, 200, NULL, 'vrai');
+insert into PossibleAnswers values (8, 4, 200, NULL, 'vrai');
 insert into PossibleAnswers values (9, 4, 0, NULL, 'faux');
-insert into PossibleAnswers values (10, 5, 100, NULL, 'vrai');
+insert into PossibleAnswers values (10, 5, 200, NULL, 'vrai');
 insert into PossibleAnswers values (11, 5, 0, NULL, 'faux');
-insert into PossibleAnswers values (12, 6, 100, NULL, 'vrai');
+insert into PossibleAnswers values (12, 6, 200, NULL, 'vrai');
 insert into PossibleAnswers values (13, 6, 0, NULL, 'faux');
-insert into PossibleAnswers values (14, 7, 100, NULL, 'vrai');
+insert into PossibleAnswers values (14, 7, 200, NULL, 'vrai');
 insert into PossibleAnswers values (15, 7, 0, NULL, 'faux');
-insert into PossibleAnswers values (16, 8, 100, NULL, 'vrai');
+insert into PossibleAnswers values (16, 8, 200, NULL, 'vrai');
 insert into PossibleAnswers values (17, 8, 0, NULL, 'faux');
-insert into PossibleAnswers values (18, 9, 100, NULL, 'vrai');
+insert into PossibleAnswers values (18, 9, 200, NULL, 'vrai');
 insert into PossibleAnswers values (19, 9, 0, NULL, 'faux');
-insert into PossibleAnswers values (20, 10, 100, NULL, 'vrai');
+insert into PossibleAnswers values (20, 10, 200, NULL, 'vrai');
 insert into PossibleAnswers values (21, 10, 0, NULL, 'faux');
-insert into PossibleAnswers values (22, 11, 100, NULL, 'vrai');
+insert into PossibleAnswers values (22, 11, 200, NULL, 'vrai');
 insert into PossibleAnswers values (23, 11, 0, NULL, 'faux');
-insert into PossibleAnswers values (24, 12, 100, NULL, 'vrai');
+insert into PossibleAnswers values (24, 12, 200, NULL, 'vrai');
 insert into PossibleAnswers values (25, 12, 0, NULL, 'faux');
-insert into PossibleAnswers values (26, 13, 100, NULL, 'vrai');
+insert into PossibleAnswers values (26, 13, 200, NULL, 'vrai');
 insert into PossibleAnswers values (27, 13, 0, NULL, 'faux');

@@ -72,5 +72,5 @@ create table Challenges
   receiver  text         not null references Users,
   testID integer      not null references Tests,
   done   integer      not null default 0,
-  primary key (user1, user2, testID, done)
+  primary key (sender, receiver, testID, done)
 );

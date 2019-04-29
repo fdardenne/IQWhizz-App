@@ -9,11 +9,11 @@ public class StatsDAO {
     public static int getIQ(String username, int testID) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery(
-                "SELECT round(avg(PA.score * (60-SA.time AS float)/60)) " +
+                "SELECT round(avg(PA.score * (60-SA.time)/60)) " +
                         "FROM TestExecutions TE, SelectedAnswers SA, PossibleAnswers PA " +
                         "WHERE TE.username=\""+username+"\" " +
                         "AND TE.testID="+testID+" " +
-                        "AND TE.testExecutionID=SA.testExecutionID " +
+                        "AND TE.executionID=SA.executionID " +
                         "AND SA.answerID=PA.answerID",
                 null);
         if(cursor.moveToFirst()) {
