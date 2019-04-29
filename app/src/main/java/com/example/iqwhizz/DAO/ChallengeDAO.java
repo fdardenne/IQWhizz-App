@@ -67,7 +67,7 @@ public class ChallengeDAO {
      * et retourne le testID de ce défi
      * @param username
      * @param challenger
-     * @return
+     * @return le testID du défi si la mise a jour de la db a réussi, o sinon
      */
     public static int doChallenge(String username, String challenger)
     {
@@ -82,10 +82,8 @@ public class ChallengeDAO {
         db = DatabaseHelper.getWritableDb();
         ContentValues values = new ContentValues();
         values.put("done", 1);
-
         int rows = db.update("Challenges", values, "receiver=? AND sender=? AND testID="+testID+"",
                 new String[]{username,challenger});
-
         if(rows == 1)
         {
             return testID;
@@ -96,5 +94,19 @@ public class ChallengeDAO {
         }
     }
 
-
+    /**
+     * méthode qui supprime un défi de la base de donnée : username refuse de faire
+     * le défi lancé par challenger
+     * @param username
+     * @param challenger
+     * @param testID
+     * @return true si la suppression a réussi
+     */
+    public static boolean refuseChallenge(String username, String challenger, int testID)
+    {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        int row = db.delete("Challenges", "receiver=? AND sender=? AND testID="+testID+"",
+                new String[]{username,challenger});
+        return (row == 1);
+    }
 }

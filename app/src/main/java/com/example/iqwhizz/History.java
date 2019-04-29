@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.iqwhizz.DAO.TestDAO;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +26,7 @@ public class History extends AppCompatActivity {
 
         list_history = new ArrayList<>();
         //TODO: DAO, faire comme en bas, pour chaque Test fait, il faut call add_history()
+
         add_history("24/04/19", "Random", "Long", "120");
         add_history("25/04/19", "Math", "Court", "110");
 
