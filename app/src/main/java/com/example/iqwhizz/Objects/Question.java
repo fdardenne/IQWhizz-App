@@ -27,10 +27,10 @@ public class Question {
         this.image=image;
         this.text=text;
         this.difficulty=difficulty;
-        this.answers=AnswerDAO.getAnswers(questionID); //création de la liste avec elements données par DAO
+        this.answers= AnswerDAO.getAnswers(questionID); //création de la liste avec elements données par DAO
     }
 
-    /*
+     /*
         donne la reponse correcte parmi les possibleAnswers
         DAO : donner les possibles reponse
      */
@@ -50,7 +50,7 @@ public class Question {
     /*
         Pourquoi mettre un getAnswers si on met la variable en public :/
      */
-    public Answer[] getAnswers()
+    public Answer[] getAnswer()
     {
         return answers;
     }
@@ -60,23 +60,4 @@ public class Question {
         return questionID;
     }
 
-    public String getCategory()
-    {
-        return category;
-    }
-
-    public byte[] getImage()
-    {
-        return image;
-    }
-
-    public int getDifficulty()
-    {
-        return difficulty;
-    }
-
-    public String getText()
-    {
-        return text;
-    }
 }
