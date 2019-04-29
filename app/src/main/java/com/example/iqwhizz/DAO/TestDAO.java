@@ -170,4 +170,29 @@ public class TestDAO {
         long rowID = db.insert("SelectedAnswers", null, value);
         return (int) rowID;
     }
+
+
+    /**
+     * donne tous les tests réalisés par l'utilisateur username
+     * @param username
+     * @return la liste des testIDs des tests réalisés
+     */
+    public static int[] getAllExecutedTest(String username)
+    {
+        int[] testIDs;
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT testID FROM TestExecutions WHERE username = \""+username+"\"", null);
+        if(cursor.moveToFirst())
+        {
+            int longueur = cursor.getCount();
+            testIDs = new int[longueur];
+            for (int i = 0; i < longueur; i++)
+            {
+                testIDs[i] = cursor.getInt(0);
+                cursor.moveToNext();
+            }
+            return testIDs;
+        }
+        return null;
+    }
 }
