@@ -34,7 +34,7 @@ public class Stats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        
+
         userQI = StatsDAO.getAverageIQ(User.currentUser.getUsername());
 
 

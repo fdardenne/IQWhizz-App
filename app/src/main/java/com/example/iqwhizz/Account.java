@@ -39,10 +39,12 @@ public class Account extends AppCompatActivity {
         dropdown.setAdapter(adapter);
 
         User user = User.currentUser;
+        Log.i("erreur",user.getMail());
 
         email = findViewById(R.id.email_account);
         email.setText(user.getMail());
 
+        Log.i("erreur",user.getUsername());
         username = findViewById(R.id.username_account);
         username.setText(user.getUsername());
 
