@@ -95,4 +95,56 @@ public class UserDAO {
         }
     }
 
+    public static boolean updateEmail(String username, String mail) {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        ContentValues value = new ContentValues();
+        value.put("mail", mail);
+        int rows = db.update("Users", value, "username=?", new String[]{username});
+        if (rows!=1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public static boolean updateLanguage(String username, String lang) {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        ContentValues value = new ContentValues();
+        value.put("language", lang);
+        int rows = db.update("Users", value, "username=?", new String[]{username});
+        if (rows!=1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public static boolean updateBirthDate(String username, int birth_date) {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        ContentValues value = new ContentValues();
+        value.put("birth_date", birth_date);
+        int rows = db.update("Users", value, "username=?", new String[]{username});
+        if (rows!=1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public static boolean updateProfilePicture(String username, byte[] profile_pic) {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        ContentValues value = new ContentValues();
+        value.put("profile_picture", profile_pic);
+        int rows = db.update("Users", value, "username=?", new String[]{username});
+        if (rows!=1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 }
