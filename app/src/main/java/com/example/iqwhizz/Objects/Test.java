@@ -16,6 +16,7 @@ public class Test {
 
     private Question[] questions;
 
+
     /*
         Constructeur
         DAO : donner la liste des questions du test
@@ -90,4 +91,5 @@ public class Test {
         this.type = type;
     }
 
+    public String getCategory(){return this.category;}
 }

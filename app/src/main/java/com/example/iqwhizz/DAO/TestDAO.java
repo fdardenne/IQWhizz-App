@@ -181,14 +181,15 @@ public class TestDAO {
     {
         int[] testIDs;
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
-        Cursor cursor = db.rawQuery("SELECT testID FROM TestExecutions WHERE username = \""+username+"\"", null);
+        Cursor cursor = db.rawQuery("SELECT testID,execution_date, FROM TestExecutions WHERE username = \""+username+"\"", null);
         if(cursor.moveToFirst())
         {
-            int longueur = cursor.getCount();
+            int longueur = 2*cursor.getCount();
             testIDs = new int[longueur];
-            for (int i = 0; i < longueur; i++)
+            for (int i = 0; i < longueur; i = i+2)
             {
                 testIDs[i] = cursor.getInt(0);
+                testIDs[i+1] = cursor.getInt(1);
                 cursor.moveToNext();
             }
             return testIDs;
