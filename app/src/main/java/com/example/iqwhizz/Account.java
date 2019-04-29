@@ -101,10 +101,11 @@ public class Account extends AppCompatActivity {
 
             if(!password_str.equals("")){
                 //TODO: Modifier l'utilisateur User.currentUser en fonction de username_str, ..., ne pas modifier le mdp ici
+
             }else{
                 //TODO: Meme chose mais avec password
             }
-
+    
 
 
 
