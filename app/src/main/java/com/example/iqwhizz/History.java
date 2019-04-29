@@ -30,7 +30,6 @@ public class History extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         list_history = new ArrayList<>();
-        //TODO: DAO, faire comme en bas, pour chaque Test fait, il faut call add_history()
         String username = User.currentUser.getUsername();
         int[] testIDs = TestDAO.getAllExecutedTest(username);
         int longueur = testIDs.length;
