@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -33,10 +34,19 @@ public class Stats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        //Le graphe et la moyenne se calculent grace a cette variable
+
         userQI = StatsDAO.getAverageIQ(User.currentUser.getUsername());
 
-        bestQI = StatsDAO.getBestIQ(User.currentUser.getUsername());
+
+
+        userQI = StatsDAO.getAverageIQ(User.currentUser.getUsername());
+        if (userQI == -1){
+            userQI = 0;
+        }
+        if(bestQI == -1){
+            bestQI = 0;
+        }
+        bestQI = 130;
 
         actualQI = findViewById(R.id.myIQ);
         myBestQI = findViewById(R.id.myBestIQ);
@@ -47,6 +57,7 @@ public class Stats extends AppCompatActivity {
         createGraph();
         TextView averageIQ = findViewById(R.id.averageIQ);
         NumberFormat formatter = new DecimalFormat("#0.00");
+
 
         if(userQI > 100){
             averageIQ.setText("Votre QI est supérieur de " + formatter.format(Gauss.integrate(100,userQI,100,15))+"% à la moyenne");
