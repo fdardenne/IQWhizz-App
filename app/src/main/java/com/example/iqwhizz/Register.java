@@ -103,7 +103,6 @@ public class Register extends AppCompatActivity {
             {
                 errormessage.setText("La date n'est pas dans un bon format: dd/mm/yyyy");
             }
-
             UserDAO.createUser(username_str,password_str, email_str, lang_str, birth_d, reg_d, last_co, profile_pic);
             User.connectUser(username_str, password_str);
             Intent intentMenu = new Intent(this, Menu.class);
