@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -60,13 +61,14 @@ public class Register extends AppCompatActivity {
         email = findViewById(R.id.email);
         birthdate = findViewById(R.id.birthday);
         errormessage = findViewById(R.id.error_message);
+        Spinner dropdown = findViewById(R.id.language);
         String[] birthdate_array = birthdate.getText().toString().split("/");
 
         //A utilier pour les verifications et l'insertion
         String username_str = username.getText().toString();
         String password_str = password.getText().toString();
         String email_str = email.getText().toString();
-        String lang_str = "en"; //TODO
+        String lang_str = dropdown.getSelectedItem().toString();
         String birthd = birthdate.getText().toString();
         int birth_d = 0;
         int reg_d = 0; //TODO
