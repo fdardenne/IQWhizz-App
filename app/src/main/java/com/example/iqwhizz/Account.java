@@ -38,14 +38,16 @@ public class Account extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
+        User user = User.currentUser;
+
         email = findViewById(R.id.email_account);
-        email.setText("joe@doe.com");
+        email.setText(user.getMail());
 
         username = findViewById(R.id.username_account);
-        username.setText("JohnDoe");
+        username.setText(user.getUsername());
 
         birthdate = findViewById(R.id.birthday_account);
-        birthdate.setText("11/08/1999");
+        birthdate.setText(user.getBirthdate());
 
 
         modify = findViewById(R.id.modify);
