@@ -159,7 +159,6 @@ public class TestDAO {
     }
 
 
-    // TODO : à tester.
     public static int answerToQuestion(Test test, int answerID, int time) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         ContentValues value = new ContentValues();
