@@ -34,5 +34,10 @@ public class ChallengeDAO {
         return null;
     }
 
+    public static void Challenge(String username, String challenged)
+    {
+
+    }
+
 
 }

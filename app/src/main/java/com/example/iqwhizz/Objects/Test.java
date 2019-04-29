@@ -29,7 +29,7 @@ public class Test {
         this.category = category ;
         this.type = type;
         this.questions = questions; //il faudra surement créer cette liste
-        this.currentQuestion = 0;
+        this.currentQuestion = -1;
     }
 
     /*
