@@ -33,11 +33,9 @@ public class Stats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        //TODO: faire ici la requete pour récupérer le QI de l'user et le placer dans userQI
         //Le graph et la moyenne se calcule grace a cette variable
         userQI = StatsDAO.getAverageIQ(User.currentUser.getUsername());
 
-        //TODO: faire ici la requete pour récupérer le meilleur QI de l'user
         bestQI = StatsDAO.getBestIQ(User.currentUser.getUsername());
 
         actualQI = findViewById(R.id.myIQ);
