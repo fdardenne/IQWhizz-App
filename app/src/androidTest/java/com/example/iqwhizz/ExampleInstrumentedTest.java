@@ -140,26 +140,51 @@ public class ExampleInstrumentedTest {
 
     }
 
+    private void answeringQuestions(com.example.iqwhizz.Objects.Test test) {
+        int nQuestions = (test.getType().equals("court")) ? 5 : 40;
+        for (int i=0; i<nQuestions; i++) {
+            Question q = test.nextQuestion();
+            Answer[] answers = q.getAnswers();
+            Answer ans = q.getRightAnswer();
+            Random rand = new Random();
+            if (i%2==0) {
+                test.answerToQuestion(ans.getAnswerID(), 10 + rand.nextInt(30));
+            }
+            else {
+                test.answerToQuestion(answers[rand.nextInt(answers.length)].getAnswerID(), 5 + rand.nextInt(35));
+            }
+        }
+    }
+
     @Test
     public void testingIQ() {
         com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
         boolean bool = TestDAO.executeTest(test1);
         assertTrue(bool);
-        int nQuestions = (test1.getType().equals("court")) ? 5 : 40;
-        for (int i=0; i<nQuestions; i++) {
-            Question q = test1.nextQuestion();
-            Answer[] answers = q.getAnswers();
-            Answer ans = q.getRightAnswer();
-            Random rand = new Random();
-            if (i%2==0) {
-                test1.answerToQuestion(ans.getAnswerID(), 10 + rand.nextInt(30));
-            }
-            else {
-                test1.answerToQuestion(answers[rand.nextInt(answers.length)].getAnswerID(), 5 + rand.nextInt(35));
-            }
-        }
-        int score = StatsDAO.getIQ("Hadrien", test1.getTestID());
+        answeringQuestions(test1);
+        int score = StatsDAO.getIQ(User.currentUser.getUsername(), test1.getTestID());
         Log.d("testingIQ", "Obtained score : "+score);
+    }
+
+    @Test
+    public void averageAndBestIQ() {
+        com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
+        com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(2);
+        boolean boolTest3 = TestDAO.generateTest("logique", "court");
+        boolean boolTest4 = TestDAO.generateTest("reflexion", "court");
+        com.example.iqwhizz.Objects.Test test3 = TestDAO.getTest(3);
+        com.example.iqwhizz.Objects.Test test4 = TestDAO.getTest(4);
+        boolean[] bools = {boolTest3, boolTest4, TestDAO.executeTest(test1), TestDAO.executeTest(test2), TestDAO.executeTest(test3), TestDAO.executeTest(test4)};
+        for(boolean bool : bools) {
+            assertTrue(bool);
+        }
+        com.example.iqwhizz.Objects.Test[] tests = {test1, test2, test3, test4};
+        for (com.example.iqwhizz.Objects.Test test : tests) {
+            answeringQuestions(test);
+        }
+        int avg = StatsDAO.getAverageIQ(User.currentUser.getUsername());
+        int best = StatsDAO.getBestIQ(User.currentUser.getUsername());
+        Log.d("Scores", "avg : "+avg+" and best : "+best);
     }
 
     @Test
