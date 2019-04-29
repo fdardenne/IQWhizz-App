@@ -27,6 +27,7 @@ public class Menu extends AppCompatActivity {
         account = findViewById(R.id.account);
         logout = findViewById(R.id.logout);
 
+
         setupListener();
 
     }
@@ -57,10 +58,21 @@ public class Menu extends AppCompatActivity {
                 accountIntent();
             }
         });
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playIntent();
+            }
+        });
 
 
 
     }
+
+    private void playIntent(){
+            Intent intentPlay = new Intent(this, ChallengeInit.class);
+            startActivity(intentPlay);
+        }
 
     private void statsIntent(){
         Intent intentStats = new Intent(this, Stats.class);

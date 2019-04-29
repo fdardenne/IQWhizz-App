@@ -105,13 +105,14 @@ public class Account extends AppCompatActivity {
 
             if(!password_str.equals("")){
                 UserDAO.updateBirthDate(username_str,birth_d);
-                UserDAO.updateEmail(username_str,email_str);
+                UserDAO.updateEmail(User.currentUser.getUsername(),email_str);
                 UserDAO.updateLanguage(username_str,lang_str);
                 UserDAO.updateProfilePicture(username_str,profile_pic);
+                Log.i("app", password_str);
 
             }else{
                 UserDAO.updateBirthDate(username_str,birth_d);
-                UserDAO.updateEmail(username_str,email_str);
+                UserDAO.updateEmail(User.currentUser.getUsername(),email_str);
                 UserDAO.updateLanguage(username_str,lang_str);
                 UserDAO.updateProfilePicture(username_str,profile_pic);
                 UserDAO.updatePassword(username_str,password_str);

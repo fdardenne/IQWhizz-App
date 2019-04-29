@@ -49,26 +49,37 @@
                 android:text=""
                 android:textColor="@color/colorAccent" />
 
+            <Switch
+                android:id="@+id/switch_friend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jouer contre un ami ?" />
+
+
+
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/friend_username"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:ems="20"
                 android:inputType="textPersonName"
-                android:hint="Username"
+                android:hint="Pseudo de l'ami"
                 android:layout_marginBottom="10dp"
                 />
 
-            <EditText
-                android:id="@+id/password"
+            <Spinner
+                android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint="Password"
                 android:layout_marginBottom="20dp"
+                />
 
+            <Spinner
+                android:id="@+id/type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 />
 
             <Button
