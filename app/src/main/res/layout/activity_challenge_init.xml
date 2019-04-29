@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    tools:context=".ChallengeInit">
 
-    tools:context=".Login">
 
     <LinearLayout
         android:layout_width="395dp"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="casual"
             android:gravity="center_horizontal"
-            android:text="IQWHIZZ"
+            android:text="New Challenge"
             android:textColor="#FFFFFF"
             android:textSize="36sp"
             android:layout_marginBottom="60dp"/>
@@ -72,23 +72,17 @@
                 />
 
             <Button
-                android:id="@+id/login"
+                android:id="@+id/new_challenge"
                 android:background="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Se connecter"
+                android:text="Jouer"
                 android:layout_marginBottom="5dp"
                 android:textColor="#FFFFFF"/>
-
-            <TextView
-                android:id="@+id/register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pas de compte ? Enregistre toi en cliquant ici !"
-                android:clickable="true"
-                />
 
 
         </LinearLayout>
     </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>
