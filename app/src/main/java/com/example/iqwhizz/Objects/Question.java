@@ -1,6 +1,6 @@
 package com.example.iqwhizz.Objects;
 
-import com.example.iqwhizz.DAO.AnswerDAO;
+import com.example.iqwhizz.DAO.QuestionDAO;
 
 public class Question {
 
@@ -27,7 +27,7 @@ public class Question {
         this.image=image;
         this.text=text;
         this.difficulty=difficulty;
-        this.answers= AnswerDAO.getAnswers(questionID); //création de la liste avec elements données par DAO
+        this.answers= QuestionDAO.getAnswers(questionID); //création de la liste avec elements données par DAO
     }
 
      /*

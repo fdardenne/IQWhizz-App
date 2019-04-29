@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.iqwhizz.DAO.StatsDAO;
+import com.example.iqwhizz.Objects.Friendship;
+import com.example.iqwhizz.Objects.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,10 +24,7 @@ public class Friends extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
 
-        list_friend = new ArrayList<>();
-        //TODO: DAO, faire comme en bas, pour chaque ami
-        list_friend.add("Jean");
-        list_friend.add("Pierre");
+        list_friend = Friendship.getFriendsUsername(User.currentUser.getUsername());
 
 
         final RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_friend);

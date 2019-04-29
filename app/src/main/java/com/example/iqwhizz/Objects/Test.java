@@ -1,7 +1,5 @@
 package com.example.iqwhizz.Objects;
 
-import com.example.iqwhizz.DAO.AnswerDAO;
-import com.example.iqwhizz.DAO.QuestionDAO;
 import com.example.iqwhizz.DAO.TestDAO;
 
 public class Test {
@@ -17,6 +15,7 @@ public class Test {
     private String type; //long ou court
 
     private Question[] questions;
+
 
     /*
         Constructeur
@@ -92,4 +91,5 @@ public class Test {
         this.type = type;
     }
 
+    public String getCategory(){return this.category;}
 }

@@ -5,9 +5,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.iqwhizz.DAO.StatsDAO;
 import com.example.iqwhizz.DAO.TestDAO;
+import com.example.iqwhizz.Objects.Test;
+import com.example.iqwhizz.Objects.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,10 +30,19 @@ public class History extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         list_history = new ArrayList<>();
-        //TODO: DAO, faire comme en bas, pour chaque Test fait, il faut call add_history()
-
-        add_history("24/04/19", "Random", "Long", "120");
-        add_history("25/04/19", "Math", "Court", "110");
+        String username = User.currentUser.getUsername();
+        int[] testIDs = TestDAO.getAllExecutedTest(username);
+        int longueur = testIDs.length;
+        for(int i = 0 ; i < longueur ; i = i+2 )
+        {
+            Test letest = TestDAO.getTest(testIDs[i]);
+            int date = testIDs[i+1];
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String date1 = dateFormat.format(date);
+            add_history(date1, letest.getCategory(), letest.getType(), Integer.toString(StatsDAO.getIQ(username,testIDs[i])));
+        }
+        //add_history("24/04/19", "Random", "Long", "120");
+        //add_history("25/04/19", "Math", "Court", "110");
 
 
 
