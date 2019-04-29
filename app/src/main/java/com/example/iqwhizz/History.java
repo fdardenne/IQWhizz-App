@@ -24,6 +24,7 @@ public class History extends AppCompatActivity {
 
         list_history = new ArrayList<>();
         //TODO: DAO, faire comme en bas, pour chaque Test fait, il faut call add_history()
+
         add_history("24/04/19", "Random", "Long", "120");
         add_history("25/04/19", "Math", "Court", "110");
 
