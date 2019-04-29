@@ -55,8 +55,28 @@ public class Question {
         return answers;
     }
 
-    public int getID () {
+    public int getID ()
+    {
         return questionID;
     }
 
+    public String getCategory()
+    {
+        return category;
+    }
+
+    public byte[] getImage()
+    {
+        return image;
+    }
+
+    public int getDifficulty()
+    {
+        return difficulty;
+    }
+
+    public String getText()
+    {
+        return text;
+    }
 }

@@ -21,11 +21,28 @@ public class Answer {
         this.score=score;
     }
 
-    public int getAnswerID() {
+    public byte[] getImage()
+    {
+        return image;
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
+
+    public String getText()
+    {
+        return text;
+    }
+
+    public int getAnswerID()
+    {
         return answerID;
     }
 
-    public void setAnswerID(int answerID) {
+    public void setAnswerID(int answerID)
+    {
         this.answerID = answerID;
     }
 

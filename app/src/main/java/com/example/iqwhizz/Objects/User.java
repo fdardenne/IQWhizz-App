@@ -152,6 +152,7 @@ public class User {
      */
     boolean exist(String username)
     {
+
         return UserDAO.userExists(this.username);
     }
 
@@ -164,11 +165,7 @@ public class User {
     boolean checkPassword(String username,String password)
     {
         User user = UserDAO.getUser(username,password);
-        if(user == null)
-        {
-            return false;
-        }
-        return true;
+        return (user != NULL);
     }
 
     // getters
