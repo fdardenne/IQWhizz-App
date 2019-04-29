@@ -68,8 +68,8 @@ create table PossibleAnswers
 );
 create table Challenges
 (
-  user1  text         not null references Users,
-  user2  text         not null references Users,
+  sender  text         not null references Users,
+  receiver  text         not null references Users,
   testID integer      not null references Tests,
   done   integer      not null default 0,
   primary key (user1, user2, testID, done)
