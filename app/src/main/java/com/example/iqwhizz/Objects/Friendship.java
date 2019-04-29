@@ -1,5 +1,8 @@
 package com.example.iqwhizz.Objects;
 
+import com.example.iqwhizz.DAO.FriendshipDAO;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
@@ -83,5 +86,20 @@ public class Friendship {
     @Override
     public int hashCode() {
         return Objects.hash(sender, receiver, request_date, acceptance_date, isAccepted);
+    }
+
+    public static ArrayList<String> getFriendsUsername(String username) {
+        ArrayList<String> list_friend = new ArrayList<>();
+        Friendship[] user_friendship = FriendshipDAO.getFriendList(User.currentUser.getUsername());
+        for(int i = 0; i<user_friendship.length; i++){
+            if(user_friendship[i].getSender()==username){
+                list_friend.add(user_friendship[i].getReceiver());
+            }
+            else {
+                list_friend.add(user_friendship[i].getSender());
+            }
+        }
+
+        return list_friend;
     }
 }
