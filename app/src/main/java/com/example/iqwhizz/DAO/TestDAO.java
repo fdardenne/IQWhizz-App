@@ -110,7 +110,7 @@ public class TestDAO {
         Question[] questions = loadQuestions(category, nQuestions);
         int testID = saveTest(category, type, questions);
         Log.d("TestDAO - generateTest", type + " test -> OK");
-        return (testID > 0) ? true : false;
+        return (testID > 0);
     }
 
     private static int saveTest(String category, String type, Question[] questions) {
