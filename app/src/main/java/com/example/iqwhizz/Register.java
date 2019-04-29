@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -60,13 +61,15 @@ public class Register extends AppCompatActivity {
         email = findViewById(R.id.email);
         birthdate = findViewById(R.id.birthday);
         errormessage = findViewById(R.id.error_message);
+        Spinner dropdown = findViewById(R.id.language);
         String[] birthdate_array = birthdate.getText().toString().split("/");
 
         //A utilier pour les verifications et l'insertion
         String username_str = username.getText().toString();
         String password_str = password.getText().toString();
         String email_str = email.getText().toString();
-        String lang_str = "en"; //TODO
+        String lang_str = dropdown.getSelectedItem().toString();
+        //String lang_str = "en"; //TODO
         int birth_d = 0; //TODO
         int reg_d = 0; //TODO
         int last_co = 0; //TODO
@@ -86,7 +89,7 @@ public class Register extends AppCompatActivity {
         }
         else if(birthdate_array.length != 3 || !(Integer.parseInt(birthdate_array[0]) <= 31) || !(Integer.parseInt(birthdate_array[0]) >= 1) || !(Integer.parseInt(birthdate_array[1]) <= 12) ||  !(Integer.parseInt(birthdate_array[1]) >= 1) || !(Integer.parseInt(birthdate_array[2]) >= 1900) || !(Integer.parseInt(birthdate_array[2]) <  2019 )){
             errormessage.setText("La date n'est pas dans un bon format: dd/mm/yyyy");
-        }else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
+        }else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
             errormessage.setText("L'email n'est pas dans un bon format: user@domain.be");
 
         }
