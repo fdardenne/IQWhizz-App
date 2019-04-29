@@ -15,7 +15,7 @@ public class Challenge {
     /*
         Constructeur
      */
-    Challenge(String challenger, String challenged, int testID)
+    public Challenge(String challenger, String challenged, int testID)
     {
         this.challenger = challenger;
         this.challenged = challenged;
