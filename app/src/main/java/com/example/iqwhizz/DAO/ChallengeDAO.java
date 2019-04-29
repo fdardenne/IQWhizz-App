@@ -10,10 +10,11 @@ public class ChallengeDAO {
     private ChallengeDAO() {}
 
     /**
-     * récupère les défis lancés a username qu'il na pas encore réalisés
+     * récupère les défis lancés a username qu'il n'a pas encore réalisés
      * @param username
      * @return la liste des défis
      */
+    // TODO : implémenter Challenge et vérifier si ok.
     public static Challenge[] getUnDoneChallenge(String username)
     {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
