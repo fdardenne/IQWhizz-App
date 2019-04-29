@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.example.iqwhizz.DAO.UserDAO;
 import com.example.iqwhizz.Objects.User;
 
+import java.util.Date;
+
 public class Account extends AppCompatActivity {
 
     TextView username;
@@ -66,6 +68,8 @@ public class Account extends AppCompatActivity {
         birthdate = findViewById(R.id.birthday_account);
         errormessage = findViewById(R.id.error_message_account);
         String[] birthdate_array = birthdate.getText().toString().split("/");
+
+        User user = User.currentUser;
 
         //A utilier pour les verifications et l'insertion
         String username_str = username.getText().toString();
