@@ -82,7 +82,7 @@ public class TestDAO {
         return questions;
     }
 
-    // TODO : implémenter les catégories multiples.
+
     private static Question[] loadQuestions(String category, int nQuestions) {
         if (category.equals("random")) {
             String[] categories = {"reflexion", "logique", "calcul mental"};
@@ -159,7 +159,6 @@ public class TestDAO {
     }
 
 
-    // TODO : à complèter !
     public static int answerToQuestion(Test test, int answerID, int time) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         ContentValues value = new ContentValues();

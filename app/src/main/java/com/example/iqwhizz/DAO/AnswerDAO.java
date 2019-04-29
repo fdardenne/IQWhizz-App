@@ -7,8 +7,7 @@ import com.example.iqwhizz.Objects.Answer;
 
 public class AnswerDAO {
     private AnswerDAO() {}
-
-    // TODO : getAnswers() à tester !
+    // TODO : à corriger.
     public static Answer[] getAnswers(int questionID) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT answerID, image, text, score FROM PossibleAnswers WHERE questionID="+questionID, null);
