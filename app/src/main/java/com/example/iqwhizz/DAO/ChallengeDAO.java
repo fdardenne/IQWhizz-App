@@ -35,6 +35,14 @@ public class ChallengeDAO {
         return null;
     }
 
+    /**
+     *  lance un nouveau challenge a l'utilisateur challenged
+     *  sur le test testID
+     * @param username
+     * @param challenged
+     * @param testID
+     * @return true si l'insertion a réussi, faux sinon
+     */
     public static boolean newChallenge(String username, String challenged, int testID)
     {
         ContentValues values = new ContentValues();
