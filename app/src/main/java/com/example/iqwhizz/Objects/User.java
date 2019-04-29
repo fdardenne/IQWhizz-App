@@ -165,7 +165,7 @@ public class User {
     boolean checkPassword(String username,String password)
     {
         User user = UserDAO.getUser(username,password);
-        return (user !=null);
+        return (user != null);
     }
 
     // getters
