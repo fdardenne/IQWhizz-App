@@ -31,15 +31,16 @@ public class History extends AppCompatActivity {
 
         list_history = new ArrayList<>();
         String username = User.currentUser.getUsername();
-        int[] testIDs = TestDAO.getAllExecutedTest(username);
-        int longueur = testIDs.length;
-        for(int i = 0 ; i < longueur ; i = i+2 )
-        {
-            Test letest = TestDAO.getTest(testIDs[i]);
-            int date = testIDs[i+1];
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            String date1 = dateFormat.format(date);
-            add_history(date1, letest.getCategory(), letest.getType(), Integer.toString(StatsDAO.getIQ(username,testIDs[i])));
+        if(TestDAO.getAllExecutedTest(username) != null) {
+            int[] testIDs = TestDAO.getAllExecutedTest(username);
+            int longueur = testIDs.length;
+            for (int i = 0; i < longueur; i = i + 2) {
+                Test letest = TestDAO.getTest(testIDs[i]);
+                int date = testIDs[i + 1];
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String date1 = dateFormat.format(date);
+                add_history(date1, letest.getCategory(), letest.getType(), Integer.toString(StatsDAO.getIQ(username, testIDs[i])));
+            }
         }
         //add_history("24/04/19", "Random", "Long", "120");
         //add_history("25/04/19", "Math", "Court", "110");
