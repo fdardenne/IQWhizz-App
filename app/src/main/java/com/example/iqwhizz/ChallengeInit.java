@@ -1,6 +1,7 @@
 package com.example.iqwhizz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -73,32 +74,36 @@ public class ChallengeInit extends AppCompatActivity {
     }
 
     private void play_game() {
-
+        Intent challengeIntent = new Intent(this, Challenge.class);
         if( switch_friend.isChecked()){
 
             if(!UserDAO.userExists(username_friend.getText().toString())){
                 errormessage.setText("L'utilisateur n'existe pas");
             }else{
-                boolean flag = false;
                 Friendship[] friends = FriendshipDAO.getFriendList(User.currentUser.getUsername());
                 for(Friendship f: friends){
                     if((f.getReceiver().equals(username_friend) || f.getSender().equals(username_friend))  && f.isAccepted() ) {
                         //Friend found and is a friend
                         int duration = Toast.LENGTH_SHORT;
                         Context context = getApplicationContext();
-                        Toast toast = Toast.makeText(context, "Ami trouvé !", duration);
+                        Toast toast = Toast.makeText(context, "Bon jeu !", duration);
                         toast.show();
                         errormessage.setText("");
-                        flag = true;
+                        challengeIntent.putExtra("Friend", true);
+                        challengeIntent.putExtra("type", type.getSelectedItem().toString());
+                        challengeIntent.putExtra("category", category.getSelectedItem().toString());
+                        startActivity(challengeIntent);
+                        this.finish();
+
+
                     }
                 }
-                if (!flag){
-                    int duration = Toast.LENGTH_SHORT;
-                    Context context = getApplicationContext();
-                    Toast toast = Toast.makeText(context, "Cet utilisateur n'est pas dans vos amis !", duration);
-                    errormessage.setText("");
-                    toast.show();
-                }
+                int duration = Toast.LENGTH_SHORT;
+                Context context = getApplicationContext();
+                Toast toast = Toast.makeText(context, "Cet utilisateur n'est pas dans vos amis !", duration);
+                errormessage.setText("Cet utilisateur n'est pas dans vos amis !");
+                toast.show();
+
 
 
             }
@@ -109,8 +114,15 @@ public class ChallengeInit extends AppCompatActivity {
         }else{
             int duration = Toast.LENGTH_SHORT;
             Context context = getApplicationContext();
-            Toast toast = Toast.makeText(context, "Sans ami !", duration);
+            Toast toast = Toast.makeText(context, "Bon jeu !", duration);
             toast.show();
+
+            challengeIntent.putExtra("Friend", false);
+            challengeIntent.putExtra("type", type.getSelectedItem().toString());
+            challengeIntent.putExtra("category", category.getSelectedItem().toString());
+            errormessage.setText("");
+            startActivity(challengeIntent);
+            this.finish();
         }
 
     }
