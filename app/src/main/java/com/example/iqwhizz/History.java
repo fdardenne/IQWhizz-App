@@ -34,7 +34,8 @@ public class History extends AppCompatActivity {
         if(TestDAO.getAllExecutedTest(username) != null) {
             int[] testIDs = TestDAO.getAllExecutedTest(username);
             int longueur = testIDs.length;
-            for (int i = 0; i < longueur; i = i + 2) {
+            for (int i = 0; i < longueur; i = i + 2)
+            {
                 Test letest = TestDAO.getTest(testIDs[i]);
                 int date = testIDs[i + 1];
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
