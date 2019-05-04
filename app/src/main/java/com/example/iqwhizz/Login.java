@@ -65,6 +65,7 @@ public class Login extends AppCompatActivity {
         String userStr = username.getText().toString();
         String pwdStr = password.getText().toString();
         if(User.connectUser(userStr, pwdStr)){
+            //TODO: update last connected de l'user dans la databse
             Intent intentMenu = new Intent(this, Menu.class);
             Log.i("TEST", username.getText() + " connected");
             errormessage.setText("");
