@@ -37,7 +37,7 @@ public class Test {
      */
     public boolean hasNext()
     {
-        return  this.questions[currentQuestion+1] != null ;
+        return this.questions.length < currentQuestion+1;
     }
 
     /*
