@@ -43,21 +43,21 @@ public class Challenge extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge);
         String type = getIntent().getStringExtra("type");
-        if(type.equals("Long (40 questions)")){
+        if (type.equals("long")) {
             maxNbQuestion = 40;
-        }else{
+        } else {
             maxNbQuestion = 5;
         }
 
 
         currentNbQuestion = 1;
         String category = getIntent().getStringExtra("category");
+        int testID = getIntent().getIntExtra("testID", 0);
 
         //TEMPORAIRE, Challenge Init doit donné un Test a Challenge
-        this.currentTest = TestDAO.getTest(1);
-
+        this.currentTest = TestDAO.getTest(testID);
         title = findViewById(R.id.questionNb);
-        title.setText("Question #" + currentNbQuestion +"/" + maxNbQuestion );
+        title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
 
         textQuestion = findViewById(R.id.question_text);
         textAnswer1 = findViewById(R.id.answer_text1);
@@ -85,7 +85,7 @@ public class Challenge extends AppCompatActivity {
 
     }
 
-    private void setupListener(){
+    private void setupListener() {
 
         cardAnswer1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +114,7 @@ public class Challenge extends AppCompatActivity {
 
     }
 
-    private void answered(String answer){
+    private void answered(String answer) {
         int duration = Toast.LENGTH_SHORT;
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, answer, duration);
@@ -126,9 +126,19 @@ public class Challenge extends AppCompatActivity {
 
     private void next() {
         currentNbQuestion++;
-        title.setText("Question #" + currentNbQuestion +"/" + maxNbQuestion );
+        title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
 
-        if(currentNbQuestion>5){
+        currentQuestion = currentTest.nextQuestion();
+        currentAnswer = currentQuestion.getAnswers();
+
+        textQuestion.setText(currentQuestion.getText());
+
+        textAnswer1.setText(currentAnswer[0].getText());
+        textAnswer2.setText(currentAnswer[1].getText());
+        textAnswer3.setText(currentAnswer[2].getText());
+        textAnswer4.setText(currentAnswer[3].getText());
+
+        if (currentNbQuestion > 5) {
 
             title.setText("WIP Résultat");
         }

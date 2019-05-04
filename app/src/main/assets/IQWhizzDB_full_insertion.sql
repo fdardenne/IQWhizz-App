@@ -42,8 +42,28 @@ insert into Questions(difficulty, category, image, text) values (3,'reflexion','
 insert into PossibleAnswers values (1, 1, 100, 'img1.png', 'Rép a');
 insert into PossibleAnswers values (2, 1, 0, 'img2.png', 'Rép b');
 insert into PossibleAnswers values (3, 1, 0, 'img3.png', 'Rép c');
-insert into PossibleAnswers values (4, 2, 0, 'img4.png', 'A');
-insert into PossibleAnswers values (5, 2, 100, 'img5.png', 'B');
+insert into PossibleAnswers values (4, 1, 0, 'img3.png', 'Rép d');
+
+insert into PossibleAnswers values (5, 2, 0, 'img4.png', 'A');
+insert into PossibleAnswers values (6, 2, 100, 'img5.png', 'B');
+insert into PossibleAnswers values (7, 2, 0, 'img5.png', 'C');
+insert into PossibleAnswers values (8, 2, 0, 'img5.png', 'D');
+
+insert into PossibleAnswers values (9, 3, 0, 'img4.png', 'Non');
+insert into PossibleAnswers values (10, 3, 0, 'img5.png', 'Peut etre');
+insert into PossibleAnswers values (11, 3, 100, 'img5.png', 'Oui');
+insert into PossibleAnswers values (12, 3, 0, 'img5.png', 'Jamais');
+
+insert into PossibleAnswers values (13, 4, 0, 'img4.png', 'Noon');
+insert into PossibleAnswers values (14, 4, 0, 'img5.png', 'Peut etre');
+insert into PossibleAnswers values (15, 4, 0, 'img5.png', 'Oui');
+insert into PossibleAnswers values (16, 4, 100, 'img5.png', 'Jamais');
+
+insert into PossibleAnswers values (17, 5, 0, 'img4.png', 'Non');
+insert into PossibleAnswers values (18, 5, 100, 'img5.png', 'Peut etre');
+insert into PossibleAnswers values (19, 5, 0, 'img5.png', 'Oui');
+insert into PossibleAnswers values (20, 5, 0, 'img5.png', 'Jamais');
+
 insert into PossibleAnswers values (6, 3, 0, NULL, '12');
 insert into PossibleAnswers values (7, 5, 0, NULL, '12');
 
