@@ -111,7 +111,7 @@ public class Challenge extends AppCompatActivity {
         Toast toast = Toast.makeText(context, answer, duration);
         toast.show();
 
-        
+
 
 
         next();
@@ -126,6 +126,7 @@ public class Challenge extends AppCompatActivity {
 
         currentQuestion = currentTest.getNextQuestion();
         currentAnswer = currentQuestion.getAnswers();
+        Log.d("TEST FLORENT", currentQuestion.getText() + currentQuestion.getID());
 
         textQuestion.setText(currentQuestion.getText());
 

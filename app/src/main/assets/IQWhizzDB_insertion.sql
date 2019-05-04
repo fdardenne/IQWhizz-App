@@ -93,32 +93,32 @@ insert into PossibleAnswers values (57, 12, 0, NULL, 'faux');
 insert into PossibleAnswers values (58, 13, 0, NULL, 'vrai');
 insert into PossibleAnswers values (59, 13, 0, NULL, 'faux');
 
-insert into PossibleAnswers values(28, 14, 0, NULL, 'object balanced organising');
-insert into PossibleAnswers values(29, 14, 200, NULL, 'Olivier Bonaventure');
-insert into PossibleAnswers values(30, 14, 0, NULL, 'owner buy-out');
-insert into PossibleAnswers values(31, 14, 0, NULL, "le nom d\'une ville en centrafrique");
+insert into PossibleAnswers values(60, 14, 0, NULL, 'object balanced organising');
+insert into PossibleAnswers values(61, 14, 200, NULL, 'Olivier Bonaventure');
+insert into PossibleAnswers values(62, 14, 0, NULL, 'owner buy-out');
+insert into PossibleAnswers values(63, 14, 0, NULL, "le nom d\'une ville en centrafrique");
 
-insert into PossibleAnswers values(32, 15, 0, NULL, 'Benjamin DeCeuninck');
-insert into PossibleAnswers values(33, 15 , 0, NULL, 'Quentin deConinck');
-insert into PossibleAnswers values(33, 15, 0, NULL, 'Quentin Plagiat');
-insert into PossibleAnswers values(34, 15 , 200, NULL, 'Benjamin deConinck');
+insert into PossibleAnswers values(64, 15, 0, NULL, 'Benjamin DeCeuninck');
+insert into PossibleAnswers values(65, 15 , 0, NULL, 'Quentin deConinck');
+insert into PossibleAnswers values(66, 15, 0, NULL, 'Quentin Plagiat');
+insert into PossibleAnswers values(67, 15 , 200, NULL, 'Benjamin deConinck');
 
-insert into PossibleAnswers values(32, 16, 200, NULL, 'Kim Mens');
-insert into PossibleAnswers values(33, 16 , 0, NULL, 'Peter Van Roy');
-insert into PossibleAnswers values(33, 16, 0, NULL, 'Charles Pêcheur');
-insert into PossibleAnswers values(34, 16 , 0, NULL, 'Olivier Bonaventure');
+insert into PossibleAnswers values(68, 16, 200, NULL, 'Kim Mens');
+insert into PossibleAnswers values(69, 16 , 0, NULL, 'Peter Van Roy');
+insert into PossibleAnswers values(70, 16, 0, NULL, 'Charles Pêcheur');
+insert into PossibleAnswers values(71, 16 , 0, NULL, 'Olivier Bonaventure');
 
-insert into PossibleAnswers values(32, 17, 0, NULL, 'Un frisbee');
-insert into PossibleAnswers values(33, 17 , 200, NULL, 'Une startup');
-insert into PossibleAnswers values(33, 17, 0, NULL, 'Une convention TinderForCode');
-insert into PossibleAnswers values(34, 17 , 0, NULL, 'Des tests CUnit');
+insert into PossibleAnswers values(72, 17, 0, NULL, 'Un frisbee');
+insert into PossibleAnswers values(73, 17 , 200, NULL, 'Une startup');
+insert into PossibleAnswers values(74, 17, 0, NULL, 'Une convention TinderForCode');
+insert into PossibleAnswers values(75, 17 , 0, NULL, 'Des tests CUnit');
 
-insert into PossibleAnswers values(32, 18, 0, NULL, 'le nombre de coeurs du pc x 2 ');
-insert into PossibleAnswers values(33, 18 , 0, NULL, '42');
-insert into PossibleAnswers values(33, 18, 200, NULL, 'personne ne sait');
-insert into PossibleAnswers values(34, 18 , 0, NULL, "le nombre de sources différents d\'ou viennent les fichiers de lecture");
+insert into PossibleAnswers values(76, 18, 0, NULL, 'le nombre de coeurs du pc x 2 ');
+insert into PossibleAnswers values(77, 18 , 0, NULL, '42');
+insert into PossibleAnswers values(78, 18, 200, NULL, 'personne ne sait');
+insert into PossibleAnswers values(79, 18 , 0, NULL, "le nombre de sources différents d\'ou viennent les fichiers de lecture");
 
-insert into PossibleAnswers values(32, 19, 0, NULL, 'Kim Mens');
-insert into PossibleAnswers values(33, 19 , 0, NULL, 'Quider Ben Naoum');
-insert into PossibleAnswers values(33, 19, 0, NULL, 'Miltiadis Papalexandris');
-insert into PossibleAnswers values(34, 19 , 200, NULL, 'Joris Proost');
+insert into PossibleAnswers values(80, 19, 0, NULL, 'Kim Mens');
+insert into PossibleAnswers values(81, 19 , 0, NULL, 'Quider Ben Naoum');
+insert into PossibleAnswers values(82, 19, 0, NULL, 'Miltiadis Papalexandris');
+insert into PossibleAnswers values(83, 19 , 200, NULL, 'Joris Proost');
