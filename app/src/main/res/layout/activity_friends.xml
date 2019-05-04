@@ -42,14 +42,16 @@
             >
 
             <EditText
+                android:id="@+id/text_friend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Ajouter un ami"/>
+                android:hint="Ajouter un ami" />
 
             <Button
-                android:layout_margin="2dp"
+                android:id="@+id/add_friend"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_margin="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:text="Ajouter"
                 android:textColor="#FFFFFF" />
