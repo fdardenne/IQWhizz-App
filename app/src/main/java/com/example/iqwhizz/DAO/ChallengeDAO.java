@@ -15,7 +15,7 @@ public class ChallengeDAO {
      * @param username
      * @return la liste des défis
      */
-    // TODO : implémenter Challenge et vérifier si ok.
+    // TODO : implémenter Challenge et vérifier si ok. (ça me semble bon pour challengeDAO )
     public static Challenge[] getUnDoneChallenge(String username)
     {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();

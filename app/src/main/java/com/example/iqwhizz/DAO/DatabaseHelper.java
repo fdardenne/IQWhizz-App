@@ -2,6 +2,7 @@ package com.example.iqwhizz.DAO;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -51,13 +52,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             AssetManager am = AppContextProvider.getContext().getAssets();
             Scanner scan = new Scanner(am.open(SQLfiles[file]));
-            scan.useDelimiter(Pattern.compile(";\n"));
+            scan.useDelimiter(Pattern.compile(";"));
             while (scan.hasNext()) {
                 String SQL = scan.next();
+                if (SQL.equals("\n") || SQL.equals("\r\n")) {
+                    break;
+                }
+                SQL = SQL.replace("\r", "");
                 SQL = SQL.replace("\n", "");
                 db.execSQL(SQL);
             }
-        } catch (IOException e) {
+        }
+        catch (SQLException e) {
+            String str = e.getMessage();
+            if (!str.equals("not an error (code 0 SQLITE_OK)")) {
+                e.printStackTrace();
+            }
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
