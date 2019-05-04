@@ -39,14 +39,13 @@ public class Stats extends AppCompatActivity {
 
 
 
-        userQI = StatsDAO.getAverageIQ(User.currentUser.getUsername());
+        bestQI = StatsDAO.getBestIQ(User.currentUser.getUsername());
         if (userQI == -1){
             userQI = 0;
         }
         if(bestQI == -1){
             bestQI = 0;
         }
-        bestQI = 130;
 
         actualQI = findViewById(R.id.myIQ);
         myBestQI = findViewById(R.id.myBestIQ);

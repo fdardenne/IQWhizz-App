@@ -80,9 +80,10 @@ public class ChallengeInit extends AppCompatActivity {
             if(!UserDAO.userExists(username_friend.getText().toString())){
                 errormessage.setText("L'utilisateur n'existe pas");
             }else{
+                boolean flag = false;
                 Friendship[] friends = FriendshipDAO.getFriendList(User.currentUser.getUsername());
                 for(Friendship f: friends){
-                    if((f.getReceiver().equals(username_friend) || f.getSender().equals(username_friend))  && f.isAccepted() ) {
+                    if((f.getReceiver().equals(username_friend.getText().toString()) || f.getSender().equals(username_friend.getText().toString()))  && f.isAccepted() ) {
                         //Friend found and is a friend
                         int duration = Toast.LENGTH_SHORT;
                         Context context = getApplicationContext();
@@ -93,16 +94,19 @@ public class ChallengeInit extends AppCompatActivity {
                         challengeIntent.putExtra("type", type.getSelectedItem().toString());
                         challengeIntent.putExtra("category", category.getSelectedItem().toString());
                         startActivity(challengeIntent);
+                        flag = true;
                         this.finish();
-
 
                     }
                 }
-                int duration = Toast.LENGTH_SHORT;
-                Context context = getApplicationContext();
-                Toast toast = Toast.makeText(context, "Cet utilisateur n'est pas dans vos amis !", duration);
-                errormessage.setText("Cet utilisateur n'est pas dans vos amis !");
-                toast.show();
+                if(!flag){
+                    int duration = Toast.LENGTH_SHORT;
+                    Context context = getApplicationContext();
+                    Toast toast = Toast.makeText(context, "Cet utilisateur n'est pas dans vos amis !", duration);
+                    errormessage.setText("Cet utilisateur n'est pas dans vos amis !");
+                    toast.show();
+                }
+
 
 
 

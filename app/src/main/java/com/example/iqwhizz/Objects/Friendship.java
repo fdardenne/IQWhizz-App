@@ -90,9 +90,9 @@ public class Friendship {
 
     public static ArrayList<String> getFriendsUsername(String username) {
         ArrayList<String> list_friend = new ArrayList<>();
-        Friendship[] user_friendship = FriendshipDAO.getFriendList(User.currentUser.getUsername());
+        Friendship[] user_friendship = FriendshipDAO.getFriendList(username);
         for(int i = 0; i<user_friendship.length; i++){
-            if(user_friendship[i].getSender()==username){
+            if(user_friendship[i].getSender().equals(username)){
                 list_friend.add(user_friendship[i].getReceiver());
             }
             else {
