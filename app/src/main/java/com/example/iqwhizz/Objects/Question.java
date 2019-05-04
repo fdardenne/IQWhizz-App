@@ -24,10 +24,12 @@ public class Question {
     {
         this.questionID=questionID;
         this.category=category;
+
         this.image=image;
         this.text=text;
         this.difficulty=difficulty;
         this.answers= QuestionDAO.getAnswers(questionID); //création de la liste avec elements données par DAO
+
     }
 
      /*
@@ -58,6 +60,10 @@ public class Question {
     public int getID ()
     {
         return questionID;
+    }
+
+    public String getText(){
+        return this.text;
     }
 
 }
