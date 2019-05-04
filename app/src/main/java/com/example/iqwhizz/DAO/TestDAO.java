@@ -115,7 +115,7 @@ public class TestDAO {
 
     private static Question[] loadQuestions(String category, int nQuestions) {
         if (category.equals("random")) {
-            String[] categories = {"reflexion", "logique", "calcul mental"};
+            String[] categories = {"reflexion", "logique", "info"};
             Random rand = new Random();
             int nRand = rand.nextInt(categories.length);
             return loadQuestions(categories[nRand], nQuestions);
