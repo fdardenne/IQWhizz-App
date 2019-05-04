@@ -36,8 +36,8 @@ public class History extends AppCompatActivity {
             int longueur = testIDs.length;
             for (int i = 0; i < longueur; i = i + 2)
             {
-                Test letest = TestDAO.getTest(testIDs[i]);
-                int date = testIDs[i + 1];
+                Test letest = TestDAO.getTest(testIDs[i], 0);
+                int date = testIDs[i + 1]; // Bizarre non ?
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String date1 = dateFormat.format(date);
                 add_history(date1, letest.getCategory(), letest.getType(), Integer.toString(StatsDAO.getIQ(username, testIDs[i])));

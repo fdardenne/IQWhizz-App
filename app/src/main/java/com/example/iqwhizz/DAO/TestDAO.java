@@ -24,19 +24,49 @@ public class TestDAO {
         return already;
     }
 
+    public static Test startTest(int testID) {
+        Test test = getTest(testID, 0);
+        boolean bool = executeTest(test);
+        return (bool) ? test : null ;
+    }
 
-    public static Test getTest (int testID) {
+    public static Test resumeTest(String username) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT testID, max(execution_date) FROM TestExecutions WHERE username = \"" + username + "\" GROUP BY testID", null);
+        cursor.moveToFirst();
+        if (cursor.getCount()==0) {
+            return null;
+        }
+        else {
+            int testID = cursor.getInt(0);
+            return getTest(testID, getNextQuestionIndex(testID, username));
+        }
+    }
+
+    private static int getNextQuestionIndex(int testID, String username) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT count(*) FROM SelectedAnswers WHERE testID="+testID+" AND username=\""+username+"\"", null);
+        cursor.moveToFirst();
+        if (cursor.getCount()==0) {
+            return cursor.getCount();
+        }
+        else {
+            return cursor.getInt(0);
+        }
+    }
+
+    public static Test getTest (int testID, int nextQuestion) {
         Log.d("TestDAO - getTest", "Getting the test ...");
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT type FROM Tests WHERE testID = " + testID, null);
         cursor.moveToFirst();
         String type = cursor.getString(0);
-        Test test = new Test(testID, getCategory(testID), type, loadQuestions(testID));
+        Test test = new Test(testID, getCategory(testID), type, loadQuestions(testID), nextQuestion);
         Log.d("TestDAO - getTest", "Test successfully obtained");
         return test;
     }
 
-    public static boolean executeTest(Test test) {
+    private static boolean executeTest(Test test) {
         Log.d("TestDAO - getTest", "executeTest ...");
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT type FROM Tests WHERE testID = " + test.getTestID(), null);
@@ -164,7 +194,7 @@ public class TestDAO {
         ContentValues value = new ContentValues();
         value.put("executionID", test.getExecutionID());
         value.put("testID", test.getTestID());
-        value.put("questionID", test.getCurrentQuestionID());
+        value.put("questionID", test.getNextQuestionID());
         value.put("answerID", answerID);
         value.put("time", time);
         long rowID = db.insert("SelectedAnswers", null, value);
