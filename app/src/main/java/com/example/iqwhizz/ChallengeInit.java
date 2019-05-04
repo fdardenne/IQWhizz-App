@@ -47,7 +47,7 @@ public class ChallengeInit extends AppCompatActivity {
         username_friend.setVisibility(View.INVISIBLE);
 
 
-        String[] items = new String[]{"Aléatoire", "Réflexion", "Logique", "Calcul mental", "INFO"};
+        String[] items = new String[]{"random", "Réflexion", "Logique", "Calcul mental", "INFO"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         category.setAdapter(adapter);
 

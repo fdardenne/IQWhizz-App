@@ -43,7 +43,6 @@ public class Challenge extends AppCompatActivity {
 
 
         currentNbQuestion = 1;
-        //TEMPORAIRE, Challenge Init doit donné un Test a Challenge
         this.currentTest = TestDAO.startTest(getIntent().getIntExtra("testID", -1));
         maxNbQuestion = (currentTest.getType().equals("court")) ? 5 : 40;
 
@@ -119,7 +118,7 @@ public class Challenge extends AppCompatActivity {
         currentNbQuestion++;
         title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
 
-        currentQuestion = currentTest.nextQuestion();
+        currentQuestion = currentTest.getNextQuestion();
         currentAnswer = currentQuestion.getAnswers();
 
         textQuestion.setText(currentQuestion.getText());
