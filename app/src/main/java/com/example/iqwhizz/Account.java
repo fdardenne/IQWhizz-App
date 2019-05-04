@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.iqwhizz.DAO.UserDAO;
 import com.example.iqwhizz.Objects.User;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Account extends AppCompatActivity {
@@ -51,7 +52,9 @@ public class Account extends AppCompatActivity {
         username.setText(user.getUsername());
 
         birthdate = findViewById(R.id.birthday_account);
-        birthdate.setText(Integer.toString(user.getBirthdate()));
+        Date date = new Date( ((long) user.getBirthdate()) * 1000);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        birthdate.setText(dateFormat.format(date));
 
 
         modify = findViewById(R.id.modify);
