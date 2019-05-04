@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,7 +66,7 @@ public class Challenge extends AppCompatActivity {
         currentAnswer = currentQuestion.getAnswers();
 
         textQuestion.setText(currentQuestion.getText());
-
+        Log.d("TEST FLORENT", currentQuestion.getText());
         textAnswer1.setText(currentAnswer[0].getText());
         textAnswer2.setText(currentAnswer[1].getText());
         textAnswer3.setText(currentAnswer[2].getText());
@@ -110,11 +111,7 @@ public class Challenge extends AppCompatActivity {
         Toast toast = Toast.makeText(context, answer, duration);
         toast.show();
 
-        for(Answer a: currentAnswer){
-            if(a.getText().toString().equals(answer)){
-                currentTest.answerToQuestion(a.getAnswerID(), 1);
-            }
-        }
+        
 
 
         next();
