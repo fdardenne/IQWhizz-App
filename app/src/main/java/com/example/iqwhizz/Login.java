@@ -10,10 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.iqwhizz.DAO.UserDAO;
 import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.DAO.DatabaseHelper;
 import com.example.iqwhizz.DAO.TestDAO;
 import com.example.iqwhizz.Objects.User;
+
+import java.util.Date;
 
 
 public class Login extends AppCompatActivity {
@@ -65,6 +68,8 @@ public class Login extends AppCompatActivity {
         String userStr = username.getText().toString();
         String pwdStr = password.getText().toString();
         if(User.connectUser(userStr, pwdStr)){
+            int date = (int) new Date().getTime()/1000 ;
+            UserDAO.updateLatCoDate(userStr, date);
             Intent intentMenu = new Intent(this, Menu.class);
             Log.i("TEST", username.getText() + " connected");
             errormessage.setText("");

@@ -16,22 +16,28 @@ insert into Users values ('Maxime', 'vache', 'nl', strftime('%s','1999-06-08'),
 insert into Users values ('Florent', 'Coucou', 'fr', strftime('%s','1999-01-01'),
 'florent@telenet.be',strftime('%s','2019-02-25'), strftime('%s','now'),'florent.png');
 
-
+--    questionID integer       primary key,
+--    difficulty integer       not null,
+--    category   text          not null,
+--    image      blob,
+--    text       text          not null
 
 insert into Questions values (1, 1, 'logique', 'img1.png', 'testez ...');
 insert into Questions values (2, 1, 'logique', 'img2.png', 'trouvez ...');
 insert into Questions values (3, 1, 'logique', 'img3.png', 'choisir ...');
 insert into Questions values (4, 3, 'reflexion', 'img4.png', 'priez ...');
 insert into Questions values (5, 2, 'reflexion', 'img5.png', 'trouvez ...');
-insert into Questions values (6, 3, 'math', 'img6.png', 'choisir ...');
-insert into Questions(difficulty, category, image, text) values (4,'reflexion','img7.png', 'bla bla bla');
-insert into Questions(difficulty, category, image, text) values (2,'logique','img8.png', 'bla bla bla');
-insert into Questions(difficulty, category, image, text) values (1,'math','img9.png', 'bla bla bla');
-insert into Questions(difficulty, category, image, text) values (3,'logique','img10.png', 'bla bla bla');
-insert into Questions(difficulty, category, image, text) values (2,'logique','img11.png', 'bla bla bla');
-insert into Questions(difficulty, category, image, text) values (1,'reflexion','img12.png', 'bla bla bla');
-insert into Questions(difficulty, category, image, text) values (3,'reflexion','img13.png', 'bla bla bla');
+insert into Questions values (6, 3, 'calcul mental', 'img6.png', 'choisir ...');
+insert into Questions values (7,4,'reflexion','img7.png', 'bla bla bla');
+insert into Questions values (8,2,'logique','img8.png', 'bla bla bla');
+insert into Questions values (9,1,'calcul mental','img9.png', 'bla bla bla');
+insert into Questions values (10,3,'logique','img10.png', 'bla bla bla');
+insert into Questions values (11,2,'logique','img11.png', 'bla bla bla');
+insert into Questions values (12,1,'reflexion','img12.png', 'bla bla bla');
+insert into Questions values (13,3,'reflexion','img13.png', 'bla bla bla');
 
+-- systinfo
+insert into Questions values(14,1,'systinfo',null,'Que signifient les initiales obo?');
 
 
 insert into PossibleAnswers values (1, 1, 200, 'img1.png', 'Rép a');
@@ -61,3 +67,10 @@ insert into PossibleAnswers values (24, 12, 200, NULL, 'vrai');
 insert into PossibleAnswers values (25, 12, 0, NULL, 'faux');
 insert into PossibleAnswers values (26, 13, 200, NULL, 'vrai');
 insert into PossibleAnswers values (27, 13, 0, NULL, 'faux');
+
+-- systinfo
+insert into PossibleAnswers values(28, 14, 0, NULL, 'object balanced organising');
+insert into PossibleAnswers values(29, 14, 200, NULL, 'Olivier Bonaventure');
+insert into PossibleAnswers values(30, 14, 0, NULL, 'owner buy-out');
+insert into PossibleAnswers values(31, 14, 0, NULL, 'le nom d\'une ville en centrafrique');
+

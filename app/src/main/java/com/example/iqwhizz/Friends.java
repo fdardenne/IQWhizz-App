@@ -77,6 +77,7 @@ public class Friends extends AppCompatActivity {
             }
 
             toast = Toast.makeText(context, "Une requête a été envoyé à " + text_friend.getText() + " !", duration);
+            FriendshipDAO.addFriend(text_friend.getText().toString(), User.currentUser.getUsername());
             toast.show();
         }
 

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.iqwhizz.DAO.UserDAO;
 import com.example.iqwhizz.Objects.User;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Account extends AppCompatActivity {
@@ -51,7 +52,9 @@ public class Account extends AppCompatActivity {
         username.setText(user.getUsername());
 
         birthdate = findViewById(R.id.birthday_account);
-        birthdate.setText(Integer.toString(user.getBirthdate()));
+        Date date = new Date( ((long) user.getBirthdate()) * 1000);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        birthdate.setText(dateFormat.format(date));
 
 
         modify = findViewById(R.id.modify);
@@ -100,15 +103,16 @@ public class Account extends AppCompatActivity {
         else{
             int duration = Toast.LENGTH_SHORT;
             Context context = getApplicationContext();
-            Toast toast = Toast.makeText(context, "Modifié !", duration);
-            toast.show();
+            Toast toast;
 
-            if(!password_str.equals("")){
+            if(password_str.equals("")){
                 UserDAO.updateBirthDate(username_str,birth_d);
                 UserDAO.updateEmail(User.currentUser.getUsername(),email_str);
                 UserDAO.updateLanguage(username_str,lang_str);
                 UserDAO.updateProfilePicture(username_str,profile_pic);
-                Log.i("app", password_str);
+                toast = Toast.makeText(context, "Sans mdp !", duration);
+                toast.show();
+
 
             }else{
                 UserDAO.updateBirthDate(username_str,birth_d);
@@ -116,6 +120,9 @@ public class Account extends AppCompatActivity {
                 UserDAO.updateLanguage(username_str,lang_str);
                 UserDAO.updateProfilePicture(username_str,profile_pic);
                 UserDAO.updatePassword(username_str,password_str);
+
+                toast = Toast.makeText(context, "Avec mdp !", duration);
+                toast.show();
             }
     
 

@@ -147,4 +147,19 @@ public class UserDAO {
         }
     }
 
+
+    public static boolean updateLatCoDate(String username, int date)
+    {
+        SQLiteDatabase db = DatabaseHelper.getWritableDb();
+        ContentValues value = new ContentValues();
+        value.put("last_connection", date);
+        int rows = db.update("Users", value, "username=?", new String[]{username});
+        if (rows!=1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 }
