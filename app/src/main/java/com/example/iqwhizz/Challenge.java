@@ -110,6 +110,13 @@ public class Challenge extends AppCompatActivity {
         Toast toast = Toast.makeText(context, answer, duration);
         toast.show();
 
+        for(Answer a: currentAnswer){
+            if(a.getText().toString().equals(answer)){
+                currentTest.answerToQuestion(a.getAnswerID(), 1);
+            }
+        }
+
+
         next();
 
     }
@@ -117,6 +124,8 @@ public class Challenge extends AppCompatActivity {
     private void next() {
         currentNbQuestion++;
         title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
+
+
 
         currentQuestion = currentTest.getNextQuestion();
         currentAnswer = currentQuestion.getAnswers();
