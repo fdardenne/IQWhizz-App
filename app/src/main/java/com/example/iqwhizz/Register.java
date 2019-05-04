@@ -71,8 +71,8 @@ public class Register extends AppCompatActivity {
         String lang_str = dropdown.getSelectedItem().toString();
         String birthd = birthdate.getText().toString();
         int birth_d = 0;
-        int reg_d = 0; //TODO
-        int last_co = 0; //TODO
+        int reg_d = (int) new Date().getTime()/1000 ;
+        int last_co = reg_d;
         byte[] profile_pic = null; //TODO
 
 
