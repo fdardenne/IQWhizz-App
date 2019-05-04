@@ -68,7 +68,6 @@ public class Login extends AppCompatActivity {
         String userStr = username.getText().toString();
         String pwdStr = password.getText().toString();
         if(User.connectUser(userStr, pwdStr)){
-            //TODO: update last connected de l'user dans la databse
             int date = (int) new Date().getTime()/1000 ;
             UserDAO.updateLatCoDate(userStr, date);
             Intent intentMenu = new Intent(this, Menu.class);
