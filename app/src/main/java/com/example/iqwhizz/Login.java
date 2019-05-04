@@ -38,8 +38,6 @@ public class Login extends AppCompatActivity {
         register = findViewById(R.id.register);
 
         setUpListener();
-
-        DatabaseHelper.recreateDB();
     }
 
     private void setUpListener(){
