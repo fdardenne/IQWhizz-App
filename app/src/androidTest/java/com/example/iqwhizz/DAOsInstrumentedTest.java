@@ -46,14 +46,15 @@ public class DAOsInstrumentedTest {
 
     public void generatingTest() {
         try {
-            boolean boolTest1 = TestDAO.generateTest("logique", "court");
-            boolean boolTest2 = TestDAO.generateTest("reflexion", "court");
-            com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
-            com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(2);
-            boolean[] bools = {boolTest1, boolTest2};
-            for (boolean bool : bools) {
-                assertTrue(bool);
+            int testID1 = TestDAO.generateTest("logique", "court");
+            int testID2 = TestDAO.generateTest("reflexion", "court");
+            int[] ids = {testID1, testID2};
+            for (int id : ids) {
+                assertTrue(id>0);
             }
+            com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(testID1);
+            com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(testID2);
+
 
             db = DatabaseHelper.getReadableDb();
             Cursor cursor = db.rawQuery("SELECT * FROM Tests WHERE testID = " + test1.getTestID() + " OR testID = " + test2.getTestID(), null);
@@ -170,11 +171,11 @@ public class DAOsInstrumentedTest {
     public void averageAndBestIQ() {
         com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
         com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(2);
-        boolean boolTest3 = TestDAO.generateTest("logique", "court");
-        boolean boolTest4 = TestDAO.generateTest("reflexion", "court");
-        com.example.iqwhizz.Objects.Test test3 = TestDAO.getTest(3);
-        com.example.iqwhizz.Objects.Test test4 = TestDAO.getTest(4);
-        boolean[] bools = {boolTest3, boolTest4, TestDAO.executeTest(test1), TestDAO.executeTest(test2), TestDAO.executeTest(test3), TestDAO.executeTest(test4)};
+        int testID3 = TestDAO.generateTest("logique", "court");
+        int testID4 = TestDAO.generateTest("reflexion", "court");
+        com.example.iqwhizz.Objects.Test test3 = TestDAO.getTest(testID3);
+        com.example.iqwhizz.Objects.Test test4 = TestDAO.getTest(testID4);
+        boolean[] bools = {testID3>0, testID4>0, TestDAO.executeTest(test1), TestDAO.executeTest(test2), TestDAO.executeTest(test3), TestDAO.executeTest(test4)};
         for(boolean bool : bools) {
             assertTrue(bool);
         }

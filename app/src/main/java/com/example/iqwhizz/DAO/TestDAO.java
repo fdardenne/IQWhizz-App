@@ -104,13 +104,13 @@ public class TestDAO {
         }
     }
 
-    public static boolean generateTest(String category, String type) {
+    public static int generateTest(String category, String type) {
         int nQuestions = (type.equals("long")) ? 40 : 5 ;
         Log.d("TestDAO - generateTest", type + " test creation begins ...");
         Question[] questions = loadQuestions(category, nQuestions);
         int testID = saveTest(category, type, questions);
         Log.d("TestDAO - generateTest", type + " test -> OK");
-        return (testID > 0);
+        return testID;
     }
 
     private static int saveTest(String category, String type, Question[] questions) {

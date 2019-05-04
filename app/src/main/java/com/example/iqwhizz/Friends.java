@@ -5,20 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.iqwhizz.DAO.FriendshipDAO;
-import com.example.iqwhizz.DAO.StatsDAO;
 import com.example.iqwhizz.DAO.UserDAO;
 import com.example.iqwhizz.Objects.Friendship;
 import com.example.iqwhizz.Objects.User;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Friends extends AppCompatActivity {
 

@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.iqwhizz.Objects.Friendship;
+import com.example.iqwhizz.Objects.User;
 
 public class FriendshipDAO {
 
@@ -153,6 +154,26 @@ public class FriendshipDAO {
             cursor.moveToNext();
         }
         return requests;
+    }
+
+    public static boolean isAcceptedFriend(String my_username, String friend) {
+        return isFriend(my_username, friend, 1) > 0;
+    }
+
+    private static int isFriend(String my_username, String friend, int i) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.query("Friendships",
+                new String[]{"count(*)"},
+                "(sender=? AND receiver=?) OR (receiver=? AND sender=?) AND isAccepted="+i,
+                new String[]{friend, my_username, friend, my_username},
+                null, null, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        return count;
+    }
+
+    public static boolean isInvitedFriend(String my_username, String friend) {
+        return isFriend(my_username, friend, 0) > 0;
     }
 
     public static boolean deleteFriendship(String sender, String receiver) {

@@ -14,9 +14,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.iqwhizz.DAO.ChallengeDAO;
 import com.example.iqwhizz.DAO.FriendshipDAO;
+import com.example.iqwhizz.DAO.TestDAO;
 import com.example.iqwhizz.DAO.UserDAO;
 import com.example.iqwhizz.Objects.Friendship;
+import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.Objects.User;
 
 public class ChallengeInit extends AppCompatActivity {
@@ -41,8 +44,9 @@ public class ChallengeInit extends AppCompatActivity {
         play = findViewById(R.id.new_challenge);
         username_friend.setInputType(InputType.TYPE_NULL);
         username_friend.setFocusable(false);
+        username_friend.setVisibility(View.INVISIBLE);
 
-        String[] items = new String[]{"Aléatoire", "Math", "Puzzle", "Culture générale"};
+        String[] items = new String[]{"Aléatoire", "Réflexion", "Logique", "Math"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         category.setAdapter(adapter);
 
@@ -58,10 +62,12 @@ public class ChallengeInit extends AppCompatActivity {
                 if( switch_friend.isChecked()){
                     username_friend.setInputType(InputType.TYPE_CLASS_TEXT);
                     username_friend.setFocusableInTouchMode(true);
+                    username_friend.setVisibility(View.VISIBLE);
                 }else{
                     username_friend.setInputType(InputType.TYPE_NULL);
                     username_friend.setFocusable(false);
                     username_friend.setText("");
+                    username_friend.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -74,60 +80,45 @@ public class ChallengeInit extends AppCompatActivity {
     }
 
     private void play_game() {
-        Intent challengeIntent = new Intent(this, Challenge.class);
-        if( switch_friend.isChecked()){
-
-            if(!UserDAO.userExists(username_friend.getText().toString())){
+        if(switch_friend.isChecked()) {
+            if (!UserDAO.userExists(username_friend.getText().toString())) {
                 errormessage.setText("L'utilisateur n'existe pas");
-            }else{
-                boolean flag = false;
-                Friendship[] friends = FriendshipDAO.getFriendList(User.currentUser.getUsername());
-                for(Friendship f: friends){
-                    if((f.getReceiver().equals(username_friend.getText().toString()) || f.getSender().equals(username_friend.getText().toString()))  && f.isAccepted() ) {
-                        //Friend found and is a friend
-                        int duration = Toast.LENGTH_SHORT;
-                        Context context = getApplicationContext();
-                        Toast toast = Toast.makeText(context, "Bon jeu !", duration);
-                        toast.show();
-                        errormessage.setText("");
-                        challengeIntent.putExtra("Friend", true);
-                        challengeIntent.putExtra("type", type.getSelectedItem().toString());
-                        challengeIntent.putExtra("category", category.getSelectedItem().toString());
-                        startActivity(challengeIntent);
-                        flag = true;
-                        this.finish();
-
-                    }
-                }
-                if(!flag){
+            } else {
+                String currentUser = User.currentUser.getUsername();
+                String friend = username_friend.getText().toString();
+                if (FriendshipDAO.isAcceptedFriend(currentUser, friend)) {
+                    startGame(friend);
+                } else {
                     int duration = Toast.LENGTH_SHORT;
                     Context context = getApplicationContext();
                     Toast toast = Toast.makeText(context, "Cet utilisateur n'est pas dans vos amis !", duration);
                     errormessage.setText("Cet utilisateur n'est pas dans vos amis !");
                     toast.show();
                 }
-
-
-
-
             }
-
-
-
-
-        }else{
-            int duration = Toast.LENGTH_SHORT;
-            Context context = getApplicationContext();
-            Toast toast = Toast.makeText(context, "Bon jeu !", duration);
-            toast.show();
-
-            challengeIntent.putExtra("Friend", false);
-            challengeIntent.putExtra("type", type.getSelectedItem().toString());
-            challengeIntent.putExtra("category", category.getSelectedItem().toString());
-            errormessage.setText("");
-            startActivity(challengeIntent);
-            this.finish();
         }
+        else {
+            startGame(null);
+        }
+    }
 
+    private void startGame(String friend) {
+        Intent challengeIntent = new Intent(this, Challenge.class);
+
+        int duration = Toast.LENGTH_SHORT;
+        Context context = getApplicationContext();
+        Toast toast = Toast.makeText(context, "Bon jeu !", duration);
+        toast.show();
+        String category_str = category.getSelectedItem().toString().toLowerCase();
+        String type_str = (type.getSelectedItem().toString().equals("Court (5 questions)")) ? "court" : "long";
+
+        int testID = TestDAO.generateTest(category_str, type_str);
+        if (friend != null) {
+            ChallengeDAO.newChallenge(User.currentUser.getUsername(), friend, testID);
+        }
+        challengeIntent.putExtra("testID", testID);
+        errormessage.setText("");
+        startActivity(challengeIntent);
+        this.finish();
     }
 }
