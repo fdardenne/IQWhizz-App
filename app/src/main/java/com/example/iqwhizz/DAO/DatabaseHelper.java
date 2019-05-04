@@ -55,18 +55,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             scan.useDelimiter(Pattern.compile(";"));
             while (scan.hasNext()) {
                 String SQL = scan.next();
-                if (SQL.equals("\n") || SQL.equals("\r\n")) {
-                    break;
+                //if (SQL.equals("\n") || SQL.equals("\r\n")) {
+                //    break;
+                //}
+                //SQL = SQL.replace("\r", "");
+                //SQL = SQL.replace("\n", "");
+                try {
+                    db.execSQL(SQL);
                 }
-                SQL = SQL.replace("\r", "");
-                SQL = SQL.replace("\n", "");
-                db.execSQL(SQL);
-            }
-        }
-        catch (SQLException e) {
-            String str = e.getMessage();
-            if (!str.equals("not an error (code 0 SQLITE_OK)")) {
-                e.printStackTrace();
+                catch (SQLException e) {
+                    String str = e.getMessage();
+                    if (!str.equals("not an error (code 0 SQLITE_OK)")) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
         catch (Exception e) {
@@ -93,10 +95,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         execSQLfile(0,db);
-        //execSQLfile(1,db);
+        execSQLfile(1,db);
 
         //Florent Test
-        execSQLfile(3, db);
+        //execSQLfile(3, db);
         //End
 
         Log.d("Hadrien's Tests", "DB creation -> OK");

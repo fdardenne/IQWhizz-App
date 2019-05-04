@@ -32,11 +32,10 @@ public class QuestionDAO {
 
     public static Question getRandomQuestion (String category) {
         Log.d("Hadrien's Tests", "getRandomQuestion begins ...");
-        //DatabaseHelper helper = DatabaseHelper.getDbHelper();
-        //SQLiteDatabase db = helper.getReadableDatabase();
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Random rand = new Random();
         Cursor cursor = db.rawQuery("SELECT * FROM Questions WHERE category = \"" + category + "\"", null);
+        cursor.moveToFirst();
         int nQuestions = cursor.getCount();
         int n = rand.nextInt(nQuestions);
         cursor.moveToPosition(n);

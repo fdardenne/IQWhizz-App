@@ -60,8 +60,8 @@ public class Test {
      */
     public Question nextQuestion()
     {
-        this.currentQuestion++;
-        return this.questions[currentQuestion];
+        //this.currentQuestion++;
+        return this.questions[currentQuestion++];
     }
 
 
