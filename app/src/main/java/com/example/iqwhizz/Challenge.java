@@ -14,8 +14,6 @@ import com.example.iqwhizz.Objects.Answer;
 import com.example.iqwhizz.Objects.Question;
 import com.example.iqwhizz.Objects.Test;
 
-import org.w3c.dom.Text;
-
 public class Challenge extends AppCompatActivity {
 
     private TextView title;
@@ -34,28 +32,21 @@ public class Challenge extends AppCompatActivity {
     Question currentQuestion;
     Answer[] currentAnswer;
 
-    private byte maxNbQuestion;
-    private byte currentNbQuestion;
+    private int maxNbQuestion;
+    private int currentNbQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //WIP
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge);
-        String type = getIntent().getStringExtra("type");
-        if (type.equals("long")) {
-            maxNbQuestion = 40;
-        } else {
-            maxNbQuestion = 5;
-        }
 
 
         currentNbQuestion = 1;
-        String category = getIntent().getStringExtra("category");
-        int testID = getIntent().getIntExtra("testID", 0);
-
         //TEMPORAIRE, Challenge Init doit donné un Test a Challenge
-        this.currentTest = TestDAO.getTest(testID);
+        this.currentTest = TestDAO.startTest(getIntent().getIntExtra("testID", -1));
+        maxNbQuestion = (currentTest.getType().equals("court")) ? 5 : 40;
+
         title = findViewById(R.id.questionNb);
         title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
 
@@ -71,7 +62,7 @@ public class Challenge extends AppCompatActivity {
         cardAnswer4 = findViewById(R.id.answer_card4);
 
 
-        currentQuestion = QuestionDAO.getQuestion(currentTest.getCurrentQuestionID());
+        currentQuestion = QuestionDAO.getQuestion(currentTest.getNextQuestionID());
         currentAnswer = currentQuestion.getAnswers();
 
         textQuestion.setText(currentQuestion.getText());

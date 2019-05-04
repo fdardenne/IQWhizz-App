@@ -52,8 +52,8 @@ public class DAOsInstrumentedTest {
             for (int id : ids) {
                 assertTrue(id>0);
             }
-            com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(testID1);
-            com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(testID2);
+            com.example.iqwhizz.Objects.Test test1 = TestDAO.startTest(testID1);
+            com.example.iqwhizz.Objects.Test test2 = TestDAO.startTest(testID2);
 
 
             db = DatabaseHelper.getReadableDb();
@@ -91,13 +91,12 @@ public class DAOsInstrumentedTest {
     public void getTest() {
         try {
 
-            com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
-            com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(2);
-            boolean exeTest1 = TestDAO.executeTest(test1);
-            boolean exeTest2 = TestDAO.executeTest(test2);
-            boolean[] bools = {exeTest1, exeTest2};
-            for (boolean bool : bools) {
-                assertTrue(bool);
+            com.example.iqwhizz.Objects.Test test1 = TestDAO.startTest(1);
+            com.example.iqwhizz.Objects.Test test2 = TestDAO.startTest(2);
+
+            com.example.iqwhizz.Objects.Test[] tests = {test1, test2};
+            for (com.example.iqwhizz.Objects.Test test : tests) {
+                assertNotNull(test);
             }
 
             db = DatabaseHelper.getReadableDb();
@@ -105,9 +104,9 @@ public class DAOsInstrumentedTest {
             Log.d("TestDAO testing", "Testing test1 ...");
             assertEquals(1,test1.getTestID());
             assertEquals(1,test1.getExecutionID());
-            //assertEquals(2, test1.getCurrentQuestionID());
-            Answer answer = QuestionDAO.getQuestion(test1.getCurrentQuestionID()).getAnswers()[0];
-            Answer rightAns = QuestionDAO.getQuestion(test1.getCurrentQuestionID()).getRightAnswer();
+            //assertEquals(2, test1.getNextQuestionID());
+            Answer answer = QuestionDAO.getQuestion(test1.getNextQuestionID()).getAnswers()[0];
+            Answer rightAns = QuestionDAO.getQuestion(test1.getNextQuestionID()).getRightAnswer();
             boolean succeed = test1.answerToQuestion(answer.getAnswerID(), 30);
             if (succeed) {
                 assertEquals(answer.getAnswerID(), rightAns.getAnswerID());
@@ -119,7 +118,7 @@ public class DAOsInstrumentedTest {
             cursor.moveToFirst();
             assertEquals(1, cursor.getCount());
             Log.d("TestDAO testing", "answerID of the answer that has been given : "+cursor.getInt(3));
-            Question question = test1.nextQuestion();
+            Question question = test1.getNextQuestion();
             cursor = db.rawQuery("SELECT * FROM TestExecutions", null);
             cursor.moveToFirst();
             try {
@@ -144,7 +143,7 @@ public class DAOsInstrumentedTest {
     private void answeringQuestions(com.example.iqwhizz.Objects.Test test) {
         int nQuestions = (test.getType().equals("court")) ? 5 : 40;
         for (int i=0; i<nQuestions; i++) {
-            Question q = test.nextQuestion();
+            Question q = test.getNextQuestion();
             Answer[] answers = q.getAnswers();
             Answer ans = q.getRightAnswer();
             Random rand = new Random();
@@ -159,9 +158,8 @@ public class DAOsInstrumentedTest {
 
     @Test
     public void testingIQ() {
-        com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
-        boolean bool = TestDAO.executeTest(test1);
-        assertTrue(bool);
+        com.example.iqwhizz.Objects.Test test1 = TestDAO.startTest(1);
+        assertNotNull(test1);
         answeringQuestions(test1);
         int score = StatsDAO.getIQ(User.currentUser.getUsername(), test1.getTestID());
         Log.d("testingIQ", "Obtained score : "+score);
@@ -169,17 +167,20 @@ public class DAOsInstrumentedTest {
 
     @Test
     public void averageAndBestIQ() {
-        com.example.iqwhizz.Objects.Test test1 = TestDAO.getTest(1);
-        com.example.iqwhizz.Objects.Test test2 = TestDAO.getTest(2);
+        com.example.iqwhizz.Objects.Test test1 = TestDAO.startTest(1);
+        com.example.iqwhizz.Objects.Test test2 = TestDAO.startTest(2);
         int testID3 = TestDAO.generateTest("logique", "court");
         int testID4 = TestDAO.generateTest("reflexion", "court");
-        com.example.iqwhizz.Objects.Test test3 = TestDAO.getTest(testID3);
-        com.example.iqwhizz.Objects.Test test4 = TestDAO.getTest(testID4);
-        boolean[] bools = {testID3>0, testID4>0, TestDAO.executeTest(test1), TestDAO.executeTest(test2), TestDAO.executeTest(test3), TestDAO.executeTest(test4)};
+        com.example.iqwhizz.Objects.Test test3 = TestDAO.startTest(testID3);
+        com.example.iqwhizz.Objects.Test test4 = TestDAO.startTest(testID4);
+        com.example.iqwhizz.Objects.Test[] tests = {test1, test2, test3, test4};
+        for (com.example.iqwhizz.Objects.Test test : tests) {
+            assertNotNull(test);
+        }
+        boolean[] bools = {testID3>0, testID4>0};
         for(boolean bool : bools) {
             assertTrue(bool);
         }
-        com.example.iqwhizz.Objects.Test[] tests = {test1, test2, test3, test4};
         for (com.example.iqwhizz.Objects.Test test : tests) {
             answeringQuestions(test);
         }

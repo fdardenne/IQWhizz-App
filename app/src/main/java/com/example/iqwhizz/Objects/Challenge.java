@@ -29,7 +29,9 @@ public class Challenge {
      */
     public Test loadTest()
     {
-        return TestDAO.getTest(this.testID);
+        // Que faire si on a quitté le test en cours d'éxécution ?
+        Test test = TestDAO.startTest(this.testID);
+        return test;
     }
 
 

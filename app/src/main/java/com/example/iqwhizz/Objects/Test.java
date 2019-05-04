@@ -4,7 +4,7 @@ import com.example.iqwhizz.DAO.TestDAO;
 
 public class Test {
 
-    private int currentQuestion;
+    private int nextQuestion;
 
     private int testID;
 
@@ -21,23 +21,23 @@ public class Test {
         Constructeur
         DAO : donner la liste des questions du test
      */
-    public Test(int testID, String category, String type, Question[] questions)
+    public Test(int testID, String category, String type, Question[] questions, int nextQuestion)
     {
         this.testID = testID;
         //this.executionID = executionID;
         this.category = category ;
         this.type = type;
         this.questions = questions; //il faudra surement créer cette liste
-        this.currentQuestion = 0;
+        this.nextQuestion = nextQuestion;
     }
 
     /*
-        true si il questions[currentQuestion+1] existe, false sinon
+        true si il questions[nextQuestion+1] existe, false sinon
         DAO : rien
      */
     public boolean hasNext()
     {
-        return this.questions.length < currentQuestion+1;
+        return nextQuestion < this.questions.length;
     }
 
     /*
@@ -50,18 +50,28 @@ public class Test {
         return rowID>0;
     }
 
-    public int getCurrentQuestionID() {
-        return questions[currentQuestion].getID();
+    public int getNextQuestionID() {
+        if (this.hasNext()) {
+            // NE PAS incrémenter nextQuestion
+            return questions[nextQuestion].getID();
+        }
+        else {
+            return -1;
+        }
     }
 
     /*
-        donne la prochaine question dans questions
+        donne la prochaine question dans questions et incrémente le pointeur nextQuestion
         DAO : rien
      */
-    public Question nextQuestion()
+    public Question getNextQuestion()
     {
-        this.currentQuestion++;
-        return this.questions[currentQuestion];
+        if(this.hasNext()) {
+            return this.questions[nextQuestion++];
+        }
+        else {
+            return null;
+        }
     }
 
 
