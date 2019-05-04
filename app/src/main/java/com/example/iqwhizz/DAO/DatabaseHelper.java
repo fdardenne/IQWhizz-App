@@ -81,7 +81,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         execSQLfile(0,db);
-        execSQLfile(1,db);
+        //execSQLfile(1,db);
+
+        //Florent Test
+        execSQLfile(3, db);
+        //End
+
         Log.d("Hadrien's Tests", "DB creation -> OK");
     }
 

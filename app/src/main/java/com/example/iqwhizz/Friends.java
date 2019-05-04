@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.iqwhizz.DAO.StatsDAO;
 import com.example.iqwhizz.Objects.Friendship;
@@ -25,6 +26,10 @@ public class Friends extends AppCompatActivity {
         setContentView(R.layout.activity_friends);
 
         list_friend = Friendship.getFriendsUsername(User.currentUser.getUsername());
+        for(String name: list_friend){
+            Log.d("NAME", name);
+        }
+        Log.d("NAME", "" + list_friend.size());
 
 
         final RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_friend);
