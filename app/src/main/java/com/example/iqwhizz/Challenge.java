@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.iqwhizz.DAO.QuestionDAO;
+import com.example.iqwhizz.DAO.TestDAO;
+import com.example.iqwhizz.Objects.Answer;
+import com.example.iqwhizz.Objects.Question;
+import com.example.iqwhizz.Objects.Test;
+
 import org.w3c.dom.Text;
 
 public class Challenge extends AppCompatActivity {
@@ -24,6 +30,10 @@ public class Challenge extends AppCompatActivity {
     private CardView cardAnswer3;
     private CardView cardAnswer4;
 
+    Test currentTest;
+    Question currentQuestion;
+    Answer[] currentAnswer;
+
     private byte maxNbQuestion;
     private byte currentNbQuestion;
 
@@ -37,15 +47,18 @@ public class Challenge extends AppCompatActivity {
             maxNbQuestion = 40;
         }else{
             maxNbQuestion = 5;
-
         }
 
 
         currentNbQuestion = 1;
         String category = getIntent().getStringExtra("category");
 
+        //TEMPORAIRE, Challenge Init doit donné un Test a Challenge
+        this.currentTest = TestDAO.getTest(1);
+
         title = findViewById(R.id.questionNb);
         title.setText("Question #" + currentNbQuestion +"/" + maxNbQuestion );
+
         textQuestion = findViewById(R.id.question_text);
         textAnswer1 = findViewById(R.id.answer_text1);
         textAnswer2 = findViewById(R.id.answer_text2);
@@ -57,11 +70,16 @@ public class Challenge extends AppCompatActivity {
         cardAnswer3 = findViewById(R.id.answer_card3);
         cardAnswer4 = findViewById(R.id.answer_card4);
 
-        textQuestion.setText("Question " + currentNbQuestion);
-        textAnswer1.setText("réponse 1");
-        textAnswer2.setText("réponse 2");
-        textAnswer3.setText("réponse 3");
-        textAnswer4.setText("réponse 4");
+
+        currentQuestion = QuestionDAO.getQuestion(currentTest.getCurrentQuestionID());
+        currentAnswer = currentQuestion.getAnswers();
+
+        textQuestion.setText(currentQuestion.getText());
+
+        textAnswer1.setText(currentAnswer[0].getText());
+        textAnswer2.setText(currentAnswer[1].getText());
+        textAnswer3.setText(currentAnswer[2].getText());
+        textAnswer4.setText(currentAnswer[3].getText());
 
         setupListener();
 

@@ -36,9 +36,14 @@ insert into Questions values (11,2,'logique','img11.png', 'bla bla bla');
 insert into Questions values (12,1,'reflexion','img12.png', 'bla bla bla');
 insert into Questions values (13,3,'reflexion','img13.png', 'bla bla bla');
 
--- systinfo
-insert into Questions values(14,1,'systinfo',null,'Que signifient les initiales obo?');
-
+-- INFO
+insert into Questions values(14,1,'INFO',NULL,'Que signifient les initiales obo?');
+insert into Questions values(15,2,'INFO',NULL,'Quel est le nom de notre assistant pour le cours de Systemes Informatiques');
+insert into Questions values(16,2,'INFO',NULL,'De quel Professeur d\'info nous connaissons le mieux les gouts mousicaux ?');
+insert into Questions values(17,4,'INFO',NULL,'Qu\'a lancé Mr Bonaventure récemment?');
+insert into Questions values(18,1,'INFO',NULL,'Quel est le nombre de threads nécessaires a la lecture des fichiers pour le projet cracker');
+insert into Questions values(19,3,'INFO',NULL,'Qui a l\'accent le plus sexy de l\'EPL ?');
+--
 
 insert into PossibleAnswers values (1, 1, 200, 'img1.png', 'Rép a');
 insert into PossibleAnswers values (2, 1, 0, 'img2.png', 'Rép b');
@@ -68,9 +73,33 @@ insert into PossibleAnswers values (25, 12, 0, NULL, 'faux');
 insert into PossibleAnswers values (26, 13, 200, NULL, 'vrai');
 insert into PossibleAnswers values (27, 13, 0, NULL, 'faux');
 
--- systinfo
+-- INFO
 insert into PossibleAnswers values(28, 14, 0, NULL, 'object balanced organising');
 insert into PossibleAnswers values(29, 14, 200, NULL, 'Olivier Bonaventure');
 insert into PossibleAnswers values(30, 14, 0, NULL, 'owner buy-out');
 insert into PossibleAnswers values(31, 14, 0, NULL, 'le nom d\'une ville en centrafrique');
 
+insert into PossibleAnswers values(32, 15, 0, NULL, 'Benjamin DeCeuninck');
+insert into PossibleAnswers values(33, 15 , 0, NULL, 'Quentin deConinck');
+insert into PossibleAnswers values(33, 15, 0, NULL, 'Quentin Plagiat');
+insert into PossibleAnswers values(34, 15 , 200, NULL, 'Benjamin deConinck');
+
+insert into PossibleAnswers values(32, 16, 200, NULL, 'Kim Mens');
+insert into PossibleAnswers values(33, 16 , 0, NULL, 'Peter Van Roy');
+insert into PossibleAnswers values(33, 16, 0, NULL, 'Charles Pêcheur');
+insert into PossibleAnswers values(34, 16 , 0, NULL, 'Olivier Bonaventure');
+
+insert into PossibleAnswers values(32, 17, 0, NULL, 'Un frisbee');
+insert into PossibleAnswers values(33, 17 , 200, NULL, 'Une startup');
+insert into PossibleAnswers values(33, 17, 0, NULL, 'Une convention TinderForCode');
+insert into PossibleAnswers values(34, 17 , 0, NULL, 'Des tests CUnit');
+
+insert into PossibleAnswers values(32, 18, 0, NULL, 'le nombre de coeurs du pc x 2 ');
+insert into PossibleAnswers values(33, 18 , 0, NULL, '42');
+insert into PossibleAnswers values(33, 18, 200, NULL, 'personne ne sait');
+insert into PossibleAnswers values(34, 18 , 0, NULL, 'le nombre de sources différents d\'ou viennent les fichiers de lecture');
+
+insert into PossibleAnswers values(32, 19, 0, NULL, 'Kim Mens');
+insert into PossibleAnswers values(33, 19 , 0, NULL, 'Quider Ben Naoum');
+insert into PossibleAnswers values(33, 19, 0, NULL, 'Miltiadis Papalexandris');
+insert into PossibleAnswers values(34, 19 , 200, NULL, 'Joris Proost');
