@@ -52,7 +52,7 @@ public class Friends extends AppCompatActivity {
             }
         });
 
-        rv1 = (RecyclerView) findViewById(R.id.friends_recycler);
+        rv1 = (RecyclerView) findViewById(R.id.recycler_result);
         rv1.setLayoutManager(new LinearLayoutManager(this));
         rv1_adapt = new FriendAdapter(friend_list);
         rv1.setAdapter(rv1_adapt);
