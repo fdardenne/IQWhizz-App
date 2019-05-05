@@ -1,6 +1,7 @@
 package com.example.iqwhizz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -121,7 +122,6 @@ public class Challenge extends AppCompatActivity {
 
 
 
-
         next();
 
     }
@@ -130,7 +130,13 @@ public class Challenge extends AppCompatActivity {
         currentNbQuestion++;
         title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
 
-
+        if (currentNbQuestion > 5) {
+            Intent resultIntent = new Intent(this, Result.class);
+            resultIntent.putExtra("TestExecutionID", currentTest.getExecutionID());
+            startActivity(resultIntent);
+            this.finish();
+            return;
+        }
 
         currentQuestion = currentTest.getNextQuestion();
         currentAnswer = currentQuestion.getAnswers();
@@ -146,10 +152,5 @@ public class Challenge extends AppCompatActivity {
         textAnswer2.setText(currentAnswer[1].getText());
         textAnswer3.setText(currentAnswer[2].getText());
         textAnswer4.setText(currentAnswer[3].getText());
-
-        if (currentNbQuestion > 5) {
-
-            title.setText("WIP Résultat");
-        }
     }
 }

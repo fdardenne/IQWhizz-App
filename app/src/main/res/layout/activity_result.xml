@@ -23,7 +23,7 @@
         >
 
         <TextView
-            android:id="@+id/textView_history"
+            android:id="@+id/textView_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -32,28 +32,17 @@
             android:textColor="#FFFFFF"
             android:textSize="36sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_border"
-            android:gravity="center"
-            >
-
-
-        </LinearLayout>
-
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Score:" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recycler_friend"/>
+            android:id="@+id/recycler_result"/>
 
 
     </LinearLayout>

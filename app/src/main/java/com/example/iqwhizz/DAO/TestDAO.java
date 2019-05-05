@@ -241,7 +241,8 @@ public class TestDAO {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT answerID FROM SelectedAnswers WHERE executionID="+executionID, null);
         cursor.moveToFirst();
-        int size = cursor.getCount();
+        int size = 4;
+        Log.d("TESTFLO2", size + "");
         if (size==0) {
             return null;
         }
