@@ -16,6 +16,7 @@ import com.example.iqwhizz.Objects.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -52,6 +53,7 @@ public class History extends AppCompatActivity implements HistoryAdapter.OnHisto
                 add_history(date1, letest.getCategory(), letest.getType(), Integer.toString(StatsDAO.getIQ(execIDs[i])), Integer.toString(execIDs[i]));
             }
         }
+        Collections.reverse(list_history);
 
         final RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_history);
         rv.setLayoutManager(new LinearLayoutManager(this));
