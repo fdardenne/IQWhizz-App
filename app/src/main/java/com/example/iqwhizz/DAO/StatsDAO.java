@@ -24,6 +24,25 @@ public class StatsDAO {
         }
     }
 
+    //Différent de l'autre car pour celui ci on donne l'ID de testExecution
+    //Utilisé pour l'écran result et history qui n'a accès qu'a TestExec
+    public static int getIQ(int testExecID) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery(
+                "SELECT round(avg(PA.score * (60-SA.time)/60)) " +
+                        "FROM TestExecutions TE, SelectedAnswers SA, PossibleAnswers PA " +
+                        "WHERE TE.testID="+testExecID+" " +
+                        "AND TE.executionID=SA.executionID " +
+                        "AND SA.answerID=PA.answerID",
+                null);
+        if(cursor.moveToFirst()) {
+            return cursor.getInt(0);
+        }
+        else {
+            return -1;
+        }
+    }
+
     private static float average(int[] integers) {
         int size = integers.length;
         int total = 0;
