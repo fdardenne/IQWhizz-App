@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.iqwhizz.Objects.Answer;
 import com.example.iqwhizz.Objects.Question;
 import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.Objects.User;
@@ -193,21 +194,7 @@ public class TestDAO {
             }
         }
 
-        /*
-        Log.d("TestDAO - saveTest", "insertion in TestExecutions table");
-        ContentValues executionValues = new ContentValues();
-        executionValues.put("testID", testID);
-        executionValues.put("username", User.currentUser.getUsername());
-        executionValues.put("execution_date", System.currentTimeMillis()/1000);
-        int executionID = (int) db.insert("TestExecutions", null, executionValues);
-        if (executionID<0) {
-            Log.d("TestDAO - saveTest","fail when inserting in TestExecutions");
-            return new int[] {-1, -1};
-        }
-        */
-
         Log.d("TestDAO - generateTest", "saveTest is finished");
-        //return new int[] {testID, executionID};
         return testID;
     }
 
@@ -248,5 +235,21 @@ public class TestDAO {
             return testIDs;
         }
         return null;
+    }
+
+    public static Answer[] getSelectedAnswers(int executionID) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT answerID FROM SelectedAnswers WHERE executionID="+executionID, null);
+        cursor.moveToFirst();
+        int size = cursor.getCount();
+        if (size==0) {
+            return null;
+        }
+        Answer[] answers = new Answer[size];
+        answers[0] = AnswerDAO.getAnswer(cursor.getInt(0));
+        for (int i=0; cursor.moveToNext(); i++) {
+            answers[i] = AnswerDAO.getAnswer(cursor.getInt(0));
+        }
+        return answers;
     }
 }
