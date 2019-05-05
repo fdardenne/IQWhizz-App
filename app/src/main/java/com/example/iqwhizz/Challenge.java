@@ -63,14 +63,10 @@ public class Challenge extends AppCompatActivity {
         cardAnswer4 = findViewById(R.id.answer_card4);
 
 
-        currentQuestion = QuestionDAO.getQuestion(currentTest.getNextQuestionID());
+        currentQuestion = currentTest.getNextQuestion();
         currentAnswer = currentQuestion.getAnswers();
 
         textQuestion.setText(currentQuestion.getText());
-        Log.d("TEST FLORENT", currentQuestion.getText() + currentQuestion.getID());
-        for(Answer a: currentAnswer){
-            Log.d("TEST FLORENT",a.getText());
-        }
         textAnswer1.setText(currentAnswer[0].getText());
         textAnswer2.setText(currentAnswer[1].getText());
         textAnswer3.setText(currentAnswer[2].getText());
@@ -85,40 +81,37 @@ public class Challenge extends AppCompatActivity {
         cardAnswer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answered(textAnswer1.getText().toString());
+                answered(0);
             }
         });
         cardAnswer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answered(textAnswer2.getText().toString());
+                answered(1);
             }
         });
         cardAnswer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answered(textAnswer3.getText().toString());
+                answered(2);
             }
         });
         cardAnswer4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answered(textAnswer4.getText().toString());
+                answered(3);
             }
         });
 
     }
 
-    private void answered(String answer) {
+    private void answered(int answer) {
         int duration = Toast.LENGTH_SHORT;
         Context context = getApplicationContext();
-        Toast toast = Toast.makeText(context, answer, duration);
+        Toast toast = Toast.makeText(context, answer + "", duration);
         toast.show();
-        for(Answer a: currentAnswer){
-            if(a.getText().equals(answer)){
-                currentTest.answerToQuestion(a.getAnswerID(),1);
-            }
-        }
+        boolean inserted = currentTest.answerToQuestion(currentAnswer[answer].getAnswerID(),1);
+        Log.d("OKOK", "OKOK");
 
 
 
@@ -140,11 +133,7 @@ public class Challenge extends AppCompatActivity {
 
         currentQuestion = currentTest.getNextQuestion();
         currentAnswer = currentQuestion.getAnswers();
-        for(Answer a: currentAnswer){
-            Log.d("TEST FLORENT",a.getText());
-        }
 
-        Log.d("TEST FLORENT", currentQuestion.getText() + currentQuestion.getID());
 
         textQuestion.setText(currentQuestion.getText());
 
