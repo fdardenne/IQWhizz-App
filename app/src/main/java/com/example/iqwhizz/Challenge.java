@@ -123,7 +123,6 @@ public class Challenge extends AppCompatActivity {
         if (currentNbQuestion > 5) {
             Intent resultIntent = new Intent(this, Result.class);
             resultIntent.putExtra("TestExecutionID", currentTest.getExecutionID());
-            resultIntent.putExtra("TestID", getIntent().getIntExtra("testID", -1));
             startActivity(resultIntent);
             this.finish();
             return;

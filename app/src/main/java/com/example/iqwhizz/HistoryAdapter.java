@@ -18,10 +18,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
     //Chaque Tableau a comme contenu ["la date formaté", "La catégorie", "Le type de test", "Le score en QI"]
     private ArrayList<HashMap<String,String>> to_display;
+    private OnHistoryListener onHistoryListener;
 
-    public HistoryAdapter(ArrayList<HashMap<String, String>> to_display){
+    public HistoryAdapter(ArrayList<HashMap<String, String>> to_display, OnHistoryListener onHistoryListener){
         super();
         this.to_display = to_display;
+        this.onHistoryListener = onHistoryListener;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.list_history, parent, false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, onHistoryListener);
     }
 
     @Override
@@ -42,7 +44,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         holder.display(elem);
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final TextView date;
         private final TextView category;
@@ -51,13 +53,16 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
         private HashMap<String,String> current;
 
-        public MyViewHolder(final View itemView) {
+        OnHistoryListener onHistoryListener;
+
+        public MyViewHolder(final View itemView, OnHistoryListener onHistoryListener)  {
             super(itemView);
 
             date = ((TextView) itemView.findViewById(R.id.date_cell));
             category = ((TextView) itemView.findViewById(R.id.category_cell));
             type = ((TextView) itemView.findViewById(R.id.type_cell));
             score = ((TextView) itemView.findViewById(R.id.iq_cell));
+            this.onHistoryListener = onHistoryListener;
 
         }
 
@@ -67,7 +72,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
             category.setText(elem.get("category"));
             type.setText(elem.get("type"));
             score.setText(elem.get("score"));
+            itemView.setOnClickListener(this);
+
+
         }
+
+
+        @Override
+        public void onClick(View v) {
+            onHistoryListener.onHistoryClick(getAdapterPosition());
+        }
+    }
+    public interface OnHistoryListener{
+        void onHistoryClick(int position);
     }
 
 }

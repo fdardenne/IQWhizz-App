@@ -215,24 +215,24 @@ public class TestDAO {
     /**
      * donne tous les tests réalisés par l'utilisateur username
      * @param username
-     * @return la liste des testIDs (entrées paires) des tests réalisés et leur date d'execution (entrées impaires)
+     * @return la liste des executionID (entrées paires) des tests réalisés et leur date d'execution (entrées impaires)
      */
     public static int[] getAllExecutedTest(String username)
     {
-        int[] testIDs;
+        int[] execIDs;
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
-        Cursor cursor = db.rawQuery("SELECT testID,execution_date FROM TestExecutions WHERE username = \""+username+"\"", null);
+        Cursor cursor = db.rawQuery("SELECT executionID,execution_date FROM TestExecutions WHERE username = \""+username+"\"", null);
         if(cursor.moveToFirst())
         {
             int longueur = 2*cursor.getCount();
-            testIDs = new int[longueur];
+            execIDs = new int[longueur];
             for (int i = 0; i < longueur; i = i+2)
             {
-                testIDs[i] = cursor.getInt(0);
-                testIDs[i+1] = cursor.getInt(1);
+                execIDs[i] = cursor.getInt(0);
+                execIDs[i+1] = cursor.getInt(1);
                 cursor.moveToNext();
             }
-            return testIDs;
+            return execIDs;
         }
         return null;
     }

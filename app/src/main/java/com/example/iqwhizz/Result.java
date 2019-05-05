@@ -37,7 +37,7 @@ public class Result extends AppCompatActivity {
         list_answer = TestDAO.getSelectedAnswers(executedTestID);
 
         score = findViewById(R.id.result_score);
-        score.setText( "Votre score est de " + StatsDAO.getIQ(User.currentUser.getUsername().toString(), getIntent().getIntExtra("TestID", -1)) + " QI !");
+        score.setText( "Votre score est de " + StatsDAO.getIQ(executedTestID) + " QI !");
 
 
         final RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_result);
