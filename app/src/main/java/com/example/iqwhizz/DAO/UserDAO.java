@@ -93,6 +93,8 @@ public class UserDAO {
         else {
             return true;
         }
+
+
     }
 
     public static boolean updateEmail(String username, String mail) {

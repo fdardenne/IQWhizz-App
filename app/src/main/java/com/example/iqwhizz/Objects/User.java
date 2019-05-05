@@ -67,7 +67,6 @@ public class User {
         }
     }
 
-    // TODO : à tester !
     public static boolean disconnectUser() {
         boolean succeeded = UserDAO.disconnectUser(currentUser.getUsername());
         if (succeeded) {
