@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
     android:orientation="vertical"
     android:background="@drawable/rounded_border">
 
@@ -18,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:justificationMode="inter_word"
             android:textAppearance="?android:attr/textAppearanceLarge"
             tools:text="Question" ></TextView>
 
@@ -33,6 +33,16 @@
         android:ellipsize="end"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:text="Selected Answer" ></TextView>
+
+    <TextView
+        android:id="@+id/right_answer_cell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:lines="1"
+        android:ellipsize="end"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:text="Right Answer" ></TextView>
 
 
 </LinearLayout>

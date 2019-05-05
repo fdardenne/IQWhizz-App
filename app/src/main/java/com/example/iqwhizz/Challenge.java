@@ -39,7 +39,7 @@ public class Challenge extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //WIP
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge);
 
@@ -110,8 +110,7 @@ public class Challenge extends AppCompatActivity {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, answer + "", duration);
         toast.show();
-        boolean inserted = currentTest.answerToQuestion(currentAnswer[answer].getAnswerID(),1);
-        Log.d("OKOK", "OKOK");
+        currentTest.answerToQuestion(currentAnswer[answer].getAnswerID(),1);
 
 
 
@@ -121,8 +120,6 @@ public class Challenge extends AppCompatActivity {
 
     private void next() {
         currentNbQuestion++;
-        title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
-
         if (currentNbQuestion > 5) {
             Intent resultIntent = new Intent(this, Result.class);
             resultIntent.putExtra("TestExecutionID", currentTest.getExecutionID());
@@ -131,12 +128,15 @@ public class Challenge extends AppCompatActivity {
             return;
         }
 
+
+
+
+
         currentQuestion = currentTest.getNextQuestion();
         currentAnswer = currentQuestion.getAnswers();
 
-
+        title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
         textQuestion.setText(currentQuestion.getText());
-
         textAnswer1.setText(currentAnswer[0].getText());
         textAnswer2.setText(currentAnswer[1].getText());
         textAnswer3.setText(currentAnswer[2].getText());

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.iqwhizz.DAO.QuestionDAO;
 import com.example.iqwhizz.DAO.StatsDAO;
@@ -24,6 +25,7 @@ public class Result extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Answer[] list_answer;
+    private TextView score;
 
 
     @Override
@@ -33,10 +35,10 @@ public class Result extends AppCompatActivity {
 
         int executedTestID = getIntent().getIntExtra("TestExecutionID", -1);
         list_answer = TestDAO.getSelectedAnswers(executedTestID);
-        Log.d("TEST FLORENTT", list_answer.length + "");
-        for(Answer a: list_answer){
-            Log.d("TEST FLORENTT", a.getText() + "");
-        }
+
+        score = findViewById(R.id.result_score);
+        score.setText( "Votre score est de " + StatsDAO.getIQ(executedTestID) + " QI !");
+
 
         final RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_result);
         rv.setLayoutManager(new LinearLayoutManager(this));

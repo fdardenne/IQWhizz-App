@@ -2,6 +2,7 @@ package com.example.iqwhizz;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -49,6 +50,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
 
         private final TextView selectedAnswer;
         private final TextView question;
+        private final TextView rightAnswer;
 
         private Answer current;
 
@@ -57,14 +59,26 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
 
             selectedAnswer = ((TextView) itemView.findViewById(R.id.answer_cell));
             question = ((TextView) itemView.findViewById(R.id.question_cell));
+            rightAnswer = ((TextView) itemView.findViewById(R.id.right_answer_cell));
 
         }
 
         public void display(Answer elem) {
             current = elem;
-            selectedAnswer.setText(current.getText());
+
             Question q = QuestionDAO.getQuestionFromAnswer(elem.getAnswerID());
             question.setText(q.getText());
+
+            selectedAnswer.setText(current.getText());
+            if(current.isRight()){
+                selectedAnswer.setTextColor(Color.GREEN);
+            }else{
+                selectedAnswer.setTextColor(Color.RED);
+                rightAnswer.setText(q.getRightAnswer().getText());
+                rightAnswer.setTextColor(Color.GREEN);
+            }
+
+
         }
     }
 
