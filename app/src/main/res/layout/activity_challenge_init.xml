@@ -69,18 +69,20 @@
                 />
 
             <Spinner
-                android:id="@+id/category"
+                android:id="@+id/type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 />
 
             <Spinner
-                android:id="@+id/type"
+                android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 />
+
+
 
             <Button
                 android:id="@+id/new_challenge"

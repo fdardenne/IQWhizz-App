@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,14 +49,26 @@ public class ChallengeInit extends AppCompatActivity {
         username_friend.setFocusable(false);
         username_friend.setVisibility(View.INVISIBLE);
 
-
-        String[] items = getPossibleCategories();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        category.setAdapter(adapter);
-
         String[] items2 = new String[]{"Court (5 questions)", "Long (40 questions)"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items2);
         type.setAdapter(adapter2);
+
+
+
+
+        type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                onTypeSpinnerChange();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                return;
+            }
+
+        });
+
 
         errormessage = findViewById(R.id.error_message_chall);
 
@@ -82,7 +95,21 @@ public class ChallengeInit extends AppCompatActivity {
         });
     }
 
+    private void onTypeSpinnerChange(){
+        int nbQuestions = (type.getSelectedItem().toString().equals("Court (5 questions)")) ? 5 : 40;
+        String[] items = getPossibleCategories(nbQuestions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        errormessage.setText("");
+        play.setClickable(true);
+        if(items.length <= 0){
+            play.setClickable(false);
+            errormessage.setText("Aucune catégorie ne comporte assez de questions");
+        }
+
+        category.setAdapter(adapter);
+    }
     private void play_game() {
+
         if(switch_friend.isChecked()) {
             if (!UserDAO.userExists(username_friend.getText().toString())) {
                 errormessage.setText("L'utilisateur n'existe pas");
