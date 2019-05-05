@@ -5,24 +5,26 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.iqwhizz.DAO.FriendshipDAO;
+import com.example.iqwhizz.Objects.User;
 
 import java.util.ArrayList;
 
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHolder> {
 
-    private ArrayList<String> to_display;
+    private ArrayList<String> items;
 
     public FriendAdapter(ArrayList<String> to_display){
         super();
-        this.to_display = to_display;
-
-
+        this.items = to_display;
     }
 
     @Override
     public int getItemCount() {
-        return to_display.size();
+        return items.size();
     }
 
     @Override
@@ -34,13 +36,14 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        String elem = to_display.get(position);
+        String elem = items.get(position);
         holder.display(elem);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView username;
+        private final Button delete_btn;
 
         private String current;
 
@@ -48,7 +51,17 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
             super(itemView);
 
             username = itemView.findViewById(R.id.friendname);
-
+            delete_btn = (Button) itemView.findViewById(R.id.friend_delete);
+            delete_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean bool = FriendshipDAO.deleteFriendship(User.currentUser.getUsername(), username.getText().toString());
+                    if (!bool) {
+                        FriendshipDAO.deleteFriendship(username.getText().toString(), User.currentUser.getUsername());
+                    }
+                    removeItem(items.indexOf(username.getText().toString()));
+                }
+            });
         }
 
         public void display(String elem) {
@@ -57,9 +70,25 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
         }
     }
 
+
     public void updateData(ArrayList<String> newElements) {
-        to_display.clear();
-        to_display.addAll(newElements);
+        //items.clear();
+        for (String s : items) {
+            removeItem(items.indexOf(s));
+        }
+        items.addAll(newElements);
         notifyDataSetChanged();
+    }
+
+    public void addItem(int position, String str) {
+        items.add(position, str);
+        notifyItemInserted(position);
+    }
+
+    public void removeItem(int position) {
+        items.remove(position);
+        //recycler.removeViewAt(position);
+        this.notifyItemRemoved(position);
+        this.notifyItemRangeChanged(position, items.size());
     }
 }

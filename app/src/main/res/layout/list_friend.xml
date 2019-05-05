@@ -15,15 +15,16 @@
 
         <TextView
             android:id="@+id/friendname"
-            android:layout_width="wrap_content"
+            android:layout_width="265dp"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_marginRight="15dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             tools:text="Username"></TextView>
 
         <Button
+            android:id="@+id/friend_delete"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/colorPrimaryDark"
