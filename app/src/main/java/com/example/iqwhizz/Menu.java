@@ -14,6 +14,7 @@ public class Menu extends AppCompatActivity {
     CardView friends;
     CardView account;
     CardView logout;
+    CardView insert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class Menu extends AppCompatActivity {
         friends = findViewById(R.id.friends);
         account = findViewById(R.id.account);
         logout = findViewById(R.id.logout);
+        insert = findViewById(R.id.insert_question);
 
 
         setupListener();
@@ -64,9 +66,20 @@ public class Menu extends AppCompatActivity {
                 playIntent();
             }
         });
+        insert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertIntent();
+            }
+        });
 
 
 
+    }
+
+    private void insertIntent(){
+        Intent intentInsert = new Intent(this, AddQuestion.class);
+        startActivity(intentInsert);
     }
 
     private void playIntent(){

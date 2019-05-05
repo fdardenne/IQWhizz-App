@@ -1,5 +1,6 @@
 package com.example.iqwhizz.DAO;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -63,5 +64,45 @@ public class QuestionDAO {
             cursor.moveToNext();
         }
         return answers;
+    }
+
+    public static void createQuestion(String question, String goodAnswer, String answer2, String answer3, String answer4, int difficulty, String category){
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        ContentValues value = new ContentValues();
+        value.put("text", question);
+        value.put("difficulty", difficulty);
+        value.put("category", category);
+        value.put("image", "");
+
+        long questionID = db.insert("Questions", null, value);
+
+        ContentValues value2 = new ContentValues();
+        value2.put("questionID", questionID);
+        value2.put("score", 200);
+        value2.put("image", "");
+        value2.put("text", goodAnswer);
+        db.insert("PossibleAnswers", null, value2);
+
+        ContentValues value3 = new ContentValues();
+        value3.put("questionID", questionID);
+        value3.put("score", 0);
+        value3.put("image", "");
+        value3.put("text", answer2);
+        db.insert("PossibleAnswers", null, value3);
+
+        ContentValues value4 = new ContentValues();
+        value4.put("questionID", questionID);
+        value4.put("score", 0);
+        value4.put("image", "");
+        value4.put("text", answer3);
+        db.insert("PossibleAnswers", null, value4);
+
+        ContentValues value5 = new ContentValues();
+        value5.put("questionID", questionID);
+        value5.put("score", 0);
+        value5.put("image", "");
+        value5.put("text", answer4);
+        db.insert("PossibleAnswers", null, value5);
+
     }
 }

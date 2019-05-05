@@ -81,9 +81,8 @@ public class Account extends AppCompatActivity {
         String password_str = password.getText().toString();
         String email_str = email.getText().toString();
         String lang_str = "en"; //TODO
-        int birth_d = 0; //TODO
+        int birth_d = 0; //TODO !!! 
         int reg_d = 0; //TODO
-        int last_co = 0; //TODO
         byte[] profile_pic = null; //TODO
 
 
@@ -110,7 +109,7 @@ public class Account extends AppCompatActivity {
                 UserDAO.updateEmail(User.currentUser.getUsername(),email_str);
                 UserDAO.updateLanguage(username_str,lang_str);
                 UserDAO.updateProfilePicture(username_str,profile_pic);
-                toast = Toast.makeText(context, "Sans mdp !", duration);
+                toast = Toast.makeText(context, "Profil mis à jour !", duration);
                 toast.show();
 
 
@@ -121,17 +120,16 @@ public class Account extends AppCompatActivity {
                 UserDAO.updateProfilePicture(username_str,profile_pic);
                 UserDAO.updatePassword(username_str,password_str);
 
-                toast = Toast.makeText(context, "Avec mdp !", duration);
+                toast = Toast.makeText(context, "Profil et mot de passe mis à jour !", duration);
                 toast.show();
             }
     
 
-
-
+            String currentUsername = User.currentUser.getUsername();
+            String currentP = User.currentUser.getPassword();
+            User.disconnectUser();
+            User.connectUser(currentUsername, currentP);
             errormessage.setText("");
-            Intent refresh = new Intent(this, Account.class);
-            startActivity(refresh);
-            this.finish();
 
         }
     }
