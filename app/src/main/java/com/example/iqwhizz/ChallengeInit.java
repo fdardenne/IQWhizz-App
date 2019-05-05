@@ -22,6 +22,8 @@ import com.example.iqwhizz.Objects.Friendship;
 import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.Objects.User;
 
+import static com.example.iqwhizz.DAO.TestDAO.getPossibleCategories;
+
 public class ChallengeInit extends AppCompatActivity {
 
     Spinner category;
@@ -47,7 +49,7 @@ public class ChallengeInit extends AppCompatActivity {
         username_friend.setVisibility(View.INVISIBLE);
 
 
-        String[] items = new String[]{"random", "Réflexion", "Logique", "Calcul mental", "INFO"};
+        String[] items = getPossibleCategories();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         category.setAdapter(adapter);
 

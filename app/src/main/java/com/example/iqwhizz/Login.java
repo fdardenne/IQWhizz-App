@@ -18,6 +18,8 @@ import com.example.iqwhizz.Objects.User;
 
 import java.util.Date;
 
+import static com.example.iqwhizz.DAO.TestDAO.getPossibleCategories;
+
 
 public class Login extends AppCompatActivity {
 
@@ -39,7 +41,6 @@ public class Login extends AppCompatActivity {
         errormessage = findViewById(R.id.error_message);
         login = findViewById(R.id.login);
         register = findViewById(R.id.register);
-
         setUpListener();
     }
 

@@ -9,6 +9,7 @@ import com.example.iqwhizz.Objects.Question;
 import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.Objects.User;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class TestDAO {
@@ -96,6 +97,27 @@ public class TestDAO {
         return cat;
     }
 
+    public static String[] getPossibleCategories(){
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT DISTINCT Category FROM Questions ", null);
+        cursor.moveToFirst();
+        int nCategory = cursor.getCount();
+        String[] categories = new String[nCategory+1];
+        categories[0] = "random";
+        for(int i=1; i<nCategory+1; i++){
+            String cursorString = cursor.getString(0);
+            categories[i] = cursorString;
+            cursor.moveToNext();
+        }
+
+        for(String c: categories){
+            Log.d("TESTFLO", c);
+        }
+
+
+        return categories;
+    }
+
     private static Question[] loadQuestions(int testID) {
         Log.d("TestDAO - getTest", "Loading the questions from the test "+testID+" ...");
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
@@ -115,7 +137,8 @@ public class TestDAO {
 
     private static Question[] loadQuestions(String category, int nQuestions) {
         if (category.equals("random")) {
-            String[] categories = {"reflexion", "logique", "info"};
+            String[] categoriesWithRandom = getPossibleCategories();
+            String[] categories = Arrays.copyOfRange(categoriesWithRandom, 1, categoriesWithRandom.length);
             Random rand = new Random();
             int nRand = rand.nextInt(categories.length);
             return loadQuestions(categories[nRand], nQuestions);
