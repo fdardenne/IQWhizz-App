@@ -25,7 +25,7 @@ public class FriendshipDAO {
         values.put("acceptance_date", 0);
         values.put("isAccepted", 0);
         SQLiteDatabase db = DatabaseHelper.getWritableDb();
-        long result = db.insert("Users", null, values);
+        long result = db.insert("Friendships", null, values);
         if (result != -1) {
             return true;
         }

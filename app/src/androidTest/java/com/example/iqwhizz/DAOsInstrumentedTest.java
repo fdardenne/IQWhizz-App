@@ -46,8 +46,8 @@ public class DAOsInstrumentedTest {
 
     public void generatingTest() {
         try {
-            int testID1 = TestDAO.generateTest("logique", "court");
-            int testID2 = TestDAO.generateTest("reflexion", "court");
+            int testID1 = TestDAO.generateTest("info", "court");
+            int testID2 = TestDAO.generateTest("info", "court");
             int[] ids = {testID1, testID2};
             for (int id : ids) {
                 assertTrue(id>0);
@@ -105,6 +105,7 @@ public class DAOsInstrumentedTest {
             assertEquals(1,test1.getTestID());
             assertEquals(1,test1.getExecutionID());
             //assertEquals(2, test1.getNextQuestionID());
+            /*
             Answer answer = QuestionDAO.getQuestion(test1.getNextQuestionID()).getAnswers()[0];
             Answer rightAns = QuestionDAO.getQuestion(test1.getNextQuestionID()).getRightAnswer();
             boolean succeed = test1.answerToQuestion(answer.getAnswerID(), 30);
@@ -114,6 +115,14 @@ public class DAOsInstrumentedTest {
             else {
                 assertNotEquals(answer.getAnswerID(), rightAns.getAnswerID());
             }
+            */
+            for (com.example.iqwhizz.Objects.Test test : tests) {
+                answeringQuestions(test);
+            }
+            Answer[] answers1;
+            for (int i=0; i<tests.length; i++) {
+                answers1 = TestDAO.getSelectedAnswers(test1.getExecutionID());
+            }
             Cursor cursor = db.rawQuery("SELECT * FROM SelectedAnswers WHERE executionID="+test1.getExecutionID(),null);
             cursor.moveToFirst();
             assertEquals(1, cursor.getCount());
@@ -121,12 +130,6 @@ public class DAOsInstrumentedTest {
             Question question = test1.getNextQuestion();
             cursor = db.rawQuery("SELECT * FROM TestExecutions", null);
             cursor.moveToFirst();
-            try {
-                Thread.sleep(5000);
-            }
-            catch (Exception e) {
-                Log.d("Sleep", "failed");
-            }
             Log.d("TestDAO testing", "Testing finished for test1.");
 
         }
@@ -184,6 +187,7 @@ public class DAOsInstrumentedTest {
         for (com.example.iqwhizz.Objects.Test test : tests) {
             answeringQuestions(test);
         }
+
         int avg = StatsDAO.getAverageIQ(User.currentUser.getUsername());
         int best = StatsDAO.getBestIQ(User.currentUser.getUsername());
         Log.d("Scores", "avg : "+avg+" and best : "+best);

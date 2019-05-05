@@ -16,8 +16,14 @@ import android.widget.Toast;
 import com.example.iqwhizz.DAO.UserDAO;
 import com.example.iqwhizz.Objects.User;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.SimpleTimeZone;
+import java.util.TimeZone;
 
 public class Account extends AppCompatActivity {
 
@@ -81,7 +87,16 @@ public class Account extends AppCompatActivity {
         String password_str = password.getText().toString();
         String email_str = email.getText().toString();
         String lang_str = "en"; //TODO
-        int birth_d = 0; //TODO !!! 
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
+        try{
+            date = df.parse(birthdate.getText().toString());
+        }
+        catch(ParseException e){
+            e.printStackTrace();
+        }
+        int birth_d = (int) (date.getTime()/1000);
         int reg_d = 0; //TODO
         byte[] profile_pic = null; //TODO
 

@@ -22,9 +22,17 @@ public class Friends extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<String> list_friend;
+    private ArrayList<String> friend_list;
+    private ArrayList<String> sent_req;
+    private ArrayList<String> received_req;
     private Button add_friend;
     private TextView text_friend;
+    private RecyclerView rv1;
+    private RecyclerView rv2;
+    private RecyclerView rv3;
+    private FriendAdapter rv1_adapt;
+    private FriendAdapter rv2_adapt;
+    private FriendAdapter rv3_adapt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +41,9 @@ public class Friends extends AppCompatActivity {
 
         add_friend = findViewById(R.id.add_friend);
 
-        list_friend = Friendship.getFriendsUsername(User.currentUser.getUsername());
+        friend_list = Friendship.getFriendsUsername(User.currentUser.getUsername());
+        sent_req = Friendship.getSentUsername(User.currentUser.getUsername());
+        received_req = Friendship.getReceivedUsername(User.currentUser.getUsername());
 
         add_friend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,9 +52,20 @@ public class Friends extends AppCompatActivity {
             }
         });
 
-        final RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_friend);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(new FriendAdapter(list_friend));
+        rv1 = (RecyclerView) findViewById(R.id.friends_recycler);
+        rv1.setLayoutManager(new LinearLayoutManager(this));
+        rv1_adapt = new FriendAdapter(friend_list);
+        rv1.setAdapter(rv1_adapt);
+
+        rv2 = (RecyclerView) findViewById(R.id.sent_requests);
+        rv2.setLayoutManager(new LinearLayoutManager(this));
+        rv2_adapt = new FriendAdapter(sent_req);
+        rv2.setAdapter(rv2_adapt);
+
+        rv3 = (RecyclerView) findViewById(R.id.received_requests);
+        rv3.setLayoutManager(new LinearLayoutManager(this));
+        rv3_adapt = new FriendAdapter(received_req);
+        rv3.setAdapter(rv3_adapt);
     }
 
     private void addFriend(){
@@ -59,26 +80,38 @@ public class Friends extends AppCompatActivity {
             return;
 
         }else{
-            Friendship[] friends = FriendshipDAO.getFriendList(User.currentUser.getUsername());
+            ArrayList<String> sent = Friendship.getSentUsername(User.currentUser.getUsername());
+            ArrayList<String> received = Friendship.getReceivedUsername(User.currentUser.getUsername());
+            ArrayList<String> friends = Friendship.getFriendsUsername(User.currentUser.getUsername());
             Toast toast;
-            for(Friendship f: friends){
-                if((f.getReceiver().equals(text_friend.getText().toString()) || f.getSender().equals(text_friend.getText().toString())) ) {
-                    //Friend found
-                    if(f.isAccepted()){
-                        toast = Toast.makeText(context, "Cet utilisateur est déjà dans vos amis !", duration);
-                        toast.show();
-                        return;
-                    }else{
-                        toast = Toast.makeText(context, "La requête a déjà été envoyé !", duration);
-                        toast.show();
-                        return;
-                    }
+            for(String f: friends){
+                if((f.equals(text_friend.getText().toString()) || f.equals(text_friend.getText().toString())) ) {
+                    toast = Toast.makeText(context, "Cet utilisateur est déjà dans vos amis !", duration);
+                    toast.show();
+                    return;
+                }
+            }
+
+            for(String f: sent){
+                if(f.equals(text_friend.getText().toString())) {
+                    toast = Toast.makeText(context, "Vous avez déjà envoyé un requête à cette personne !", duration);
+                    toast.show();
+                    return;
+                }
+            }
+
+            for(String f: received){
+                if((f.equals(text_friend.getText().toString()) || f.equals(text_friend.getText().toString())) ) {
+                    toast = Toast.makeText(context, "Cet utilisateur vous a déjà envoyé une invitation !", duration);
+                    toast.show();
+                    return;
                 }
             }
 
             toast = Toast.makeText(context, "Une requête a été envoyé à " + text_friend.getText() + " !", duration);
             FriendshipDAO.addFriend(text_friend.getText().toString(), User.currentUser.getUsername());
             toast.show();
+            rv1_adapt.updateData(Friendship.getSentUsername(User.currentUser.getUsername()));
         }
 
     }
