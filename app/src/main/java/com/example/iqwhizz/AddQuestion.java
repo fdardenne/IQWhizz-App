@@ -4,12 +4,17 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.iqwhizz.DAO.QuestionDAO;
+import com.example.iqwhizz.DAO.TestDAO;
+
+import java.lang.reflect.Array;
 
 public class AddQuestion extends AppCompatActivity {
 
@@ -19,7 +24,7 @@ public class AddQuestion extends AppCompatActivity {
     EditText answer2;
     EditText answer3;
     EditText answer4;
-    EditText category;
+    AutoCompleteTextView category;
     Button insert;
 
     @Override
@@ -27,14 +32,22 @@ public class AddQuestion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_question);
 
+        String[] categories = TestDAO.getPossibleCategories(0);
+
         error_message = findViewById(R.id.error_message_insert);
         question = findViewById(R.id.question_insert);
         answer1 = findViewById(R.id.answer_insert1);
         answer2 = findViewById(R.id.answer_insert2);
         answer3 = findViewById(R.id.answer_insert3);
         answer4 = findViewById(R.id.answer_insert4);
-        category = findViewById(R.id.category_insert);
+
+        category = findViewById(R.id.category_insert_a);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categories);
+        category.setAdapter(adapter);
         insert = findViewById(R.id.insert);
+
+
+
 
         insert.setOnClickListener(new View.OnClickListener() {
             @Override

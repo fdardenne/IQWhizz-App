@@ -8,6 +8,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -23,6 +24,8 @@ import com.example.iqwhizz.Objects.Friendship;
 import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.Objects.User;
 
+import java.util.List;
+
 import static com.example.iqwhizz.DAO.TestDAO.getPossibleCategories;
 
 public class ChallengeInit extends AppCompatActivity {
@@ -30,7 +33,7 @@ public class ChallengeInit extends AppCompatActivity {
     Spinner category;
     Spinner type;
     Switch switch_friend;
-    EditText username_friend;
+    AutoCompleteTextView username_friend;
     Button play;
     TextView errormessage;
 
@@ -43,6 +46,11 @@ public class ChallengeInit extends AppCompatActivity {
         type = findViewById(R.id.type);
         switch_friend = findViewById(R.id.switch_friend);
         username_friend = findViewById(R.id.friend_username);
+
+        List<String> friendsArray = Friendship.getFriendsUsername(User.currentUser.getUsername());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, friendsArray);
+        username_friend.setAdapter(adapter);
+
 
         play = findViewById(R.id.new_challenge);
         username_friend.setInputType(InputType.TYPE_NULL);
@@ -103,7 +111,7 @@ public class ChallengeInit extends AppCompatActivity {
         play.setClickable(true);
         if(items.length <= 0){
             play.setClickable(false);
-            errormessage.setText("Aucune catégorie ne comporte assez de questions");
+            errormessage.setText("Aucune catégorie ne comporte assez de questions pour ce type de test");
         }
 
         category.setAdapter(adapter);
