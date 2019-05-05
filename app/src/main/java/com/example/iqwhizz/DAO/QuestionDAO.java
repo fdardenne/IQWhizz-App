@@ -30,6 +30,14 @@ public class QuestionDAO {
         return q;
     }
 
+    public static Question getQuestionFromAnswer(int answerID){
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("Select Q.* FROM Questions Q, PossibleAnswers P WHERE P.answerID = " + answerID + " AND P.questionID = Q.questionID", null);
+        cursor.moveToFirst();
+        Question q = cursorToQuestion(cursor);
+        return q;
+    }
+
     public static Question getRandomQuestion (String category) {
         Log.d("Hadrien's Tests", "getRandomQuestion begins ...");
         SQLiteDatabase db = DatabaseHelper.getReadableDb();

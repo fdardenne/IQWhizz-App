@@ -242,12 +242,13 @@ public class TestDAO {
         Cursor cursor = db.rawQuery("SELECT answerID FROM SelectedAnswers WHERE executionID="+executionID, null);
         cursor.moveToFirst();
         int size = cursor.getCount();
+        Log.d("TESTFLO2", size + "");
         if (size==0) {
             return null;
         }
         Answer[] answers = new Answer[size];
         answers[0] = AnswerDAO.getAnswer(cursor.getInt(0));
-        for (int i=0; cursor.moveToNext(); i++) {
+        for (int i=1; cursor.moveToNext(); i++) {
             answers[i] = AnswerDAO.getAnswer(cursor.getInt(0));
         }
         return answers;
