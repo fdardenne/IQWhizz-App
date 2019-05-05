@@ -102,4 +102,24 @@ public class Friendship {
 
         return list_friend;
     }
+
+    public static ArrayList<String> getSentUsername(String username) {
+        ArrayList<String> sent = new ArrayList<>();
+        Friendship[] sent_fr = FriendshipDAO.getSentRequests(username);
+        for(int i = 0; i<sent_fr.length; i++){
+            sent.add(sent_fr[i].getReceiver());
+        }
+
+        return sent;
+    }
+
+    public static ArrayList<String> getReceivedUsername(String username) {
+        ArrayList<String> received = new ArrayList<>();
+        Friendship[] received_fr = FriendshipDAO.getReceivedRequests(username);
+        for(int i = 0; i<received_fr.length; i++){
+            received.add(received_fr[i].getReceiver());
+        }
+
+        return received;
+    }
 }

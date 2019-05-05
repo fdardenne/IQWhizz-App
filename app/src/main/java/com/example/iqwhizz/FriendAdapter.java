@@ -1,5 +1,6 @@
 package com.example.iqwhizz;
 
+import android.arch.lifecycle.ViewModel;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,5 +55,11 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
             current = elem;
             username.setText(current);
         }
+    }
+
+    public void updateData(ArrayList<String> newElements) {
+        to_display.clear();
+        to_display.addAll(newElements);
+        notifyDataSetChanged();
     }
 }
