@@ -66,7 +66,10 @@ public class Challenge extends AppCompatActivity {
         currentAnswer = currentQuestion.getAnswers();
 
         textQuestion.setText(currentQuestion.getText());
-        Log.d("TEST FLORENT", currentQuestion.getText());
+        Log.d("TEST FLORENT", currentQuestion.getText() + currentQuestion.getID());
+        for(Answer a: currentAnswer){
+            Log.d("TEST FLORENT",a.getText());
+        }
         textAnswer1.setText(currentAnswer[0].getText());
         textAnswer2.setText(currentAnswer[1].getText());
         textAnswer3.setText(currentAnswer[2].getText());
@@ -110,6 +113,11 @@ public class Challenge extends AppCompatActivity {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, answer, duration);
         toast.show();
+        for(Answer a: currentAnswer){
+            if(a.getText().equals(answer)){
+                currentTest.answerToQuestion(a.getAnswerID(),1);
+            }
+        }
 
 
 
@@ -126,6 +134,10 @@ public class Challenge extends AppCompatActivity {
 
         currentQuestion = currentTest.getNextQuestion();
         currentAnswer = currentQuestion.getAnswers();
+        for(Answer a: currentAnswer){
+            Log.d("TEST FLORENT",a.getText());
+        }
+
         Log.d("TEST FLORENT", currentQuestion.getText() + currentQuestion.getID());
 
         textQuestion.setText(currentQuestion.getText());

@@ -100,7 +100,7 @@ insert into PossibleAnswers values(63, 14, 0, NULL, "le nom d\'une ville en cent
 
 insert into PossibleAnswers values(64, 15, 0, NULL, 'Benjamin DeCeuninck');
 insert into PossibleAnswers values(65, 15 , 0, NULL, 'Quentin deConinck');
-insert into PossibleAnswers values(66, 15, 0, NULL, 'Quentin Plagiat');
+insert into PossibleAnswers values(66, 15 , 0, NULL, 'Quentin Plagiat');
 insert into PossibleAnswers values(67, 15 , 200, NULL, 'Benjamin deConinck');
 
 insert into PossibleAnswers values(68, 16, 200, NULL, 'Kim Mens');
