@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.iqwhizz.DAO.StatsDAO;
 import com.example.iqwhizz.DAO.TestDAO;
@@ -37,7 +38,7 @@ public class History extends AppCompatActivity {
             for (int i = 0; i < longueur; i = i + 2)
             {
                 Test letest = TestDAO.getTest(testIDs[i], 0);
-                int date = testIDs[i + 1]; // Bizarre non ?
+                long date = ( (long)testIDs[i + 1]*1000); // Bizarre non ?
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String date1 = dateFormat.format(date);
                 add_history(date1, letest.getCategory(), letest.getType(), Integer.toString(StatsDAO.getIQ(username, testIDs[i])));
