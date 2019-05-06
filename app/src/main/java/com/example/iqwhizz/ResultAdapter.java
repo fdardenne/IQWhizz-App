@@ -71,11 +71,11 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
 
             selectedAnswer.setText(current.getText());
             if(current.isRight()){
-                selectedAnswer.setTextColor(Color.GREEN);
+                selectedAnswer.setTextColor(Color.parseColor("#00cc00"));
             }else{
-                selectedAnswer.setTextColor(Color.RED);
+                selectedAnswer.setTextColor(Color.parseColor("#ff0000"));
                 rightAnswer.setText(q.getRightAnswer().getText());
-                rightAnswer.setTextColor(Color.GREEN);
+                rightAnswer.setTextColor(Color.parseColor("#00cc00"));
             }
 
 
