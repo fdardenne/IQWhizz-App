@@ -1,19 +1,19 @@
-insert into Users values ('Arthur', 'password', 'fr', strftime('%s','1999-01-01'),
+insert into Users values ('Arthur', 'password', 'Français', strftime('%s','1999-01-01'),
 'mail@mail.be',strftime('%s','2019-02-18'),strftime('%s','now'), 'image.png');
 
-insert into Users values ('Arnaud', '1234', 'ch', strftime('%s','1998-01-01'),
+insert into Users values ('Arnaud', '1234', 'Français', strftime('%s','1998-01-01'),
 'arnaudleheros@jesuisleplusfort.be',strftime('%s','2019-02-18'), strftime('%s','now'),'achanger.png');
 
-insert into Users values ('Hadrien', 'lutinPlop', 'fr', strftime('%s','1999-08-16'),
+insert into Users values ('Hadrien', 'lutinPlop', 'Français', strftime('%s','1999-08-16'),
 'hl@uclouvain.be',strftime('%s','2019-02-25'), strftime('%s','now'),'hadrien.png');
 
-insert into Users values ('Simon', 'machin3654', 'fr', strftime('%s','1999-05-03'),
+insert into Users values ('Simon', 'machin3654', 'Français', strftime('%s','1999-05-03'),
 'Simonleplusfort@gmail.be',strftime('%s','2019-02-25'), strftime('%s','now'),'simon.png');
 
-insert into Users values ('Maxime', 'vache', 'nl', strftime('%s','1999-06-08'),
+insert into Users values ('Maxime', 'vache', 'Français', strftime('%s','1999-06-08'),
 'maxime@hotmail.com',strftime('%s','2019-02-25'), strftime('%s','now'),'maxime.png');
 
-insert into Users values ('Florent', 'Coucou', 'fr', strftime('%s','1999-01-01'),
+insert into Users values ('Florent', 'Coucou', 'Français', strftime('%s','1999-01-01'),
 'florent@telenet.be',strftime('%s','2019-02-25'), strftime('%s','now'),'florent.png');
 
 insert into Friendships values ('Florent', 'Arthur', strftime('%s','now'), strftime('%s','now'), 1);
