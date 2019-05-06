@@ -323,39 +323,39 @@ insert into PossibleAnswers values(176, 44, 200, NULL, '83');
 insert into PossibleAnswers values(177, 45, 0, NULL, '2');
 insert into PossibleAnswers values(178, 45 , 0, NULL, '1');
 insert into PossibleAnswers values(179, 45 , 200, NULL, '0');
-insert into PossibleAnswers values(140, 45, 0, NULL, '12');
+insert into PossibleAnswers values(180, 45, 0, NULL, '12');
 
-insert into PossibleAnswers values(141, 46, 0, NULL, '12.7');
-insert into PossibleAnswers values(142, 46 , 200, NULL, '17.5');
-insert into PossibleAnswers values(143, 46 , 0, NULL, '15');
-insert into PossibleAnswers values(144, 46, 0, NULL, '11.8');
+insert into PossibleAnswers values(181, 46, 0, NULL, '12.7');
+insert into PossibleAnswers values(182, 46 , 200, NULL, '17.5');
+insert into PossibleAnswers values(183, 46 , 0, NULL, '15');
+insert into PossibleAnswers values(184, 46, 0, NULL, '11.8');
 
-insert into PossibleAnswers values(145, 47, 200, NULL, '8');
-insert into PossibleAnswers values(146, 47 , 0, NULL, '6');
-insert into PossibleAnswers values(147, 47 , 0, NULL, '7');
-insert into PossibleAnswers values(148, 47, 0, NULL, '9');
+insert into PossibleAnswers values(185, 47, 200, NULL, '8');
+insert into PossibleAnswers values(186, 47 , 0, NULL, '6');
+insert into PossibleAnswers values(187, 47 , 0, NULL, '7');
+insert into PossibleAnswers values(188, 47, 0, NULL, '9');
 
-insert into PossibleAnswers values(169, 48, 0, NULL, '1620');
-insert into PossibleAnswers values(170, 48 , 0, NULL, '1820');
-insert into PossibleAnswers values(171, 48, 0, NULL, '1850');
-insert into PossibleAnswers values(172, 48 , 200, NULL, '1800');
+insert into PossibleAnswers values(189, 48, 0, NULL, '1620');
+insert into PossibleAnswers values(190, 48 , 0, NULL, '1820');
+insert into PossibleAnswers values(191, 48, 0, NULL, '1850');
+insert into PossibleAnswers values(192, 48 , 200, NULL, '1800');
 
-insert into PossibleAnswers values(173, 49, 0, NULL, '196');
-insert into PossibleAnswers values(174, 49 , 200, NULL, '197');
-insert into PossibleAnswers values(175, 49 , 0, NULL, '198');
-insert into PossibleAnswers values(176, 49, 0, NULL, '195');
+insert into PossibleAnswers values(193, 49, 0, NULL, '196');
+insert into PossibleAnswers values(194, 49 , 200, NULL, '197');
+insert into PossibleAnswers values(195, 49 , 0, NULL, '198');
+insert into PossibleAnswers values(196, 49, 0, NULL, '195');
 
-insert into PossibleAnswers values(177, 50, 0, NULL, '20');
-insert into PossibleAnswers values(178, 50 , 0, NULL, '17');
-insert into PossibleAnswers values(179, 50 , 200, NULL, '22');
-insert into PossibleAnswers values(140, 50, 0, NULL, '24');
+insert into PossibleAnswers values(197, 50, 0, NULL, '20');
+insert into PossibleAnswers values(198, 50 , 0, NULL, '17');
+insert into PossibleAnswers values(199, 50 , 200, NULL, '22');
+insert into PossibleAnswers values(200, 50, 0, NULL, '24');
 
-insert into PossibleAnswers values(141, 51, 200, NULL, '2102');
-insert into PossibleAnswers values(142, 51 , 0, NULL, '2103');
-insert into PossibleAnswers values(143, 51 , 0, NULL, '2002');
-insert into PossibleAnswers values(144, 51, 0, NULL, '2003');
+insert into PossibleAnswers values(201, 51, 200, NULL, '2102');
+insert into PossibleAnswers values(202, 51 , 0, NULL, '2103');
+insert into PossibleAnswers values(203, 51 , 0, NULL, '2002');
+insert into PossibleAnswers values(204, 51, 0, NULL, '2003');
 
-insert into PossibleAnswers values(145, 52, 200, NULL, '4');
-insert into PossibleAnswers values(146, 52 , 0, NULL, '4.5');
-insert into PossibleAnswers values(147, 52 , 0, NULL, '5');
-insert into PossibleAnswers values(148, 52, 0, NULL, '5.5');
+insert into PossibleAnswers values(205, 52, 200, NULL, '4');
+insert into PossibleAnswers values(206, 52 , 0, NULL, '4.5');
+insert into PossibleAnswers values(207, 52 , 0, NULL, '5');
+insert into PossibleAnswers values(208, 52, 0, NULL, '5.5');
