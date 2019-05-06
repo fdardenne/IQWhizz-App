@@ -28,6 +28,15 @@ insert into Questions values(5,1,'info',NULL,'Quel est le nombre de threads néc
 insert into Questions values(6,3,'info',NULL,"Qui a l\'accent le plus sexy de l\'EPL ?");
 --
 
+--Calcul Mental
+insert into Questions values(13,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 4-6-9-6-14-6-... ?');
+insert into Questions values(14,2,'Calcul Mental',NULL,'Résolvez cette équation: (((80-8)/3-4)*5) ?');
+insert into Questions values(15,1,'Calcul Mental',NULL,'Combien vaut 4 litres de jus d orange à 3.5 euros le litre ?');
+insert into Questions values(16,1,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3/(0.3)+1 ?');
+insert into Questions values(17,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-9-25-36-49-... ?');
+--
+
+
 insert into PossibleAnswers values(1, 1, 0, NULL, 'object balanced organising');
 insert into PossibleAnswers values(2, 1, 200, NULL, 'Olivier Bonaventure');
 insert into PossibleAnswers values(3, 1, 0, NULL, 'owner buy-out');
