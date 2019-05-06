@@ -157,7 +157,6 @@ public class ChallengeInit extends AppCompatActivity {
             ChallengeDAO.newChallenge(User.currentUser.getUsername(), friend, testID);
         }
         challengeIntent.putExtra("testID", testID);
-        challengeIntent.putExtra("type", type_str);
         errormessage.setText("");
         startActivity(challengeIntent);
         this.finish();

@@ -47,7 +47,7 @@ public class TestDAO {
 
     private static int getNextQuestionIndex(int testID, String username) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
-        Cursor cursor = db.rawQuery("SELECT count(*) FROM SelectedAnswers WHERE testID="+testID+" AND username=\""+username+"\"", null);
+        Cursor cursor = db.rawQuery("SELECT count(*) FROM SelectedAnswers SA, TestExecutions TE WHERE SA.testID="+testID+" AND TE.executionID=SA.executionID AND TE.username=\""+username+"\"", null);
         cursor.moveToFirst();
         if (cursor.getCount()==0) {
             return cursor.getCount();
