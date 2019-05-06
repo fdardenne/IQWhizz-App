@@ -16,6 +16,7 @@ import com.example.iqwhizz.Objects.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -45,13 +46,15 @@ public class History extends AppCompatActivity implements HistoryAdapter.OnHisto
             int longueur = execIDs.length;
             for (int i = 0; i < longueur; i = i + 2)
             {
-                Test letest = TestDAO.getTest(execIDs[i], 0);
+                int testID = TestDAO.getTestIDAssociatedTestExec(execIDs[i]);
+                Test letest = TestDAO.getTest(testID, 0);
                 long date = ( (long)execIDs[i + 1]*1000); // Bizarre non ?
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                 String date1 = dateFormat.format(date);
                 add_history(date1, letest.getCategory(), letest.getType(), Integer.toString(StatsDAO.getIQ(execIDs[i])), Integer.toString(execIDs[i]));
             }
         }
+        Collections.reverse(list_history);
 
         final RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_history);
         rv.setLayoutManager(new LinearLayoutManager(this));

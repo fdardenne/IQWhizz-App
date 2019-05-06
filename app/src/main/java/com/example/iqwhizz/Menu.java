@@ -15,6 +15,7 @@ public class Menu extends AppCompatActivity {
     CardView account;
     CardView logout;
     CardView insert;
+    CardView duel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class Menu extends AppCompatActivity {
         account = findViewById(R.id.account);
         logout = findViewById(R.id.logout);
         insert = findViewById(R.id.insert_question);
+        duel = findViewById(R.id.challengeCard);
 
 
         setupListener();
@@ -72,10 +74,22 @@ public class Menu extends AppCompatActivity {
                 insertIntent();
             }
         });
+        duel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                duelIntent();
+            }
+        });
 
 
 
     }
+
+    private void duelIntent(){
+        Intent intentDuel = new Intent(this, Duel.class);
+        startActivity(intentDuel);
+    }
+
 
     private void insertIntent(){
         Intent intentInsert = new Intent(this, AddQuestion.class);

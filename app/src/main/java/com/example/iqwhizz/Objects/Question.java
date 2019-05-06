@@ -2,6 +2,10 @@ package com.example.iqwhizz.Objects;
 
 import com.example.iqwhizz.DAO.QuestionDAO;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Question {
 
     private int questionID;
@@ -28,7 +32,10 @@ public class Question {
         this.image=image;
         this.text=text;
         this.difficulty=difficulty;
-        this.answers= QuestionDAO.getAnswers(questionID); //création de la liste avec elements données par DAO
+        //On mélange les réponses
+        List<Answer> answerList = Arrays.asList(QuestionDAO.getAnswers(questionID));
+        Collections.shuffle(answerList);
+        this.answers = answerList.toArray(new Answer[answerList.size()]);
 
     }
 
@@ -54,6 +61,7 @@ public class Question {
      */
     public Answer[] getAnswers()
     {
+
         return answers;
     }
 

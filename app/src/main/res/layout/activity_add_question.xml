@@ -98,14 +98,15 @@
                 android:layout_marginBottom="10dp"
                 />
 
-            <EditText
-                android:id="@+id/category_insert"
+            <AutoCompleteTextView
+                android:id="@+id/category_insert_a"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:ems="20"
                 android:hint="Catégorie"
                 android:layout_marginBottom="10dp"
+                android:completionThreshold="1"
                 />
 
 

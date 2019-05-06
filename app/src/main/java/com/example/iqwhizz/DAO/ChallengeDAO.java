@@ -16,6 +16,31 @@ public class ChallengeDAO {
      * @return la liste des défis
      */
     // TODO : implémenter Challenge et vérifier si ok. (ça me semble bon pour challengeDAO )
+
+
+    public static Challenge[] getChallenge(String username)
+    {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT sender, receiver, testID, done FROM Challenges " +
+                "WHERE receiver = \""+username+"\" OR sender = \""+username+"\""  ,null);
+        if( cursor.moveToFirst())
+        {
+            int longueur = cursor.getCount();
+            Challenge[] defis = new Challenge[longueur];
+            for (int i = 0; i < longueur; i++)
+            {
+                String sender = cursor.getString(0);
+                String receiver = cursor.getString(1);
+                int testID = cursor.getInt(2);
+                boolean done = cursor.getInt(3) > 0;
+                defis[i] = new Challenge(sender,receiver,testID, done);
+                cursor.moveToNext();
+            }
+            return defis;
+        }
+        return null;
+    }
+
     public static Challenge[] getUnDoneChallenge(String username)
     {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
@@ -29,7 +54,7 @@ public class ChallengeDAO {
             {
                 String sender = cursor.getString(0);
                 int testID = cursor.getInt(1);
-                defis[i] = new Challenge(sender,username,testID);
+                defis[i] = new Challenge(sender,username,testID, false);
                 cursor.moveToNext();
             }
             return defis;

@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -22,6 +24,8 @@ import com.example.iqwhizz.Objects.Friendship;
 import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.Objects.User;
 
+import java.util.List;
+
 import static com.example.iqwhizz.DAO.TestDAO.getPossibleCategories;
 
 public class ChallengeInit extends AppCompatActivity {
@@ -29,7 +33,7 @@ public class ChallengeInit extends AppCompatActivity {
     Spinner category;
     Spinner type;
     Switch switch_friend;
-    EditText username_friend;
+    AutoCompleteTextView username_friend;
     Button play;
     TextView errormessage;
 
@@ -43,19 +47,36 @@ public class ChallengeInit extends AppCompatActivity {
         switch_friend = findViewById(R.id.switch_friend);
         username_friend = findViewById(R.id.friend_username);
 
+        List<String> friendsArray = Friendship.getFriendsUsername(User.currentUser.getUsername());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, friendsArray);
+        username_friend.setAdapter(adapter);
+
+
         play = findViewById(R.id.new_challenge);
         username_friend.setInputType(InputType.TYPE_NULL);
         username_friend.setFocusable(false);
         username_friend.setVisibility(View.INVISIBLE);
 
-
-        String[] items = getPossibleCategories();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        category.setAdapter(adapter);
-
         String[] items2 = new String[]{"Court (5 questions)", "Long (40 questions)"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items2);
         type.setAdapter(adapter2);
+
+
+
+
+        type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                onTypeSpinnerChange();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                return;
+            }
+
+        });
+
 
         errormessage = findViewById(R.id.error_message_chall);
 
@@ -82,7 +103,23 @@ public class ChallengeInit extends AppCompatActivity {
         });
     }
 
+    private void onTypeSpinnerChange(){
+        int nbQuestions = (type.getSelectedItem().toString().equals("Court (5 questions)")) ? 5 : 40;
+        String[] items = getPossibleCategories(nbQuestions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        errormessage.setText("");
+        play.setClickable(true);
+        if(items.length <= 0){
+            play.setClickable(false);
+            errormessage.setText("Aucune catégorie ne comporte assez de questions pour ce type de test");
+        }
+
+        category.setAdapter(adapter);
+    }
+
+
     private void play_game() {
+
         if(switch_friend.isChecked()) {
             if (!UserDAO.userExists(username_friend.getText().toString())) {
                 errormessage.setText("L'utilisateur n'existe pas");

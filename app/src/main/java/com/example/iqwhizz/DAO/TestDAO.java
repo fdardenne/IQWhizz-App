@@ -98,25 +98,24 @@ public class TestDAO {
         return cat;
     }
 
-    public static String[] getPossibleCategories(){
+    public static String[] getPossibleCategories(int minimumQuestion){
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
-        Cursor cursor = db.rawQuery("SELECT DISTINCT Category FROM Questions ", null);
+        Cursor cursor = db.rawQuery("SELECT DISTINCT Category FROM Questions GROUP BY Category HAVING COUNT(Category) >= " + minimumQuestion, null);
         cursor.moveToFirst();
         int nCategory = cursor.getCount();
-        String[] categories = new String[nCategory+1];
-        categories[0] = "random";
-        for(int i=1; i<nCategory+1; i++){
-            String cursorString = cursor.getString(0);
-            categories[i] = cursorString;
-            cursor.moveToNext();
+        if(nCategory > 0){
+            String[] categories = new String[nCategory+1];
+            categories[0] = "random";
+            for(int i=1; i<nCategory+1; i++){
+                String cursorString = cursor.getString(0);
+                categories[i] = cursorString;
+                cursor.moveToNext();
+            }
+
+            return categories;
         }
+        return new String[0];
 
-        for(String c: categories){
-            Log.d("TESTFLO", c);
-        }
-
-
-        return categories;
     }
 
     private static Question[] loadQuestions(int testID) {
@@ -138,7 +137,7 @@ public class TestDAO {
 
     private static Question[] loadQuestions(String category, int nQuestions) {
         if (category.equals("random")) {
-            String[] categoriesWithRandom = getPossibleCategories();
+            String[] categoriesWithRandom = getPossibleCategories(nQuestions);
             String[] categories = Arrays.copyOfRange(categoriesWithRandom, 1, categoriesWithRandom.length);
             Random rand = new Random();
             int nRand = rand.nextInt(categories.length);
@@ -235,6 +234,14 @@ public class TestDAO {
             return execIDs;
         }
         return null;
+    }
+
+    public static int getTestIDAssociatedTestExec(int execID){
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT testID FROM TestExecutions WHERE executionID = "+execID, null);
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+
     }
 
     public static Answer[] getSelectedAnswers(int executionID) {

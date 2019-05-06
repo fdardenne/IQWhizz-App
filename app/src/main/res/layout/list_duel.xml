@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_border">
+
+        <TextView
+            android:id="@+id/friend_username_duel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            tools:text="Friend username"></TextView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                tools:text="Done" ></TextView>
+
+
+
+            <TextView
+                android:id="@+id/category_duel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                tools:text="category" ></TextView>
+
+            <TextView
+                android:id="@+id/type_duel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                tools:text="type" ></TextView>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myQI_duel"
+                tools:text="Mon QI"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/opposantIQ_duel"
+                tools:text="QI Adversaire"
+                />
+
+        </LinearLayout>
+
+
+
+</LinearLayout>

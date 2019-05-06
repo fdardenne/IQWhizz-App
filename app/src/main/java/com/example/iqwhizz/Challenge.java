@@ -120,7 +120,7 @@ public class Challenge extends AppCompatActivity {
 
     private void next() {
         currentNbQuestion++;
-        if (currentNbQuestion > 5) {
+        if (currentNbQuestion > maxNbQuestion) {
             Intent resultIntent = new Intent(this, Result.class);
             resultIntent.putExtra("TestExecutionID", currentTest.getExecutionID());
             startActivity(resultIntent);
@@ -133,6 +133,7 @@ public class Challenge extends AppCompatActivity {
 
 
         currentQuestion = currentTest.getNextQuestion();
+
         currentAnswer = currentQuestion.getAnswers();
 
         title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
