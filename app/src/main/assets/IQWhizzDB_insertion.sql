@@ -40,8 +40,6 @@ insert into Questions values(14,2,'Calcul Mental',NULL,'Résolvez cette équatio
 insert into Questions values(15,1,'Calcul Mental',NULL,'Combien vaut 4 litres de jus d orange à 3.5 euros le litre ?');
 insert into Questions values(16,1,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3*2+1 ?');
 insert into Questions values(17,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-9-25-36-49-... ?');
-
-insert into Questions values(23,2,'Calcul Mental',NULL,'Quel est la valeur de x dans cette équation: 9*x-12=96 ?');
 --
 
 
@@ -79,38 +77,35 @@ insert into PossibleAnswers values(24, 6, 200, NULL, 'Joris Proost');
 
 -- réponses grammaire
 
-insert into PossibleAnswers values(25, 7, 0, NULL, 'traité');
-insert into PossibleAnswers values(26, 7, 200, NULL, 'signature');
+insert into PossibleAnswers values(25, 7, 200, NULL, 'traité');
+insert into PossibleAnswers values(26, 7, 0, NULL, 'signature');
 insert into PossibleAnswers values(27, 7, 0, NULL, 'protocole');
 insert into PossibleAnswers values(28, 7, 0, NULL, 'impact');
 
-insert into PossibleAnswers values(29, 8, 0, NULL, 'Benjamin DeCeuninck');
-insert into PossibleAnswers values(30, 8, 0, NULL, 'Quentin deConinck');
-insert into PossibleAnswers values(31, 8, 0, NULL, 'Quentin Plagiat');
-insert into PossibleAnswers values(32, 8, 200, NULL, 'Benjamin deConinck');
+insert into PossibleAnswers values(29, 8, 0, NULL, '');
+insert into PossibleAnswers values(30, 8, 0, NULL, '');
+insert into PossibleAnswers values(31, 8, 0, NULL, '');
+insert into PossibleAnswers values(32, 8, 0, NULL, '');
 
-insert into PossibleAnswers values(33, 9, 200, NULL, 'Kim Mens');
-insert into PossibleAnswers values(34, 9, 0, NULL, 'Peter Van Roy');
-insert into PossibleAnswers values(35, 9, 0, NULL, 'Charles Pêcheur');
-insert into PossibleAnswers values(36, 9 , 0, NULL, 'Olivier Bonaventure');
+insert into PossibleAnswers values(33, 9, 200, NULL, '');
+insert into PossibleAnswers values(34, 9, 0, NULL, '');
+insert into PossibleAnswers values(35, 9, 0, NULL, '');
+insert into PossibleAnswers values(36, 9 , 0, NULL, '');
 
-insert into PossibleAnswers values(37, 10, 0, NULL, 'Un frisbee');
-insert into PossibleAnswers values(38, 10, 200, NULL, 'Une startup');
-insert into PossibleAnswers values(39, 10, 0, NULL, 'Une convention TinderForCode');
-insert into PossibleAnswers values(40, 10 , 0, NULL, 'Des tests CUnit');
+insert into PossibleAnswers values(37, 10, 0, NULL, '');
+insert into PossibleAnswers values(38, 10, 200, NULL, '');
+insert into PossibleAnswers values(39, 10, 0, NULL, '');
+insert into PossibleAnswers values(40, 10 , 0, NULL, '');
 
-insert into PossibleAnswers values(41, 11, 0, NULL, 'le nombre de coeurs du pc x 2 ');
-insert into PossibleAnswers values(42, 11, 0, NULL, '42');
-insert into PossibleAnswers values(43, 11, 200, NULL, 'personne ne sait');
-insert into PossibleAnswers values(44, 11, 0, NULL, 'le nombre de sources différents d ou viennent les fichiers de lecture');
+insert into PossibleAnswers values(41, 11, 0, NULL, '');
+insert into PossibleAnswers values(42, 11, 0, NULL, '');
+insert into PossibleAnswers values(43, 11, 200, NULL, '');
+insert into PossibleAnswers values(44, 11, 0, NULL, '');
 
-insert into PossibleAnswers values(45, 12, 0, NULL, 'Kim Mens');
-insert into PossibleAnswers values(46, 12 , 0, NULL, 'Quider Ben Naoum');
-insert into PossibleAnswers values(47, 12, 0, NULL, 'Miltiadis Papalexandris');
-insert into PossibleAnswers values(48, 12 , 200, NULL, 'Joris Proost');
-insert into PossibleAnswers values(24, 12 , 200, NULL, 'Joris Proost');
-
--- réponses Calcul Mental
+insert into PossibleAnswers values(45, 6, 0, NULL, '');
+insert into PossibleAnswers values(46, 6 , 0, NULL, '');
+insert into PossibleAnswers values(47, 6, 0, NULL, '');
+insert into PossibleAnswers values(48, 6 , 200, NULL, '');
 
 insert into PossibleAnswers values(70, 13, 0, NULL, '6');
 insert into PossibleAnswers values(71, 13 , 0, NULL, '12');
@@ -136,8 +131,3 @@ insert into PossibleAnswers values(86, 17, 0, NULL, '62');
 insert into PossibleAnswers values(87, 17 , 0, NULL, '63');
 insert into PossibleAnswers values(88, 17 , 200, NULL, '64');
 insert into PossibleAnswers values(89, 17, 0, NULL, '65');
-
-insert into PossibleAnswers values(90, 23, 0, NULL, '10');
-insert into PossibleAnswers values(91, 23 , 200, NULL, '12');
-insert into PossibleAnswers values(92, 23 , 0, NULL, '14');
-insert into PossibleAnswers values(93, 23, 0, NULL, '15');
