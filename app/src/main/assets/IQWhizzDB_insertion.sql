@@ -38,7 +38,7 @@ insert into Questions values(12,3,'grammaire',NULL,'Quel autre proverbe a le sen
 insert into Questions values(13,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 4-6-9-6-14-6-... ?');
 insert into Questions values(14,2,'Calcul Mental',NULL,'Résolvez cette équation: (((80-8)/3-4)*5) ?');
 insert into Questions values(15,1,'Calcul Mental',NULL,'Combien vaut 4 litres de jus d orange à 3.5 euros le litre ?');
-insert into Questions values(16,1,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3/(0.3)+1 ?');
+insert into Questions values(16,1,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3*2+1 ?');
 insert into Questions values(17,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-9-25-36-49-... ?');
 --
 
@@ -106,3 +106,29 @@ insert into PossibleAnswers values(45, 6, 0, NULL, 'Kim Mens');
 insert into PossibleAnswers values(46, 6 , 0, NULL, 'Quider Ben Naoum');
 insert into PossibleAnswers values(47, 6, 0, NULL, 'Miltiadis Papalexandris');
 insert into PossibleAnswers values(48, 6 , 200, NULL, 'Joris Proost');
+insert into PossibleAnswers values(24, 6 , 200, NULL, 'Joris Proost');
+
+insert into PossibleAnswers values(70, 13, 0, NULL, '6');
+insert into PossibleAnswers values(71, 13 , 0, NULL, '12');
+insert into PossibleAnswers values(72, 13, 200, NULL, '19');
+insert into PossibleAnswers values(73, 13 , 0, NULL, '25');
+
+insert into PossibleAnswers values(74, 14, 0, NULL, '0');
+insert into PossibleAnswers values(75, 14 , 0, NULL, '45');
+insert into PossibleAnswers values(76, 14 , 200, NULL, '100');
+insert into PossibleAnswers values(77, 14, 0, NULL, '150');
+
+insert into PossibleAnswers values(78, 15, 0, NULL, '3.5');
+insert into PossibleAnswers values(79, 15 , 0, NULL, '12');
+insert into PossibleAnswers values(80, 15 , 200, NULL, '14');
+insert into PossibleAnswers values(81, 15, 0, NULL, '15');
+
+insert into PossibleAnswers values(82, 16, 0, NULL, '1');
+insert into PossibleAnswers values(83, 16 , 200, NULL, '4');
+insert into PossibleAnswers values(84, 16 , 0, NULL, '5');
+insert into PossibleAnswers values(85, 16, 0, NULL, '6');
+
+insert into PossibleAnswers values(86, 17, 0, NULL, '62');
+insert into PossibleAnswers values(87, 17 , 0, NULL, '63');
+insert into PossibleAnswers values(88, 17 , 200, NULL, '64');
+insert into PossibleAnswers values(89, 17, 0, NULL, '65');
