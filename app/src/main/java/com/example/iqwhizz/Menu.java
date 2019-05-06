@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.iqwhizz.DAO.TestDAO;
 import com.example.iqwhizz.Objects.Test;
@@ -97,7 +99,18 @@ public class Menu extends AppCompatActivity {
 
     private void resumeIntent(){
         Intent resumeIntent = new Intent(this, Challenge.class);
-        startActivity(resumeIntent);
+        int nums[];
+        if((nums = TestDAO.hasTestToResume(User.currentUser.getUsername())) != null) {
+            resumeIntent.putExtra("testID", nums[0]);
+            resumeIntent.putExtra("executionID", nums[1]);
+            resumeIntent.putExtra("position", nums[2]);
+            startActivity(resumeIntent);
+        }
+        else {
+            Toast toast = Toast.makeText(this, "No test to resume.", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.TOP | Gravity.CENTER,0,0);
+            toast.show();
+        }
     }
     private void duelIntent(){
         Intent intentDuel = new Intent(this, Duel.class);

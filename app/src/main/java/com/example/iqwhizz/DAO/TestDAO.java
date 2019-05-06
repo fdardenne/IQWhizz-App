@@ -32,7 +32,7 @@ public class TestDAO {
         return (bool) ? test : null ;
     }
 
-    public static Test resumeTest(String username) {
+    private static Test resumeTest(String username) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT testID, max(execution_date) FROM TestExecutions WHERE username = \"" + username + "\" GROUP BY testID", null);
         cursor.moveToFirst();
@@ -41,7 +41,33 @@ public class TestDAO {
         }
         else {
             int testID = cursor.getInt(0);
-            return getTest(testID, getNextQuestionIndex(testID, username));
+            int question_index = getNextQuestionIndex(testID, username);
+            return getTest(testID, question_index);
+        }
+    }
+
+    public static Test resumeTest(int testID, int executionID, int pos) {
+        Test test = getTest(testID, pos);
+        test.setExecutionID(executionID);
+        return test;
+    }
+
+    public static int[] hasTestToResume(String username) {
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery(
+                "SELECT testID, executionID, max(execution_date) FROM TestExecutions WHERE username = \"" + username + "\"",
+                null);
+        cursor.moveToFirst();
+        if (cursor.getCount()!=1) {
+            return null;
+        }
+        else {
+            int testID = cursor.getInt(0);
+            int executionID = cursor.getInt(1);
+            int pos = getNextQuestionIndex(testID, username);
+            String type = TestDAO.getTest(testID, 0).getType();
+            int nQuestions = (type.equals("court")) ? 5 : 40;
+            return (pos+1 < nQuestions) ? new int[] {testID, executionID, pos} : null;
         }
     }
 

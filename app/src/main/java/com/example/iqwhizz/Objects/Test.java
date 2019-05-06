@@ -60,6 +60,10 @@ public class Test {
         }
     }
 
+    public int getPosition() {
+        return nextQuestion;
+    }
+
     /*
         donne la prochaine question dans questions et incrémente le pointeur nextQuestion
         DAO : rien
