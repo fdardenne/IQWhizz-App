@@ -42,11 +42,12 @@ public class Account extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         //get the spinner from the xml.
-        Spinner dropdown = findViewById(R.id.language_account);
+        language = findViewById(R.id.language_account);
         //create a list of items for the spinner.
         String[] items = new String[]{"Francais", "English"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
+        language.setAdapter(adapter);
+        language.setSelection(adapter.getPosition(User.currentUser.getLanguage()));
 
         User user = User.currentUser;
         Log.i("erreur",user.getMail());
