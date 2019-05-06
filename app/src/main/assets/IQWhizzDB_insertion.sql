@@ -106,9 +106,9 @@ insert into PossibleAnswers values(42, 11, 0, NULL, 'tant va la cruche a l eau q
 insert into PossibleAnswers values(43, 11, 200, NULL, 'qui a des noix les casses qui n en a ne le peux');
 insert into PossibleAnswers values(44, 11, 0, NULL, 'qui veut peut');
 
-insert into PossibleAnswers values(45, 6, 0, NULL, '');
-insert into PossibleAnswers values(46, 6 , 0, NULL, '');
-insert into PossibleAnswers values(47, 6, 0, NULL, '');
+insert into PossibleAnswers values(45, 6, 0, NULL, 'il pleut des cordes');
+insert into PossibleAnswers values(46, 6 , 0, NULL, 'qui casse paie');
+insert into PossibleAnswers values(47, 6, 0, NULL, 'apres la pluie le beau temps');
 insert into PossibleAnswers values(48, 6 , 200, NULL, 'Nul n est censé avoir voulu faire une betise');
 
 -- réponse Calcul Mental
