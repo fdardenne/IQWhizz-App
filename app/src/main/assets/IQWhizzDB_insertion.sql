@@ -36,7 +36,7 @@ insert into Questions values(12,3,'grammaire',NULL,'Quel autre proverbe a le sen
 
 --Calcul Mental
 insert into Questions values(13,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 4-6-9-6-14-6-... ?');
-insert into Questions values(14,2,'Calcul Mental',NULL,'Résolvez cette équation: (((80-8)/3-4)x5)');
+insert into Questions values(14,2,'Calcul Mental',NULL,'Que vaut:  (((80-8)/3-4)x5)');
 insert into Questions values(15,1,'Calcul Mental',NULL,'Combien vaut 4 litres de jus d orange à 3.5 euros le litre ?');
 insert into Questions values(16,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3x2+1 ?');
 insert into Questions values(17,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-9-16-25-... ?');
@@ -48,7 +48,7 @@ insert into Questions values(21,1,'Calcul Mental',NULL,'Que vaut: 51 + 118 = ?')
 insert into Questions values(22,1,'Calcul Mental',NULL,'Que vaut: 135 / 9 = ?');
 
 insert into Questions values(23,3,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 9xY-12=96 ?');
-insert into Questions values(24,2,'Calcul Mental',NULL,'Résolvez cette équation: 5+(3x14-7x3)');
+insert into Questions values(24,2,'Calcul Mental',NULL,'Que vaut:  5+(3x14-7x3)');
 insert into Questions values(25,4,'Calcul Mental',NULL,'Si 1 livre vaut 1.3 euros, et 1 euros vaut 2 dollars US, Que vaut 3 livres en Dollars US?');
 insert into Questions values(26,3,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: (-1)-2-7-14-23-... ?');
 insert into Questions values(27,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 100-3*Y-12=70 ?');
@@ -64,6 +64,19 @@ insert into Questions values(34,1,'Calcul Mental',NULL,'Résolvez cette équatio
 insert into Questions values(35,1,'Calcul Mental',NULL,'Combien vaut 12 bouteilles de Bière à 5.5 euros pièce ?');
 insert into Questions values(36,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 156-48+5x7 ?');
 insert into Questions values(37,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-7-10-13-... ?');
+
+
+
+
+
+
+
+insert into Questions values(43,1,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 10-6-16-12-22-18-... ?');
+insert into Questions values(44,1,'Calcul Mental',NULL,'Que vaut: 15x6-7');
+insert into Questions values(45,1,'Calcul Mental',NULL,'Combien il y a-t-il de pépins dans une pèche?');
+insert into Questions values(46,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 2.5*7 ?');
+insert into Questions values(47,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 57-4*Y=25 ?');
+
 --
 
 
@@ -257,3 +270,61 @@ insert into PossibleAnswers values(145, 37, 0, NULL, '15');
 insert into PossibleAnswers values(146, 37 , 200, NULL, '16');
 insert into PossibleAnswers values(147, 37 , 0, NULL, '18');
 insert into PossibleAnswers values(148, 37, 0, NULL, '20');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+insert into PossibleAnswers values(169, 43, 0, NULL, '22');
+insert into PossibleAnswers values(170, 43 , 0, NULL, '24');
+insert into PossibleAnswers values(171, 43, 0, NULL, '26');
+insert into PossibleAnswers values(172, 43 , 200, NULL, '28');
+
+insert into PossibleAnswers values(173, 44, 0, NULL, '90');
+insert into PossibleAnswers values(174, 44 , 0, NULL, '97');
+insert into PossibleAnswers values(175, 44 , 0, NULL, '87');
+insert into PossibleAnswers values(176, 44, 200, NULL, '83');
+
+insert into PossibleAnswers values(177, 45, 0, NULL, '2');
+insert into PossibleAnswers values(178, 45 , 0, NULL, '1');
+insert into PossibleAnswers values(179, 45 , 200, NULL, '0');
+insert into PossibleAnswers values(140, 45, 0, NULL, '12');
+
+insert into PossibleAnswers values(141, 46, 0, NULL, '12.7');
+insert into PossibleAnswers values(142, 46 , 200, NULL, '17.5');
+insert into PossibleAnswers values(143, 46 , 0, NULL, '15');
+insert into PossibleAnswers values(144, 46, 0, NULL, '11.8');
+
+insert into PossibleAnswers values(145, 47, 200, NULL, '8');
+insert into PossibleAnswers values(146, 47 , 0, NULL, '6');
+insert into PossibleAnswers values(147, 47 , 0, NULL, '7');
+insert into PossibleAnswers values(148, 47, 0, NULL, '9');
