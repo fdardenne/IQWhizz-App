@@ -87,15 +87,15 @@ insert into PossibleAnswers values(30, 8, 0, NULL, '');
 insert into PossibleAnswers values(31, 8, 0, NULL, '');
 insert into PossibleAnswers values(32, 8, 0, NULL, '');
 
-insert into PossibleAnswers values(33, 9, 200, NULL, '');
-insert into PossibleAnswers values(34, 9, 0, NULL, '');
-insert into PossibleAnswers values(35, 9, 0, NULL, '');
-insert into PossibleAnswers values(36, 9 , 0, NULL, '');
+insert into PossibleAnswers values(33, 9, 200, NULL, 'écraser');
+insert into PossibleAnswers values(34, 9, 0, NULL, 'caresser');
+insert into PossibleAnswers values(35, 9, 0, NULL, 'toucher');
+insert into PossibleAnswers values(36, 9 , 0, NULL, 'tâter');
 
-insert into PossibleAnswers values(37, 10, 0, NULL, '');
-insert into PossibleAnswers values(38, 10, 200, NULL, '');
-insert into PossibleAnswers values(39, 10, 0, NULL, '');
-insert into PossibleAnswers values(40, 10 , 0, NULL, '');
+insert into PossibleAnswers values(37, 10, 0, NULL, 'crier');
+insert into PossibleAnswers values(38, 10, 200, NULL, 'dresser');
+insert into PossibleAnswers values(39, 10, 0, NULL, 'brailler');
+insert into PossibleAnswers values(40, 10 , 0, NULL, 'hurler');
 
 insert into PossibleAnswers values(41, 11, 0, NULL, '');
 insert into PossibleAnswers values(42, 11, 0, NULL, '');
