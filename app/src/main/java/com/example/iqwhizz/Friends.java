@@ -31,8 +31,8 @@ public class Friends extends AppCompatActivity {
     private RecyclerView rv2;
     private RecyclerView rv3;
     private FriendAdapter rv1_adapt;
-    private FriendAdapter rv2_adapt;
-    private FriendAdapter rv3_adapt;
+    private SentAdapter rv2_adapt;
+    private ReceivedAdapter rv3_adapt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +59,12 @@ public class Friends extends AppCompatActivity {
 
         rv2 = (RecyclerView) findViewById(R.id.sent_requests);
         rv2.setLayoutManager(new LinearLayoutManager(this));
-        rv2_adapt = new FriendAdapter(sent_req);
+        rv2_adapt = new SentAdapter(sent_req);
         rv2.setAdapter(rv2_adapt);
 
         rv3 = (RecyclerView) findViewById(R.id.received_requests);
         rv3.setLayoutManager(new LinearLayoutManager(this));
-        rv3_adapt = new FriendAdapter(received_req);
+        rv3_adapt = new ReceivedAdapter(received_req, rv1_adapt);
         rv3.setAdapter(rv3_adapt);
     }
 
@@ -109,9 +109,16 @@ public class Friends extends AppCompatActivity {
             }
 
             toast = Toast.makeText(context, "Une requête a été envoyé à " + text_friend.getText() + " !", duration);
-            FriendshipDAO.addFriend(text_friend.getText().toString(), User.currentUser.getUsername());
+            boolean bool = FriendshipDAO.addFriend(text_friend.getText().toString(), User.currentUser.getUsername());
+            if (bool) {
+                //rv2_adapt.updateData(Friendship.getSentUsername(User.currentUser.getUsername()));
+                rv2_adapt.addItem(text_friend.getText().toString());
+            }
+            else {
+                toast = Toast.makeText(context, "An error occured while inserting in the DB.", duration);
+            }
             toast.show();
-            rv1_adapt.addItem(0, text_friend.getText().toString());
+            return;
         }
     }
 }

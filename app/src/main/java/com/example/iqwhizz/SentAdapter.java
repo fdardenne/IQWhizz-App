@@ -12,11 +12,11 @@ import com.example.iqwhizz.Objects.User;
 
 import java.util.ArrayList;
 
-public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHolder> {
+public class SentAdapter extends RecyclerView.Adapter<SentAdapter.MyViewHolder> {
 
     private ArrayList<String> items;
 
-    public FriendAdapter(ArrayList<String> to_display){
+    public SentAdapter(ArrayList<String> to_display){
         super();
         this.items = to_display;
     }
@@ -29,7 +29,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.list_friend, parent, false);
+        View view = inflater.inflate(R.layout.list_sent, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -49,18 +49,16 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
         public MyViewHolder(final View itemView) {
             super(itemView);
 
-            username = itemView.findViewById(R.id.friend_name);
-            delete_btn = (Button) itemView.findViewById(R.id.friend_delete_btn);
+            username = itemView.findViewById(R.id.sent_name);
+            delete_btn = (Button) itemView.findViewById(R.id.sent_delete_btn);
             delete_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     boolean bool = FriendshipDAO.deleteFriendship(User.currentUser.getUsername(), username.getText().toString());
                     if (!bool) {
-                        bool = FriendshipDAO.deleteFriendship(username.getText().toString(), User.currentUser.getUsername());
+                        FriendshipDAO.deleteFriendship(username.getText().toString(), User.currentUser.getUsername());
                     }
-                    if (bool) {
-                        removeItem(username.getText().toString());
-                    }
+                    removeItem(items.indexOf(username.getText().toString()));
                 }
             });
         }
@@ -89,8 +87,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
         notifyItemRangeRemoved(0, size);
     }
 
-    public void removeItem(String str) {
-        int position  = items.indexOf(str);
+    public void removeItem(int position) {
         items.remove(position);
         //recycler.removeViewAt(position);
         this.notifyItemRemoved(position);

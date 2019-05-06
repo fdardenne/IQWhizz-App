@@ -58,8 +58,8 @@ public class FriendshipDAO {
     /*
         ajoute un ami a l'utilisateur courant (écrit 1 ligne dans la db)
      */
-    public static void addFriend(String username, String currentUser){
-        sendFriendRequest(currentUser, username);
+    public static boolean addFriend(String username, String currentUser){
+        return sendFriendRequest(currentUser, username);
     }
 
     public static Friendship[] getAllSentRequests(String user){

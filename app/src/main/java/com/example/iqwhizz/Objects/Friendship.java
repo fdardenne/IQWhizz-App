@@ -117,7 +117,7 @@ public class Friendship {
         ArrayList<String> received = new ArrayList<>();
         Friendship[] received_fr = FriendshipDAO.getReceivedRequests(username);
         for(int i = 0; i<received_fr.length; i++){
-            received.add(received_fr[i].getReceiver());
+            received.add(received_fr[i].getSender());
         }
 
         return received;
