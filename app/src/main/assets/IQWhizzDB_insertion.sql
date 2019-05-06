@@ -153,7 +153,6 @@ insert into PossibleAnswers values(48, 12 , 200, NULL, 'Nul n est censé avoir v
 -- réponse Calcul Mental
 
 
-
 insert into PossibleAnswers values(49, 13, 0, NULL, '6');
 insert into PossibleAnswers values(50, 13 , 0, NULL, '12');
 insert into PossibleAnswers values(51, 13, 200, NULL, '19');
