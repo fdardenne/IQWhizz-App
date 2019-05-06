@@ -15,6 +15,7 @@ import com.example.iqwhizz.DAO.TestDAO;
 import com.example.iqwhizz.Objects.Answer;
 import com.example.iqwhizz.Objects.Question;
 import com.example.iqwhizz.Objects.Test;
+import com.example.iqwhizz.Objects.User;
 
 public class Challenge extends AppCompatActivity {
 
@@ -44,8 +45,17 @@ public class Challenge extends AppCompatActivity {
         setContentView(R.layout.activity_challenge);
 
 
-        currentNbQuestion = 1;
-        this.currentTest = TestDAO.startTest(getIntent().getIntExtra("testID", -1));
+
+
+        int testID = getIntent().getIntExtra("testID", -1);
+        if(testID == -1){
+            this.currentTest = TestDAO.resumeTest(User.currentUser.getUsername());
+
+        }else{
+            this.currentTest = TestDAO.startTest(testID);
+        }
+
+        currentNbQuestion = currentTest.getNextQuestionID();
         maxNbQuestion = (currentTest.getType().equals("court")) ? 5 : 40;
 
         title = findViewById(R.id.questionNb);

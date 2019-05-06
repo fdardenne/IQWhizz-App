@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+
+import com.example.iqwhizz.DAO.TestDAO;
+import com.example.iqwhizz.Objects.Test;
 import com.example.iqwhizz.Objects.User;
 public class Menu extends AppCompatActivity {
 
@@ -81,10 +84,21 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        resume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resumeIntent();
+            }
+        });
+
 
 
     }
 
+    private void resumeIntent(){
+        Intent resumeIntent = new Intent(this, Challenge.class);
+        startActivity(resumeIntent);
+    }
     private void duelIntent(){
         Intent intentDuel = new Intent(this, Duel.class);
         startActivity(intentDuel);
