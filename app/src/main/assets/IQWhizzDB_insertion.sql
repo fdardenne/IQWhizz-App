@@ -58,6 +58,12 @@ insert into Questions values(29,1,'Calcul Mental',NULL,'Que vaut: 146 - 78 = ?')
 insert into Questions values(30,1,'Calcul Mental',NULL,'Que vaut: 136 / 34 = ?');
 insert into Questions values(31,1,'Calcul Mental',NULL,'Que vaut: 97 + 168 = ?');
 insert into Questions values(32,2,'Calcul Mental',NULL,'Que vaut: 198 / 11 = ?');
+
+insert into Questions values(33,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-2-3-5-8-13-... ?');
+insert into Questions values(34,2,'Calcul Mental',NULL,'Résolvez cette équation: (((80-8)/3-4)x5)');
+insert into Questions values(35,1,'Calcul Mental',NULL,'Combien vaut 4 litres de jus d orange à 3.5 euros le litre ?');
+insert into Questions values(36,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3x2+1 ?');
+insert into Questions values(37,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-9-16-25-... ?');
 --
 
 
@@ -120,10 +126,10 @@ insert into PossibleAnswers values(42, 11, 0, NULL, 'tant va la cruche a l eau q
 insert into PossibleAnswers values(43, 11, 200, NULL, 'qui a des noix les casses qui n en a ne le peux');
 insert into PossibleAnswers values(44, 11, 0, NULL, 'qui veut peut');
 
-insert into PossibleAnswers values(45, 6, 0, NULL, 'il pleut des cordes');
-insert into PossibleAnswers values(46, 6 , 0, NULL, 'qui casse paie');
-insert into PossibleAnswers values(47, 6, 0, NULL, 'apres la pluie le beau temps');
-insert into PossibleAnswers values(48, 6 , 200, NULL, 'Nul n est censé avoir voulu faire une betise');
+insert into PossibleAnswers values(45, 12, 0, NULL, 'il pleut des cordes');
+insert into PossibleAnswers values(46, 12 , 0, NULL, 'qui casse paie');
+insert into PossibleAnswers values(47, 12, 0, NULL, 'apres la pluie le beau temps');
+insert into PossibleAnswers values(48, 12 , 200, NULL, 'Nul n est censé avoir voulu faire une betise');
 
 -- réponse Calcul Mental
 
@@ -226,3 +232,28 @@ insert into PossibleAnswers values(125, 32, 200, NULL, '18');
 insert into PossibleAnswers values(126, 32 , 0, NULL, '16');
 insert into PossibleAnswers values(127, 32 , 0, NULL, '14');
 insert into PossibleAnswers values(128, 32, 0, NULL, '17');
+
+insert into PossibleAnswers values(129, 33, 0, NULL, '19');
+insert into PossibleAnswers values(130, 33 , 0, NULL, '20');
+insert into PossibleAnswers values(131, 33, 200, NULL, '21');
+insert into PossibleAnswers values(132, 33 , 0, NULL, '22');
+
+insert into PossibleAnswers values(133, 34, 0, NULL, '0');
+insert into PossibleAnswers values(134, 34 , 0, NULL, '45');
+insert into PossibleAnswers values(135, 34 , 200, NULL, '100');
+insert into PossibleAnswers values(136, 34, 0, NULL, '150');
+
+insert into PossibleAnswers values(137, 35, 0, NULL, '3.5');
+insert into PossibleAnswers values(138, 35 , 0, NULL, '12');
+insert into PossibleAnswers values(139, 35 , 200, NULL, '14');
+insert into PossibleAnswers values(140, 35, 0, NULL, '15');
+
+insert into PossibleAnswers values(141, 36, 0, NULL, '1');
+insert into PossibleAnswers values(142, 36 , 200, NULL, '4');
+insert into PossibleAnswers values(143, 36 , 0, NULL, '5');
+insert into PossibleAnswers values(144, 36, 0, NULL, '6');
+
+insert into PossibleAnswers values(145, 37, 0, NULL, '33');
+insert into PossibleAnswers values(146, 37 , 0, NULL, '34');
+insert into PossibleAnswers values(147, 37 , 0, NULL, '35');
+insert into PossibleAnswers values(148, 37, 200, NULL, '36');
