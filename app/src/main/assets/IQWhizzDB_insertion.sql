@@ -41,17 +41,23 @@ insert into Questions values(15,1,'Calcul Mental',NULL,'Combien vaut 4 litres de
 insert into Questions values(16,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3x2+1 ?');
 insert into Questions values(17,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-9-16-25-... ?');
 
-insert into Questions values(18,1,'Calcul Mental',NULL,'256 * 3 = ?');
-insert into Questions values(19,1,'Calcul Mental',NULL,'83 - 46 = ?');
-insert into Questions values(20,1,'Calcul Mental',NULL,'24 x 6 = ?');
-insert into Questions values(21,1,'Calcul Mental',NULL,'51 + 118 = ?');
-insert into Questions values(22,1,'Calcul Mental',NULL,'135 / 9 = ?');
+insert into Questions values(18,1,'Calcul Mental',NULL,'Que vaut: 256 x 3 = ?');
+insert into Questions values(19,1,'Calcul Mental',NULL,'Que vaut: 83 - 46 = ?');
+insert into Questions values(20,1,'Calcul Mental',NULL,'Que vaut: 24 x 6 = ?');
+insert into Questions values(21,1,'Calcul Mental',NULL,'Que vaut: 51 + 118 = ?');
+insert into Questions values(22,1,'Calcul Mental',NULL,'Que vaut: 135 / 9 = ?');
 
 insert into Questions values(23,3,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 9xY-12=96 ?');
 insert into Questions values(24,2,'Calcul Mental',NULL,'Résolvez cette équation: 5+(3x14-7x3)');
 insert into Questions values(25,4,'Calcul Mental',NULL,'Si 1 livre vaut 1.3 euros, et 1 euros vaut 2 dollars US, Que vaut 3 livres en Dollars US?');
 insert into Questions values(26,3,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: (-1)-2-7-14-23-... ?');
 insert into Questions values(27,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 100-3*Y-12=70 ?');
+
+insert into Questions values(28,2,'Calcul Mental',NULL,'Que vaut: 58 x 12 = ?');
+insert into Questions values(29,1,'Calcul Mental',NULL,'Que vaut: 146 - 78 = ?');
+insert into Questions values(30,1,'Calcul Mental',NULL,'Que vaut: 136 / 34 = ?');
+insert into Questions values(31,1,'Calcul Mental',NULL,'Que vaut: 97 + 168 = ?');
+insert into Questions values(32,2,'Calcul Mental',NULL,'Que vaut: 198 / 11 = ?');
 --
 
 
@@ -195,3 +201,28 @@ insert into PossibleAnswers values(106, 27, 0, NULL, '3');
 insert into PossibleAnswers values(107, 27 , 0, NULL, '4');
 insert into PossibleAnswers values(108, 27 , 0, NULL, '5');
 insert into PossibleAnswers values(69, 27, 200, NULL, '6');
+
+insert into PossibleAnswers values(109, 28, 0, NULL, '658');
+insert into PossibleAnswers values(110, 28 , 0, NULL, '669');
+insert into PossibleAnswers values(111, 28 , 200, NULL, '696');
+insert into PossibleAnswers values(112, 28, 0, NULL, '724');
+
+insert into PossibleAnswers values(113, 29, 0, NULL, '64');
+insert into PossibleAnswers values(114, 29 , 0, NULL, '66');
+insert into PossibleAnswers values(115, 29 , 200, NULL, '68');
+insert into PossibleAnswers values(116, 29, 0, NULL, '72');
+
+insert into PossibleAnswers values(117, 30, 200, NULL, '4');
+insert into PossibleAnswers values(118, 30 , 0, NULL, '4.5');
+insert into PossibleAnswers values(119, 30 , 0, NULL, '5');
+insert into PossibleAnswers values(120, 30, 0, NULL, '5.5');
+
+insert into PossibleAnswers values(121, 31, 0, NULL, '246');
+insert into PossibleAnswers values(122, 31 , 200, NULL, '256');
+insert into PossibleAnswers values(123, 31 , 0, NULL, '260');
+insert into PossibleAnswers values(124, 31, 0, NULL, '262');
+
+insert into PossibleAnswers values(125, 32, 200, NULL, '18');
+insert into PossibleAnswers values(126, 32 , 0, NULL, '16');
+insert into PossibleAnswers values(127, 32 , 0, NULL, '14');
+insert into PossibleAnswers values(128, 32, 0, NULL, '17');
