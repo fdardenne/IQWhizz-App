@@ -31,6 +31,7 @@ public class Account extends AppCompatActivity {
     EditText password;
     EditText confirmPassword;
     EditText email;
+    Spinner language;
     EditText birthdate;
     TextView errormessage;
     Button modify;
@@ -76,6 +77,7 @@ public class Account extends AppCompatActivity {
         password = findViewById(R.id.password_account);
         confirmPassword = findViewById(R.id.password_confirm_account);
         email = findViewById(R.id.email_account);
+        language = findViewById(R.id.language_account);
         birthdate = findViewById(R.id.birthday_account);
         errormessage = findViewById(R.id.error_message_account);
         String[] birthdate_array = birthdate.getText().toString().split("/");
@@ -86,7 +88,7 @@ public class Account extends AppCompatActivity {
         String username_str = username.getText().toString();
         String password_str = password.getText().toString();
         String email_str = email.getText().toString();
-        String lang_str = "en"; //TODO
+        String lang_str = language.getSelectedItem().toString();
 
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
@@ -97,7 +99,6 @@ public class Account extends AppCompatActivity {
             e.printStackTrace();
         }
         int birth_d = (int) (date.getTime()/1000);
-        int reg_d = 0; //TODO
         byte[] profile_pic = null; //TODO
 
 
