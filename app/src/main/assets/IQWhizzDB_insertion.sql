@@ -60,10 +60,10 @@ insert into Questions values(31,1,'Calcul Mental',NULL,'Que vaut: 97 + 168 = ?')
 insert into Questions values(32,2,'Calcul Mental',NULL,'Que vaut: 198 / 11 = ?');
 
 insert into Questions values(33,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-2-3-5-8-13-... ?');
-insert into Questions values(34,2,'Calcul Mental',NULL,'Résolvez cette équation: (((80-8)/3-4)x5)');
-insert into Questions values(35,1,'Calcul Mental',NULL,'Combien vaut 4 litres de jus d orange à 3.5 euros le litre ?');
-insert into Questions values(36,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3x2+1 ?');
-insert into Questions values(37,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-9-16-25-... ?');
+insert into Questions values(34,1,'Calcul Mental',NULL,'Résolvez cette équation: 6+(52-37)x2');
+insert into Questions values(35,1,'Calcul Mental',NULL,'Combien vaut 12 bouteilles de Bière à 5.5 euros pièce ?');
+insert into Questions values(36,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 156-48+5x7 ?');
+insert into Questions values(37,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-7-10-13-... ?');
 --
 
 
@@ -238,22 +238,22 @@ insert into PossibleAnswers values(130, 33 , 0, NULL, '20');
 insert into PossibleAnswers values(131, 33, 200, NULL, '21');
 insert into PossibleAnswers values(132, 33 , 0, NULL, '22');
 
-insert into PossibleAnswers values(133, 34, 0, NULL, '0');
-insert into PossibleAnswers values(134, 34 , 0, NULL, '45');
-insert into PossibleAnswers values(135, 34 , 200, NULL, '100');
-insert into PossibleAnswers values(136, 34, 0, NULL, '150');
+insert into PossibleAnswers values(133, 34, 0, NULL, '25');
+insert into PossibleAnswers values(134, 34 , 200, NULL, '30');
+insert into PossibleAnswers values(135, 34 , 0, NULL, '17');
+insert into PossibleAnswers values(136, 34, 0, NULL, '15');
 
-insert into PossibleAnswers values(137, 35, 0, NULL, '3.5');
-insert into PossibleAnswers values(138, 35 , 0, NULL, '12');
-insert into PossibleAnswers values(139, 35 , 200, NULL, '14');
-insert into PossibleAnswers values(140, 35, 0, NULL, '15');
+insert into PossibleAnswers values(137, 35, 0, NULL, '56');
+insert into PossibleAnswers values(138, 35 , 0, NULL, '62');
+insert into PossibleAnswers values(139, 35 , 0, NULL, '64');
+insert into PossibleAnswers values(140, 35, 200, NULL, '66');
 
-insert into PossibleAnswers values(141, 36, 0, NULL, '1');
-insert into PossibleAnswers values(142, 36 , 200, NULL, '4');
-insert into PossibleAnswers values(143, 36 , 0, NULL, '5');
-insert into PossibleAnswers values(144, 36, 0, NULL, '6');
+insert into PossibleAnswers values(141, 36, 0, NULL, '127');
+insert into PossibleAnswers values(142, 36 , 200, NULL, '143');
+insert into PossibleAnswers values(143, 36 , 0, NULL, '155');
+insert into PossibleAnswers values(144, 36, 0, NULL, '118');
 
-insert into PossibleAnswers values(145, 37, 0, NULL, '33');
-insert into PossibleAnswers values(146, 37 , 0, NULL, '34');
-insert into PossibleAnswers values(147, 37 , 0, NULL, '35');
-insert into PossibleAnswers values(148, 37, 200, NULL, '36');
+insert into PossibleAnswers values(145, 37, 0, NULL, '15');
+insert into PossibleAnswers values(146, 37 , 200, NULL, '16');
+insert into PossibleAnswers values(147, 37 , 0, NULL, '18');
+insert into PossibleAnswers values(148, 37, 0, NULL, '20');
