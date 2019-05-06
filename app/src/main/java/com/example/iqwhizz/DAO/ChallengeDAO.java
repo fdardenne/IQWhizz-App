@@ -16,8 +16,6 @@ public class ChallengeDAO {
      * @return la liste des défis
      */
     // TODO : implémenter Challenge et vérifier si ok. (ça me semble bon pour challengeDAO )
-
-
     public static Challenge[] getChallenge(String username)
     {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();

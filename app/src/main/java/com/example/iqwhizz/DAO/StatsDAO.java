@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class StatsDAO {
     private StatsDAO() {}
-    // TODO : implémenter les catégories multiples.
+
     public static int getIQ(String username, int testID) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery(
