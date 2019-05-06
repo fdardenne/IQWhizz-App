@@ -82,10 +82,10 @@ insert into PossibleAnswers values(26, 7, 0, NULL, 'signature');
 insert into PossibleAnswers values(27, 7, 0, NULL, 'protocole');
 insert into PossibleAnswers values(28, 7, 0, NULL, 'impact');
 
-insert into PossibleAnswers values(29, 8, 0, NULL, '');
-insert into PossibleAnswers values(30, 8, 0, NULL, '');
-insert into PossibleAnswers values(31, 8, 0, NULL, '');
-insert into PossibleAnswers values(32, 8, 0, NULL, '');
+insert into PossibleAnswers values(29, 8, 0, NULL, 'quiproquo');
+insert into PossibleAnswers values(30, 8, 200, NULL, 'relation');
+insert into PossibleAnswers values(31, 8, 0, NULL, 'différence');
+insert into PossibleAnswers values(32, 8, 0, NULL, 'pénible');
 
 insert into PossibleAnswers values(33, 9, 200, NULL, 'écraser');
 insert into PossibleAnswers values(34, 9, 0, NULL, 'caresser');
@@ -97,15 +97,15 @@ insert into PossibleAnswers values(38, 10, 200, NULL, 'dresser');
 insert into PossibleAnswers values(39, 10, 0, NULL, 'brailler');
 insert into PossibleAnswers values(40, 10 , 0, NULL, 'hurler');
 
-insert into PossibleAnswers values(41, 11, 0, NULL, '');
-insert into PossibleAnswers values(42, 11, 0, NULL, '');
-insert into PossibleAnswers values(43, 11, 200, NULL, '');
-insert into PossibleAnswers values(44, 11, 0, NULL, '');
+insert into PossibleAnswers values(41, 11, 0, NULL, 'l eau va a la riviere');
+insert into PossibleAnswers values(42, 11, 0, NULL, 'tant va la cruche a l eau qu a la fin elle se brise');
+insert into PossibleAnswers values(43, 11, 200, NULL, 'qui a des noix les casses qui n en a ne le peux');
+insert into PossibleAnswers values(44, 11, 0, NULL, 'qui veut peut');
 
 insert into PossibleAnswers values(45, 6, 0, NULL, '');
 insert into PossibleAnswers values(46, 6 , 0, NULL, '');
 insert into PossibleAnswers values(47, 6, 0, NULL, '');
-insert into PossibleAnswers values(48, 6 , 200, NULL, '');
+insert into PossibleAnswers values(48, 6 , 200, NULL, 'Nul n est censé avoir voulu faire une betise');
 
 insert into PossibleAnswers values(70, 13, 0, NULL, '6');
 insert into PossibleAnswers values(71, 13 , 0, NULL, '12');
