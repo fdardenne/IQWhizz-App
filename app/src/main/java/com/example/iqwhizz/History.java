@@ -46,7 +46,8 @@ public class History extends AppCompatActivity implements HistoryAdapter.OnHisto
             int longueur = execIDs.length;
             for (int i = 0; i < longueur; i = i + 2)
             {
-                Test letest = TestDAO.getTest(execIDs[i], 0);
+                int testID = TestDAO.getTestIDAssociatedTestExec(execIDs[i]);
+                Test letest = TestDAO.getTest(testID, 0);
                 long date = ( (long)execIDs[i + 1]*1000); // Bizarre non ?
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                 String date1 = dateFormat.format(date);

@@ -236,6 +236,14 @@ public class TestDAO {
         return null;
     }
 
+    public static int getTestIDAssociatedTestExec(int execID){
+        SQLiteDatabase db = DatabaseHelper.getReadableDb();
+        Cursor cursor = db.rawQuery("SELECT testID FROM TestExecutions WHERE executionID = "+execID, null);
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+
+    }
+
     public static Answer[] getSelectedAnswers(int executionID) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery("SELECT answerID FROM SelectedAnswers WHERE executionID="+executionID, null);

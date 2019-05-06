@@ -12,15 +12,16 @@ public class Challenge {
 
     private int testID;
 
+
     /*
-        Constructeur
-     */
-    public Challenge(String challenger, String challenged, int testID)
+            Constructeur
+         */
+    public Challenge(String challenger, String challenged, int testID, boolean done)
     {
         this.challenger = challenger;
         this.challenged = challenged;
         this.testID = testID;
-        this.done = false;
+        this.done = done;
     }
 
     /*
@@ -34,7 +35,20 @@ public class Challenge {
         return test;
     }
 
+    public int getTestID() {
+        return testID;
+    }
 
 
+    public String getChallenger() {
+        return challenger;
+    }
 
+    public String getChallenged() {
+        return challenged;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
 }

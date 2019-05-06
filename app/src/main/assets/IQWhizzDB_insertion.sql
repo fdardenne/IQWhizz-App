@@ -16,6 +16,8 @@ insert into Users values ('Maxime', 'vache', 'nl', strftime('%s','1999-06-08'),
 insert into Users values ('Florent', 'Coucou', 'fr', strftime('%s','1999-01-01'),
 'florent@telenet.be',strftime('%s','2019-02-25'), strftime('%s','now'),'florent.png');
 
+insert into Friendships values ('Florent', 'Arthur', strftime('%s','now'), strftime('%s','now'), 1);
+
 
 --INFO
 insert into Questions values(1,1,'info',NULL,'Que signifient les initiales obo?');

@@ -31,7 +31,7 @@ public class StatsDAO {
         Cursor cursor = db.rawQuery(
                 "SELECT round(avg(PA.score * (60-SA.time)/60)) " +
                         "FROM TestExecutions TE, SelectedAnswers SA, PossibleAnswers PA " +
-                        "WHERE TE.testID="+testExecID+" " +
+                        "WHERE TE.executionID="+testExecID+" " +
                         "AND TE.executionID=SA.executionID " +
                         "AND SA.answerID=PA.answerID",
                 null);

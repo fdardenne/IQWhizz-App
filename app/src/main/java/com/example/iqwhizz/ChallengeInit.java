@@ -116,6 +116,8 @@ public class ChallengeInit extends AppCompatActivity {
 
         category.setAdapter(adapter);
     }
+
+
     private void play_game() {
 
         if(switch_friend.isChecked()) {
