@@ -65,11 +65,11 @@ insert into Questions values(35,1,'Calcul Mental',NULL,'Combien vaut 12 bouteill
 insert into Questions values(36,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 156-48+5x7 ?');
 insert into Questions values(37,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-7-10-13-... ?');
 
-
-
-
-
-
+insert into Questions values(38,3,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 10xY-12= ?'); //188
+insert into Questions values(39,2,'Calcul Mental',NULL,'Que vaut:  7+(3x14)'); //49
+insert into Questions values(40,4,'Calcul Mental',NULL,'Si 1 livre vaut 2 euros, et 1 euros vaut 1.5 dollars US, Que vaut 3 livres en Dollars US?'); //9
+insert into Questions values(41,3,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 6-7-9-12-16-... ?'); //21
+insert into Questions values(42,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 100-3*Y=67 ?'); //11
 
 insert into Questions values(43,1,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 10-6-16-12-22-18-... ?');
 insert into Questions values(44,1,'Calcul Mental',NULL,'Que vaut: 15x6-7');
@@ -271,38 +271,30 @@ insert into PossibleAnswers values(146, 37 , 200, NULL, '16');
 insert into PossibleAnswers values(147, 37 , 0, NULL, '18');
 insert into PossibleAnswers values(148, 37, 0, NULL, '20');
 
+insert into PossibleAnswers values(149, 38, 200, NULL, '188');
+insert into PossibleAnswers values(150, 38 , 0, NULL, '189');
+insert into PossibleAnswers values(151, 38 , 0, NULL, '190');
+insert into PossibleAnswers values(152, 38, 0, NULL, '191');
 
+insert into PossibleAnswers values(153, 39, 0, NULL, '45');
+insert into PossibleAnswers values(154, 39 , 0, NULL, '47');
+insert into PossibleAnswers values(155, 39, 0, NULL, '48');
+insert into PossibleAnswers values(156, 39, 200, NULL, '49');
 
+insert into PossibleAnswers values(157, 40, 0, NULL, '7');
+insert into PossibleAnswers values(158, 40 , 0, NULL, '8');
+insert into PossibleAnswers values(159, 40, 200, NULL, '9');
+insert into PossibleAnswers values(160, 40, 0, NULL, '10');
 
+insert into PossibleAnswers values(161, 41, 0, NULL, '23');
+insert into PossibleAnswers values(162, 41 , 0, NULL, '15');
+insert into PossibleAnswers values(163, 41, 200, NULL, '21');
+insert into PossibleAnswers values(164, 41, 0, NULL, '17');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+insert into PossibleAnswers values(165, 42, 0, NULL, '23');
+insert into PossibleAnswers values(166, 42 , 0, NULL, '15');
+insert into PossibleAnswers values(167, 42, 200, NULL, '21');
+insert into PossibleAnswers values(168, 42, 0, NULL, '17');
 
 insert into PossibleAnswers values(169, 43, 0, NULL, '22');
 insert into PossibleAnswers values(170, 43 , 0, NULL, '24');
