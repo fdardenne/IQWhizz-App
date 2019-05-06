@@ -36,12 +36,14 @@ insert into Questions values(12,3,'grammaire',NULL,'Quel autre proverbe a le sen
 
 --Calcul Mental
 insert into Questions values(13,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 4-6-9-6-14-6-... ?');
-insert into Questions values(14,2,'Calcul Mental',NULL,'Résolvez cette équation: (((80-8)/3-4)*5) ?');
+insert into Questions values(14,2,'Calcul Mental',NULL,'Résolvez cette équation: (((80-8)/3-4)x5)');
 insert into Questions values(15,1,'Calcul Mental',NULL,'Combien vaut 4 litres de jus d orange à 3.5 euros le litre ?');
-insert into Questions values(16,1,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3*2+1 ?');
+insert into Questions values(16,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 9-3x2+1 ?');
 insert into Questions values(17,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-9-25-36-49-... ?');
 
-insert into Questions values(23,2,'Calcul Mental',NULL,'Quel est la valeur de x dans cette équation: 9*x-12=96 ?');
+insert into Questions values(23,3,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 9xY-12=96 ?');
+insert into Questions values(24,2,'Calcul Mental',NULL,'Résolvez cette équation: 5+(3x14-7x3)');
+insert into Questions values(25,4,'Calcul Mental',NULL,'Si 1 livre vaut 1.3 euros, et 1 euros vaut 2 dollars US, Que vaut 3 livres en Dollars US?');
 --
 
 
@@ -141,3 +143,13 @@ insert into PossibleAnswers values(90, 23, 0, NULL, '10');
 insert into PossibleAnswers values(91, 23 , 200, NULL, '12');
 insert into PossibleAnswers values(92, 23 , 0, NULL, '14');
 insert into PossibleAnswers values(93, 23, 0, NULL, '15');
+
+insert into PossibleAnswers values(94, 24, 0, NULL, '15');
+insert into PossibleAnswers values(95, 24 , 0, NULL, '19');
+insert into PossibleAnswers values(96, 24 , 0, NULL, '24');
+insert into PossibleAnswers values(97, 24, 200, NULL, '26');
+
+insert into PossibleAnswers values(98, 25, 0, NULL, '3.9');
+insert into PossibleAnswers values(99, 25 , 0, NULL, '5.85');
+insert into PossibleAnswers values(100, 25 , 200, NULL, '7.8');
+insert into PossibleAnswers values(101, 25, 0, NULL, '7.9');
