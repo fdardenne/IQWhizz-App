@@ -1,6 +1,7 @@
 package com.example.iqwhizz;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,15 @@ import com.example.iqwhizz.Objects.User;
 
 import java.util.ArrayList;
 
-public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHolder> {
+public class ReceivedAdapter extends RecyclerView.Adapter<ReceivedAdapter.MyViewHolder> {
 
     private ArrayList<String> items;
+    private FriendAdapter friend_list;
 
-    public FriendAdapter(ArrayList<String> to_display){
+    public ReceivedAdapter(ArrayList<String> to_display, FriendAdapter friend_list){
         super();
         this.items = to_display;
+        this.friend_list = friend_list;
     }
 
     @Override
@@ -29,7 +32,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.list_friend, parent, false);
+        View view = inflater.inflate(R.layout.list_received, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -42,6 +45,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView username;
+        private final Button accept_btn;
         private final Button delete_btn;
 
         private String current;
@@ -49,16 +53,28 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
         public MyViewHolder(final View itemView) {
             super(itemView);
 
-            username = itemView.findViewById(R.id.friend_name);
-            delete_btn = (Button) itemView.findViewById(R.id.friend_delete_btn);
+            username = itemView.findViewById(R.id.received_name);
+            delete_btn = (Button) itemView.findViewById(R.id.received_delete_btn);
+            accept_btn = (Button) itemView.findViewById(R.id.received_accept_btn);
             delete_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean bool = FriendshipDAO.deleteFriendship(User.currentUser.getUsername(), username.getText().toString());
-                    if (!bool) {
-                        bool = FriendshipDAO.deleteFriendship(username.getText().toString(), User.currentUser.getUsername());
-                    }
+                    boolean bool = FriendshipDAO.deleteFriendship(username.getText().toString(), User.currentUser.getUsername());
                     if (bool) {
+                        removeItem(username.getText().toString());
+                    }
+                    else {
+                        Log.d("Friends", "Error while refusing request");
+                    }
+                }
+            });
+            accept_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("Friends", "Accepting the request");
+                    boolean bool = FriendshipDAO.acceptFriendRequest(username.getText().toString(), User.currentUser.getUsername());
+                    if (bool) {
+                        friend_list.addItem(username.getText().toString());
                         removeItem(username.getText().toString());
                     }
                 }
@@ -74,6 +90,9 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
 
     public void updateData(ArrayList<String> newElements) {
         clear();
+        /*for (String s : items) {
+            removeItem(items.indexOf(s));
+        }*/
         items.addAll(newElements);
         notifyDataSetChanged();
     }
@@ -90,9 +109,8 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
     }
 
     public void removeItem(String str) {
-        int position  = items.indexOf(str);
+        int position = items.indexOf(str);
         items.remove(position);
-        //recycler.removeViewAt(position);
         this.notifyItemRemoved(position);
         this.notifyItemRangeChanged(position, items.size());
     }

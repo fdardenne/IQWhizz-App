@@ -31,8 +31,8 @@ public class Friends extends AppCompatActivity {
     private RecyclerView rv2;
     private RecyclerView rv3;
     private FriendAdapter rv1_adapt;
-    private FriendAdapter rv2_adapt;
-    private FriendAdapter rv3_adapt;
+    private SentAdapter rv2_adapt;
+    private ReceivedAdapter rv3_adapt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,49 +59,49 @@ public class Friends extends AppCompatActivity {
 
         rv2 = (RecyclerView) findViewById(R.id.sent_requests);
         rv2.setLayoutManager(new LinearLayoutManager(this));
-        rv2_adapt = new FriendAdapter(sent_req);
+        rv2_adapt = new SentAdapter(sent_req);
         rv2.setAdapter(rv2_adapt);
 
         rv3 = (RecyclerView) findViewById(R.id.received_requests);
         rv3.setLayoutManager(new LinearLayoutManager(this));
-        rv3_adapt = new FriendAdapter(received_req);
+        rv3_adapt = new ReceivedAdapter(received_req, rv1_adapt);
         rv3.setAdapter(rv3_adapt);
     }
 
-    private void addFriend(){
+    private void addFriend() {
         text_friend = findViewById(R.id.text_friend);
         int duration = Toast.LENGTH_SHORT;
         Context context = getApplicationContext();
 
-        if(!UserDAO.userExists(text_friend.getText().toString())){
+        if (!UserDAO.userExists(text_friend.getText().toString())) {
 
             Toast toast = Toast.makeText(context, "Cet utilisateur n'existe pas !", duration);
             toast.show();
             return;
 
-        }else{
+        } else {
             ArrayList<String> sent = Friendship.getSentUsername(User.currentUser.getUsername());
             ArrayList<String> received = Friendship.getReceivedUsername(User.currentUser.getUsername());
             ArrayList<String> friends = Friendship.getFriendsUsername(User.currentUser.getUsername());
             Toast toast;
-            for(String f: friends){
-                if((f.equals(text_friend.getText().toString()) || f.equals(text_friend.getText().toString())) ) {
+            for (String f : friends) {
+                if ((f.equals(text_friend.getText().toString()) || f.equals(text_friend.getText().toString()))) {
                     toast = Toast.makeText(context, "Cet utilisateur est déjà dans vos amis !", duration);
                     toast.show();
                     return;
                 }
             }
 
-            for(String f: sent){
-                if(f.equals(text_friend.getText().toString())) {
+            for (String f : sent) {
+                if (f.equals(text_friend.getText().toString())) {
                     toast = Toast.makeText(context, "Vous avez déjà envoyé un requête à cette personne !", duration);
                     toast.show();
                     return;
                 }
             }
 
-            for(String f: received){
-                if((f.equals(text_friend.getText().toString()) || f.equals(text_friend.getText().toString())) ) {
+            for (String f : received) {
+                if ((f.equals(text_friend.getText().toString()) || f.equals(text_friend.getText().toString()))) {
                     toast = Toast.makeText(context, "Cet utilisateur vous a déjà envoyé une invitation !", duration);
                     toast.show();
                     return;
@@ -109,10 +109,16 @@ public class Friends extends AppCompatActivity {
             }
 
             toast = Toast.makeText(context, "Une requête a été envoyé à " + text_friend.getText() + " !", duration);
-            FriendshipDAO.addFriend(text_friend.getText().toString(), User.currentUser.getUsername());
+            boolean bool = FriendshipDAO.addFriend(text_friend.getText().toString(), User.currentUser.getUsername());
+            if (bool) {
+                //rv2_adapt.updateData(Friendship.getSentUsername(User.currentUser.getUsername()));
+                rv2_adapt.addItem(text_friend.getText().toString());
+            }
+            else {
+                toast = Toast.makeText(context, "An error occured while inserting in the DB.", duration);
+            }
             toast.show();
-            rv1_adapt.updateData(Friendship.getSentUsername(User.currentUser.getUsername()));
+            return;
         }
-
     }
 }
