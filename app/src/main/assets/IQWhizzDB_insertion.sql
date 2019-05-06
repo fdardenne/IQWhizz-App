@@ -65,11 +65,11 @@ insert into Questions values(35,1,'Calcul Mental',NULL,'Combien vaut 12 bouteill
 insert into Questions values(36,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 156-48+5x7 ?');
 insert into Questions values(37,2,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 1-4-7-10-13-... ?');
 
-insert into Questions values(38,3,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 10xY-12= ?'); //188
-insert into Questions values(39,2,'Calcul Mental',NULL,'Que vaut:  7+(3x14)'); //49
-insert into Questions values(40,4,'Calcul Mental',NULL,'Si 1 livre vaut 2 euros, et 1 euros vaut 1.5 dollars US, Que vaut 3 livres en Dollars US?'); //9
-insert into Questions values(41,3,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 6-7-9-12-16-... ?'); //21
-insert into Questions values(42,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 100-3*Y=67 ?'); //11
+insert into Questions values(38,3,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 10xY-12= ?');
+insert into Questions values(39,2,'Calcul Mental',NULL,'Que vaut:  7+(3x14)');
+insert into Questions values(40,4,'Calcul Mental',NULL,'Si 1 livre vaut 2 euros, et 1 euros vaut 1.5 dollars US, Que vaut 3 livres en Dollars US?');
+insert into Questions values(41,3,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 6-7-9-12-16-... ?');
+insert into Questions values(42,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 100-3*Y=67 ?');
 
 insert into Questions values(43,1,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 10-6-16-12-22-18-... ?');
 insert into Questions values(44,1,'Calcul Mental',NULL,'Que vaut: 15x6-7');
