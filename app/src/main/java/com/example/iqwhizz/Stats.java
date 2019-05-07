@@ -63,7 +63,7 @@ public class Stats extends AppCompatActivity {
         }else if(userQI < 100){
             averageIQ.setText("Votre QI est inférieur de " + formatter.format(Gauss.integrate(userQI,100,100,15))+"% à la moyenne");
         }else{
-            averageIQ.setText("Votre QI est égale à celle de la moyenne");
+            averageIQ.setText("Votre QI est égal à celui de la moyenne");
         }
 
         history_btn = findViewById(R.id.history);
