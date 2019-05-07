@@ -3,72 +3,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/rounded_border">
+    android:background="@drawable/ripple_btn"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/friend_username_duel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        tools:text="Friend username"></TextView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/friend_username_duel"
+            android:id="@+id/done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            tools:text="Friend username"></TextView>
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            tools:text="Done"></TextView>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/category_duel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center_horizontal"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            tools:text="category"></TextView>
 
-            <TextView
-                android:id="@+id/done"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:lines="1"
-                android:ellipsize="end"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:text="Done" ></TextView>
-
-
-
-            <TextView
-                android:id="@+id/category_duel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:lines="1"
-                android:ellipsize="end"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:text="category" ></TextView>
-
-            <TextView
-                android:id="@+id/type_duel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:lines="1"
-                android:ellipsize="end"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:text="type" ></TextView>
+        <TextView
+            android:id="@+id/type_duel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            tools:text="type"></TextView>
 
 
+        <TextView
+            android:id="@+id/myQI_duel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            tools:text="Mon QI" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/myQI_duel"
-                tools:text="Mon QI"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/opposantIQ_duel"
-                tools:text="QI Adversaire"
-                />
+        <TextView
+            android:id="@+id/opposantIQ_duel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            tools:text="QI Adversaire" />
 
-        </LinearLayout>
-
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -35,23 +35,23 @@
                 >
 
 
-
                 <android.support.v7.widget.CardView
                     android:id="@+id/play"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
                     android:layout_margin="12dp"
-                    >
+                    android:background="@drawable/mybutton"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="@drawable/menu_btn"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
@@ -66,7 +66,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Jouer"
-                            android:textSize="18sp"/>
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
@@ -87,8 +87,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="@drawable/menu_btn"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
@@ -103,7 +104,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Reprendre"
-                            android:textSize="18sp"/>
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
@@ -124,8 +125,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="@drawable/menu_btn"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
@@ -140,7 +142,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Statistiques"
-                            android:textSize="18sp"/>
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
@@ -161,8 +163,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="@drawable/menu_btn"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
@@ -177,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Mes amis"
-                            android:textSize="18sp"/>
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
@@ -198,8 +201,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="@drawable/menu_btn"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
@@ -214,7 +218,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Défi"
-                            android:textSize="17sp"/>
+                            android:textSize="17sp" />
 
                     </LinearLayout>
 
@@ -235,8 +239,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="@drawable/menu_btn"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
@@ -251,7 +256,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Ajout"
-                            android:textSize="17sp"/>
+                            android:textSize="17sp" />
 
                     </LinearLayout>
 
@@ -272,8 +277,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="@drawable/menu_btn"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
@@ -288,7 +294,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Mon compte"
-                            android:textSize="17sp"/>
+                            android:textSize="17sp" />
 
                     </LinearLayout>
 
@@ -310,8 +316,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="@drawable/menu_btn"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
@@ -326,7 +333,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Déconnexion"
-                            android:textSize="17sp"/>
+                            android:textSize="17sp" />
 
                     </LinearLayout>
 
