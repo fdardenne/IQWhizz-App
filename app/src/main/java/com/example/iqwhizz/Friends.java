@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -70,12 +71,16 @@ public class Friends extends AppCompatActivity {
 
     private void addFriend() {
         text_friend = findViewById(R.id.text_friend);
-        int duration = Toast.LENGTH_SHORT;
         Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, "A Toast ...", duration);
+        toast.setGravity(Gravity.CENTER| Gravity.CENTER, 0, 0);
+        toast.setMargin(0,(float)0.08);
+
 
         if (!UserDAO.userExists(text_friend.getText().toString())) {
 
-            Toast toast = Toast.makeText(context, "Cet utilisateur n'existe pas !", duration);
+            toast.setText("Cet utilisateur n'existe pas !");
             toast.show();
             return;
 
@@ -83,10 +88,9 @@ public class Friends extends AppCompatActivity {
             ArrayList<String> sent = Friendship.getSentUsername(User.currentUser.getUsername());
             ArrayList<String> received = Friendship.getReceivedUsername(User.currentUser.getUsername());
             ArrayList<String> friends = Friendship.getFriendsUsername(User.currentUser.getUsername());
-            Toast toast;
             for (String f : friends) {
                 if ((f.equals(text_friend.getText().toString()) || f.equals(text_friend.getText().toString()))) {
-                    toast = Toast.makeText(context, "Cet utilisateur est déjà dans vos amis !", duration);
+                    toast.setText("Cet utilisateur est déjà dans vos amis !");
                     toast.show();
                     return;
                 }
@@ -94,7 +98,8 @@ public class Friends extends AppCompatActivity {
 
             for (String f : sent) {
                 if (f.equals(text_friend.getText().toString())) {
-                    toast = Toast.makeText(context, "Vous avez déjà envoyé un requête à cette personne !", duration);
+                    toast.setText("Vous avez déjà envoyé un requête à cette personne !");
+                    //toast = Toast.makeText(context, "Vous avez déjà envoyé un requête à cette personne !", duration);
                     toast.show();
                     return;
                 }
@@ -102,20 +107,20 @@ public class Friends extends AppCompatActivity {
 
             for (String f : received) {
                 if ((f.equals(text_friend.getText().toString()) || f.equals(text_friend.getText().toString()))) {
-                    toast = Toast.makeText(context, "Cet utilisateur vous a déjà envoyé une invitation !", duration);
+                    toast.setText("Cet utilisateur vous a déjà envoyé une invitation !");
                     toast.show();
                     return;
                 }
             }
 
-            toast = Toast.makeText(context, "Une requête a été envoyé à " + text_friend.getText() + " !", duration);
+            toast.setText("Une requête a été envoyé à " + text_friend.getText() + " !");
             boolean bool = FriendshipDAO.addFriend(text_friend.getText().toString(), User.currentUser.getUsername());
             if (bool) {
                 //rv2_adapt.updateData(Friendship.getSentUsername(User.currentUser.getUsername()));
                 rv2_adapt.addItem(text_friend.getText().toString());
             }
             else {
-                toast = Toast.makeText(context, "An error occured while inserting in the DB.", duration);
+                toast.setText("An error occured while inserting in the DB.");
             }
             toast.show();
             return;

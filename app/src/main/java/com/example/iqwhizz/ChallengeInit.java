@@ -149,7 +149,7 @@ public class ChallengeInit extends AppCompatActivity {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, "Bon jeu !", duration);
         toast.show();
-        String category_str = category.getSelectedItem().toString().toLowerCase();
+        String category_str = category.getSelectedItem().toString();
         String type_str = (type.getSelectedItem().toString().equals("Court (5 questions)")) ? "court" : "long";
 
         int testID = TestDAO.generateTest(category_str, type_str);
@@ -157,7 +157,6 @@ public class ChallengeInit extends AppCompatActivity {
             ChallengeDAO.newChallenge(User.currentUser.getUsername(), friend, testID);
         }
         challengeIntent.putExtra("testID", testID);
-        challengeIntent.putExtra("type", type_str);
         errormessage.setText("");
         startActivity(challengeIntent);
         this.finish();
