@@ -52,10 +52,10 @@
                 android:id="@+id/username_account"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:ems="30"
-                android:layout_marginBottom="10dp"
-                />
+                android:hint="nom d'utilisateur" />
 
 
             <EditText
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="adresse mail"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -88,21 +88,19 @@
                 android:id="@+id/password_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint="New Password"
                 android:layout_marginBottom="10dp"
-                />
+                android:ems="10"
+                android:hint="Nouveau mot de passe"
+                android:inputType="textPassword" />
 
             <EditText
                 android:id="@+id/password_confirm_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint="Confirm new password"
                 android:layout_marginBottom="10dp"
-                />
+                android:ems="10"
+                android:hint="Confirmer mot de passe"
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/modify"

@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="casual"
             android:gravity="center_horizontal"
-            android:text="History"
+            android:text="Historique"
             android:textColor="#FFFFFF"
             android:textSize="36sp" />
 

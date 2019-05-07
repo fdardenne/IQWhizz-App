@@ -25,12 +25,12 @@
             android:id="@+id/textView_iqwhizz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:fontFamily="casual"
             android:gravity="center_horizontal"
-            android:text="Register"
+            android:text="Création de compte"
             android:textColor="#FFFFFF"
-            android:textSize="36sp"
-            android:layout_marginBottom="10dp"/>
+            android:textSize="36sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,43 +52,39 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:ems="20"
-                android:inputType="textPersonName"
-                android:hint="Username"
-                android:layout_marginBottom="10dp"
-                />
+                android:hint="Nom d'utilisateur"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint="Password"
                 android:layout_marginBottom="10dp"
-                />
+                android:ems="10"
+                android:hint="Mot de passe"
+                android:inputType="textPassword" />
 
             <EditText
                 android:id="@+id/password_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint="Confirm password"
                 android:layout_marginBottom="10dp"
-                />
+                android:ems="10"
+                android:hint="Confirmer le mot de passe"
+                android:inputType="textPassword" />
 
 
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress"
                 android:layout_marginBottom="10dp"
-                android:hint="Email"
-                />
+                android:ems="10"
+                android:hint="adresse mail"
+                android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/birthday"
