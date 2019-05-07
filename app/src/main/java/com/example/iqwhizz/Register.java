@@ -4,22 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.iqwhizz.DAO.UserDAO;
 import com.example.iqwhizz.Objects.User;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Year;
-import java.util.Calendar;
 import java.util.Date;
 
 public class Register extends AppCompatActivity {
@@ -73,7 +68,7 @@ public class Register extends AppCompatActivity {
         int birth_d = 0;
         int reg_d = (int) new Date().getTime()/1000 ;
         int last_co = reg_d;
-        byte[] profile_pic = null; //TODO
+        byte[] profile_pic = null;
 
 
         if(UserDAO.userExists(username.getText().toString())){
