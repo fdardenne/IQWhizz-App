@@ -67,7 +67,7 @@ public class Duel extends AppCompatActivity implements DuelAdapter.OnDuelListene
 
 
         if(chal.isDone()){
-            Toast toast = Toast.makeText(context, "La partie est finit !", duration);
+            Toast toast = Toast.makeText(context, "La partie est finie !", duration);
             toast.show();
             return;
         }
