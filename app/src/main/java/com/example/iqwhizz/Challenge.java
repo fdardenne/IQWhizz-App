@@ -85,6 +85,7 @@ public class Challenge extends AppCompatActivity {
         currentAnswer = currentQuestion.getAnswers();
 
         textQuestion.setText(currentQuestion.getText());
+        Log.d("TESTFLO", textQuestion.getText().toString());
         textAnswer1.setText(currentAnswer[0].getText());
         textAnswer2.setText(currentAnswer[1].getText());
         textAnswer3.setText(currentAnswer[2].getText());
@@ -124,16 +125,8 @@ public class Challenge extends AppCompatActivity {
     }
 
     private void answered(int answer) {
-        int duration = Toast.LENGTH_SHORT;
-        Context context = getApplicationContext();
-        Toast toast = Toast.makeText(context, answer + "", duration);
-        toast.show();
         currentTest.answerToQuestion(currentAnswer[answer].getAnswerID(),1);
-
-
-
         next();
-
     }
 
     private void next() {

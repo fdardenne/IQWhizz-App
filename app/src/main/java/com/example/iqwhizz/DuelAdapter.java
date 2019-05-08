@@ -2,6 +2,7 @@ package com.example.iqwhizz;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -82,8 +83,8 @@ public class DuelAdapter extends RecyclerView.Adapter<DuelAdapter.MyViewHolder> 
             current = elem;
 
             Test t = TestDAO.getTest(elem.getTestID(),0);
-            category.setText(t.getCategory());
-            type.setText(t.getType());
+            category.setText("Catégorie: " + t.getCategory());
+            type.setText("Type de test: " + t.getType());
             done.setText(elem.isDone() + "");
 
             if(elem.getChallenger().equals(User.currentUser.getUsername())){
@@ -92,9 +93,11 @@ public class DuelAdapter extends RecyclerView.Adapter<DuelAdapter.MyViewHolder> 
                 if(elem.isDone()){
                     opposantIQ.setText("Opposant: " +StatsDAO.getIQ(elem.getChallenged(), t.getTestID()));
                     done.setText("Le défi est finis");
+                    done.setTextColor(Color.parseColor("#00cc00"));
                 }else{
                     opposantIQ.setText("Opposant: En attente ");
                     done.setText("En attente de l'opposant");
+                    done.setTextColor(Color.parseColor("#077187"));
                 }
 
             }else{
@@ -103,10 +106,13 @@ public class DuelAdapter extends RecyclerView.Adapter<DuelAdapter.MyViewHolder> 
 
                 if(elem.isDone()){
                     myIQ.setText("Mon score: " + StatsDAO.getIQ(User.currentUser.getUsername(), t.getTestID()));
-                    done.setText("Le défi est finis");
+                    done.setText("Le défi est finie");
+                    done.setTextColor(Color.parseColor("#00cc00"));
+
                 }else{
                     myIQ.setText("Mon score: En attente ");
                     done.setText("A votre tour... Cliquer ici pour jouer !");
+                    done.setTextColor(Color.parseColor("#C44C35"));
                 }
             }
 
