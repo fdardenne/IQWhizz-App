@@ -34,11 +34,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="501dp"
+            android:layout_marginBottom="50dp"
             android:background="@drawable/rounded_border"
             android:orientation="vertical"
-            android:layout_marginBottom="50dp"
-            android:padding="30dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/error_message_insert"
@@ -51,76 +51,71 @@
             <EditText
                 android:id="@+id/question_insert"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:ems="20"
-                android:hint="Question"
-                android:layout_marginBottom="10dp"
-                />
+                android:hint="Question" />
 
             <EditText
                 android:id="@+id/answer_insert1"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:ems="20"
-                android:hint=" 1# Bonne réponse"
-                android:layout_marginBottom="10dp"
-                />
+                android:hint=" 1# Bonne réponse" />
 
             <EditText
                 android:id="@+id/answer_insert2"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:ems="20"
-                android:hint=" 2# Mauvaise réponse"
-                android:layout_marginBottom="10dp"
-                />
+                android:hint=" 2# Mauvaise réponse" />
 
             <EditText
                 android:id="@+id/answer_insert3"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:ems="20"
-                android:hint=" 3# Mauvaise réponse"
-                android:layout_marginBottom="10dp"
-                />
+                android:hint=" 3# Mauvaise réponse" />
 
             <EditText
                 android:id="@+id/answer_insert4"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:ems="20"
-                android:hint=" 4# Mauvaise réponse"
-                android:layout_marginBottom="10dp"
-                />
+                android:hint=" 4# Mauvaise réponse" />
 
             <AutoCompleteTextView
                 android:id="@+id/category_insert_a"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:ems="20"
-                android:hint="Catégorie"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:layout_weight="1"
                 android:completionThreshold="1"
-                />
-
-
-
+                android:ems="20"
+                android:hint="Catégorie" />
 
 
             <Button
                 android:id="@+id/insert"
-                android:background="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ajouter"
+                android:layout_height="48dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:textColor="#FFFFFF"/>
+                android:layout_weight="1"
+                android:backgroundTint="#F44336"
+                android:text="Ajouter"
+                android:textColor="#FFFFFF" />
 
 
         </LinearLayout>

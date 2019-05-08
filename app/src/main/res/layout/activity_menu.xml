@@ -10,35 +10,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:backgroundTint="#00000000"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView_iqwhizz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#00000000"
             android:fontFamily="casual"
             android:gravity="center_horizontal"
-            android:text="IQWHIZZ"
+            android:text="IQWhizz"
             android:textColor="#FFFFFF"
             android:textSize="36sp" />
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:backgroundTint="#00000000">
 
             <GridLayout
-                android:columnCount="2"
-                android:rowCount="4"
-                android:alignmentMode="alignMargins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:backgroundTint="#00000000"
+                android:columnCount="2"
                 android:columnOrderPreserved="false"
-                >
+                android:rowCount="4">
 
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/play"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="128dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="12dp"
@@ -52,7 +57,7 @@
                         android:background="@drawable/menu_btn"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <ImageView
                             android:id="@+id/imageView3"
@@ -64,7 +69,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="2dp"
                             android:text="Jouer"
                             android:textSize="18sp" />
 
@@ -76,13 +81,12 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/resume"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="128dp"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
                     android:layout_margin="12dp"
-                    >
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -90,12 +94,12 @@
                         android:background="@drawable/menu_btn"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <ImageView
                             android:id="@+id/imageView4"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:scaleType="centerInside"
                             android:src="@mipmap/replay" />
 
@@ -114,13 +118,12 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/stats"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="128dp"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
                     android:layout_margin="12dp"
-                    >
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -128,7 +131,7 @@
                         android:background="@drawable/menu_btn"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <ImageView
                             android:id="@+id/imageView5"
@@ -140,7 +143,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="6dp"
                             android:text="Statistiques"
                             android:textSize="18sp" />
 
@@ -152,13 +155,12 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/friends"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="128dp"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
                     android:layout_margin="12dp"
-                    >
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -166,7 +168,7 @@
                         android:background="@drawable/menu_btn"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <ImageView
                             android:id="@+id/imageView6"
@@ -178,7 +180,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="6dp"
                             android:text="Mes amis"
                             android:textSize="18sp" />
 
@@ -190,13 +192,12 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/challengeCard"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="128dp"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
                     android:layout_margin="12dp"
-                    >
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -204,7 +205,7 @@
                         android:background="@drawable/menu_btn"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <ImageView
                             android:id="@+id/imageView10"
@@ -216,7 +217,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="8dp"
                             android:text="Défi"
                             android:textSize="17sp" />
 
@@ -228,13 +229,12 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/insert_question"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="128dp"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
                     android:layout_margin="12dp"
-                    >
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -242,7 +242,7 @@
                         android:background="@drawable/menu_btn"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <ImageView
                             android:id="@+id/imageView9"
@@ -254,7 +254,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="8dp"
                             android:text="Ajout"
                             android:textSize="17sp" />
 
@@ -266,13 +266,12 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/account"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="128dp"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
                     android:layout_margin="12dp"
-                    >
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -280,7 +279,7 @@
                         android:background="@drawable/menu_btn"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <ImageView
                             android:id="@+id/imageView8"
@@ -292,7 +291,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="8dp"
                             android:text="Mon compte"
                             android:textSize="17sp" />
 
@@ -305,13 +304,12 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/logout"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="128dp"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
                     android:layout_margin="12dp"
-                    >
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -319,7 +317,7 @@
                         android:background="@drawable/menu_btn"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <ImageView
                             android:id="@+id/imageView7"
@@ -331,7 +329,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="8dp"
                             android:text="Déconnexion"
                             android:textSize="17sp" />
 
@@ -339,12 +337,6 @@
 
 
                 </android.support.v7.widget.CardView>
-
-
-
-
-
-
 
 
             </GridLayout>

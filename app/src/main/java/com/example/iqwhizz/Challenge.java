@@ -2,11 +2,13 @@ package com.example.iqwhizz;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,8 @@ public class Challenge extends AppCompatActivity {
     private CardView cardAnswer2;
     private CardView cardAnswer3;
     private CardView cardAnswer4;
+
+    private Chronometer chrono;
 
     Test currentTest;
     Question currentQuestion;
@@ -69,6 +73,8 @@ public class Challenge extends AppCompatActivity {
         title = findViewById(R.id.questionNb);
         title.setText("Question #" + currentNbQuestion + "/" + maxNbQuestion);
 
+        chrono = findViewById(R.id.chronometer);
+
         textQuestion = findViewById(R.id.question_text);
         textAnswer1 = findViewById(R.id.answer_text1);
         textAnswer2 = findViewById(R.id.answer_text2);
@@ -90,6 +96,8 @@ public class Challenge extends AppCompatActivity {
         textAnswer2.setText(currentAnswer[1].getText());
         textAnswer3.setText(currentAnswer[2].getText());
         textAnswer4.setText(currentAnswer[3].getText());
+
+        startChrono(chrono);
 
         setupListener();
 
@@ -135,6 +143,7 @@ public class Challenge extends AppCompatActivity {
             Intent resultIntent = new Intent(this, Result.class);
             resultIntent.putExtra("TestExecutionID", currentTest.getExecutionID());
             startActivity(resultIntent);
+            chrono.stop();
             this.finish();
             return;
         }
@@ -149,5 +158,10 @@ public class Challenge extends AppCompatActivity {
         textAnswer2.setText(currentAnswer[1].getText());
         textAnswer3.setText(currentAnswer[2].getText());
         textAnswer4.setText(currentAnswer[3].getText());
+    }
+
+    public void startChrono (View v) {
+        chrono.setFormat("Temps : %s");
+        chrono.start();
     }
 }
