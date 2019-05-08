@@ -105,7 +105,7 @@ public class ChallengeInit extends AppCompatActivity {
 
     private void onTypeSpinnerChange(){
         int nbQuestions = (type.getSelectedItem().toString().equals("Court (5 questions)")) ? 5 : 40;
-        String[] items = getPossibleCategories(nbQuestions);
+        String[] items = TestDAO.getPossibleCategories(nbQuestions);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         errormessage.setText("");
         play.setClickable(true);

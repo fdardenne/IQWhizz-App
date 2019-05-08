@@ -131,7 +131,7 @@ public class TestDAO {
         int nCategory = cursor.getCount();
         if(nCategory > 0){
             String[] categories = new String[nCategory+1];
-            categories[0] = "random";
+            categories[0] = "Aléatoire";
             for(int i=1; i<nCategory+1; i++){
                 String cursorString = cursor.getString(0);
                 categories[i] = cursorString;
@@ -162,7 +162,7 @@ public class TestDAO {
 
 
     private static Question[] loadQuestions(String category, int nQuestions) {
-        if (category.equals("random")) {
+        if (category.equals("Aléatoire")) {
             String[] categoriesWithRandom = getPossibleCategories(nQuestions);
             String[] categories = Arrays.copyOfRange(categoriesWithRandom, 1, categoriesWithRandom.length);
             Random rand = new Random();

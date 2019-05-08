@@ -39,7 +39,7 @@
             android:id="@+id/text_friend"
             android:layout_width="266dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:layout_marginEnd="10dp"
             android:hint="Ajouter un ami" />
 
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/colorPrimaryDark"
             android:text="Ajouter"
@@ -60,12 +60,16 @@
         android:id="@+id/friendlist_textview"
         android:layout_width="match_parent"
         android:layout_height="19dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:text="Friend List :"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintBottom_toTopOf="@+id/friends_recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/friends_recycler"
@@ -80,11 +84,16 @@
         android:id="@+id/sent_textview"
         android:layout_width="395dp"
         android:layout_height="19dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
         android:text="Sent requests :"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@+id/friends_recycler"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintBottom_toTopOf="@+id/sent_requests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/friends_recycler" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/sent_requests"
@@ -99,11 +108,16 @@
         android:id="@+id/received_textview"
         android:layout_width="395dp"
         android:layout_height="19dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
         android:text="Received requests :"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@+id/sent_requests"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintBottom_toTopOf="@+id/received_requests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sent_requests" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/received_requests"

@@ -78,9 +78,17 @@ public class Register extends AppCompatActivity {
         catch(ParseException e){
             e.printStackTrace();
         }
-        int birth_d = (int) (date.getTime()/1000);
+        int birth_d = -1;
+        int reg_d = -1;
+        try {
+            birth_d = (int) (date.getTime() / 1000);
 
-        int reg_d = (int) new Date().getTime()/1000 ;
+            reg_d = (int) new Date().getTime() / 1000;
+        }
+        catch (Exception e) {
+            Toast toast = Toast.makeText(this, "Erreur", Toast.LENGTH_SHORT);
+            toast.show();
+        }
         int last_co = reg_d;
         byte[] profile_pic = null; //TODO
 

@@ -55,7 +55,8 @@
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:ems="30"
-                android:hint="nom d'utilisateur" />
+                android:hint="nom d'utilisateur"
+                android:textSize="22sp" />
 
 
             <EditText
@@ -104,14 +105,15 @@
 
             <Button
                 android:id="@+id/modify"
-                android:background="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Modifier"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:textColor="#FFFFFF"/>
-
-
+                android:backgroundTint="#F44336"
+                android:text="Modifier"
+                android:textColor="#FFFFFF" />
 
 
         </LinearLayout>

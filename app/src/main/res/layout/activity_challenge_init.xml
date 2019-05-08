@@ -84,15 +84,17 @@
                 />
 
 
-
             <Button
                 android:id="@+id/new_challenge"
-                android:background="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Jouer"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:textColor="#FFFFFF"/>
+                android:backgroundTint="#F44336"
+                android:text="Jouer"
+                android:textColor="#FFFFFF" />
 
 
         </LinearLayout>

@@ -105,12 +105,15 @@
 
             <Button
                 android:id="@+id/register"
-                android:background="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="S'enregistrer"
+                android:layout_height="55dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                android:textColor="#FFFFFF"/>
+                android:backgroundTint="#F44336"
+                android:text="S'enregistrer"
+                android:textColor="#FFFFFF" />
 
 
         </LinearLayout>
