@@ -300,7 +300,7 @@ insert into PossibleAnswers values(164, 41, 0, NULL, '17');
 
 insert into PossibleAnswers values(165, 42, 0, NULL, '23');
 insert into PossibleAnswers values(166, 42 , 0, NULL, '15');
-insert into PossibleAnswers values(167, 42, 200, NULL, '21');
+insert into PossibleAnswers values(167, 42, 200, NULL, '11');
 insert into PossibleAnswers values(168, 42, 0, NULL, '17');
 
 insert into PossibleAnswers values(169, 43, 0, NULL, '22');
