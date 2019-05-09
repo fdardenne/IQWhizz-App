@@ -51,7 +51,7 @@ insert into Questions values(23,3,'Calcul Mental',NULL,'Quel est la valeur de Y 
 insert into Questions values(24,2,'Calcul Mental',NULL,'Que vaut:  5+(3x14-7x3)');
 insert into Questions values(25,4,'Calcul Mental',NULL,'Si 1 livre vaut 1.3 euros, et 1 euros vaut 2 dollars US, Que vaut 3 livres en Dollars US?');
 insert into Questions values(26,3,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: (-1)-2-7-14-23-... ?');
-insert into Questions values(27,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 100-3*Y=82 ?');
+insert into Questions values(27,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 100-3xY=82 ?');
 
 insert into Questions values(28,2,'Calcul Mental',NULL,'Que vaut: 58 x 12 = ?');
 insert into Questions values(29,1,'Calcul Mental',NULL,'Que vaut: 146 - 78 = ?');
@@ -69,13 +69,13 @@ insert into Questions values(38,3,'Calcul Mental',NULL,'Quel est la valeur de Y 
 insert into Questions values(39,2,'Calcul Mental',NULL,'Que vaut:  7+(3x14)');
 insert into Questions values(40,4,'Calcul Mental',NULL,'Si 1 livre vaut 2 euros, et 1 euros vaut 1.5 dollars US, Que vaut 3 livres en Dollars US?');
 insert into Questions values(41,3,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 6-7-9-12-16-... ?');
-insert into Questions values(42,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 100-3*Y=67 ?');
+insert into Questions values(42,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 100-3xY=67 ?');
 
 insert into Questions values(43,1,'Calcul Mental',NULL,'Quel est le nombre logique qui suit cette série: 10-6-16-12-22-18-... ?');
 insert into Questions values(44,1,'Calcul Mental',NULL,'Que vaut: 15x6-7');
 insert into Questions values(45,1,'Calcul Mental',NULL,'Combien il y a-t-il de pépins dans une pèche?');
-insert into Questions values(46,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 2.5*7 ?');
-insert into Questions values(47,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 57-4*Y=25 ?');
+insert into Questions values(46,2,'Calcul Mental',NULL,'Quel est le résultat du calcul suivant: 2.5x7 ?');
+insert into Questions values(47,2,'Calcul Mental',NULL,'Quel est la valeur de Y dans cette équation: 57-4xY=25 ?');
 
 insert into Questions values(48,2,'Calcul Mental',NULL,'Que vaut: 120 x 15 = ?');
 insert into Questions values(49,2,'Calcul Mental',NULL,'Que vaut: 356 - 159 = ?');
@@ -278,10 +278,10 @@ insert into PossibleAnswers values(146, 37 , 200, NULL, '16');
 insert into PossibleAnswers values(147, 37 , 0, NULL, '18');
 insert into PossibleAnswers values(148, 37, 0, NULL, '20');
 
-insert into PossibleAnswers values(149, 38, 200, NULL, '188');
-insert into PossibleAnswers values(150, 38 , 0, NULL, '189');
-insert into PossibleAnswers values(151, 38 , 0, NULL, '190');
-insert into PossibleAnswers values(152, 38, 0, NULL, '191');
+insert into PossibleAnswers values(149, 38, 200, NULL, '20');
+insert into PossibleAnswers values(150, 38 , 0, NULL, '18');
+insert into PossibleAnswers values(151, 38 , 0, NULL, '19');
+insert into PossibleAnswers values(152, 38, 0, NULL, '21');
 
 insert into PossibleAnswers values(153, 39, 0, NULL, '45');
 insert into PossibleAnswers values(154, 39 , 0, NULL, '47');
@@ -348,7 +348,7 @@ insert into PossibleAnswers values(202, 51 , 0, NULL, '2103');
 insert into PossibleAnswers values(203, 51 , 0, NULL, '2002');
 insert into PossibleAnswers values(204, 51, 0, NULL, '2003');
 
-insert into PossibleAnswers values(205, 52, 200, NULL, '4');
-insert into PossibleAnswers values(206, 52 , 0, NULL, '4.5');
+insert into PossibleAnswers values(205, 52, 0, NULL, '4');
+insert into PossibleAnswers values(206, 52 , 200, NULL, '4.5');
 insert into PossibleAnswers values(207, 52 , 0, NULL, '5');
 insert into PossibleAnswers values(208, 52, 0, NULL, '5.5');
