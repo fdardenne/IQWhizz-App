@@ -219,8 +219,8 @@ insert into PossibleAnswers values(99, 25 , 200, NULL, '7.8');
 insert into PossibleAnswers values(100, 25, 0, NULL, '7.9');
 
 insert into PossibleAnswers values(101, 26, 0, NULL, '32');
-insert into PossibleAnswers values(102, 26 , 200, NULL, '33');
-insert into PossibleAnswers values(103, 26 , 0, NULL, '34');
+insert into PossibleAnswers values(102, 26 , 0, NULL, '33');
+insert into PossibleAnswers values(103, 26 , 200, NULL, '34');
 insert into PossibleAnswers values(104, 26, 0, NULL, '35');
 
 insert into PossibleAnswers values(105, 27, 0, NULL, '3');
