@@ -244,7 +244,7 @@ insert into PossibleAnswers values(119, 30 , 0, NULL, '5');
 insert into PossibleAnswers values(120, 30, 0, NULL, '5.5');
 
 insert into PossibleAnswers values(121, 31, 0, NULL, '246');
-insert into PossibleAnswers values(122, 31 , 200, NULL, '256');
+insert into PossibleAnswers values(122, 31 , 200, NULL, '265');
 insert into PossibleAnswers values(123, 31 , 0, NULL, '260');
 insert into PossibleAnswers values(124, 31, 0, NULL, '262');
 
