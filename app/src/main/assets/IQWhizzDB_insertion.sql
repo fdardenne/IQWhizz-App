@@ -259,7 +259,7 @@ insert into PossibleAnswers values(131, 33, 200, NULL, '21');
 insert into PossibleAnswers values(132, 33 , 0, NULL, '22');
 
 insert into PossibleAnswers values(133, 34, 0, NULL, '25');
-insert into PossibleAnswers values(134, 34 , 200, NULL, '30');
+insert into PossibleAnswers values(134, 34 , 200, NULL, '36');
 insert into PossibleAnswers values(135, 34 , 0, NULL, '17');
 insert into PossibleAnswers values(136, 34, 0, NULL, '15');
 
