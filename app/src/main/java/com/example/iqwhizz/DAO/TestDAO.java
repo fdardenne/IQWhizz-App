@@ -229,7 +229,7 @@ public class TestDAO {
         ContentValues value = new ContentValues();
         value.put("executionID", test.getExecutionID());
         value.put("testID", test.getTestID());
-        value.put("questionID", test.getNextQuestionID());
+        value.put("questionID", test.getCurrentQuestionID());
         value.put("answerID", answerID);
         value.put("time", time);
         long rowID = db.insert("SelectedAnswers", null, value);

@@ -59,6 +59,14 @@ public class Test {
             return -1;
         }
     }
+    public int getCurrentQuestionID() {
+        if (nextQuestion-1 < this.questions.length) {
+            return questions[nextQuestion-1].getID();
+        }
+        else {
+            return -1;
+        }
+    }
 
     public int getPosition() {
         return nextQuestion;

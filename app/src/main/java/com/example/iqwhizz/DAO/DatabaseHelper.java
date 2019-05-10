@@ -79,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = DatabaseHelper.getWritableDb();
         DatabaseHelper helper = getDbHelper();
         helper.dropAllTables(db);
-        AppContextProvider.getContext().deleteDatabase("IQWhizz.db");
+        //AppContextProvider.getContext().deleteDatabase("IQWhizz.db");
         helper.onCreate(db);
     }
 
