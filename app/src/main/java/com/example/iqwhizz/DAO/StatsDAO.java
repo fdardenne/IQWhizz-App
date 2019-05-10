@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 public class StatsDAO {
     private StatsDAO() {}
 
+    private static int timing = 45;
+
     public static int getIQ(String username, int testID) {
         SQLiteDatabase db = DatabaseHelper.getReadableDb();
         Cursor cursor = db.rawQuery(

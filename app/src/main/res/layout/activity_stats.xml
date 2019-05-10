@@ -31,7 +31,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="7dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/rounded_border"
             android:orientation="vertical">
@@ -134,7 +134,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="111dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/rounded_border"
@@ -151,12 +151,12 @@
 
                 android:paddingRight="10dp"
                 android:text="Votre QI est supérieur de 10% à la moyenne"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/history"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"

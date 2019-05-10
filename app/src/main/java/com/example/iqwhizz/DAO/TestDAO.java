@@ -58,7 +58,7 @@ public class TestDAO {
                 "SELECT testID, executionID, max(execution_date) FROM TestExecutions WHERE username = \"" + username + "\"",
                 null);
         cursor.moveToFirst();
-        if (cursor.getCount()!=1) {
+        if (cursor.getInt(0)==0) {
             return null;
         }
         else {
